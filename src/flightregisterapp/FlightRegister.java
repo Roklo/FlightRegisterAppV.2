@@ -14,35 +14,48 @@ import java.util.Set;
  */
 public class FlightRegister
 {
+
     private HashMap<String, Flight> flights;
-    
+
     public FlightRegister()
     {
         this.flights = new HashMap<>();
     }
-    
+
     public void addFlight(String flightID, Flight flight)
     {
         this.flights.put(flightID, flight);
     }
-    
-    public void listAllFlights()
+
+    public Set getAllFlights()
     {
-        System.out.println(flights.keySet());
+        return flights.keySet();
     }
-    
+
     public Flight getFlightByID(String flightID)
     {
-        //TODO: hent ut den aktuelle flighten
         return flights.get(flightID);
     }
-    
-    public String listFlightsByDestination(String destination)
+
+    public String getFlightsByDestination(String destination)
     {
         String returnString = "";
         for (Flight flight : this.flights.values())
         {
             if (flight.getDestinationAirport().equals(destination))
+            {
+                returnString += " " + flight.getFlightID();
+            }
+        }
+        return returnString;
+    }
+
+    public String getFlightsFromAirport(String airport)
+    {
+        String returnString = "";
+        for (Flight flight : this.flights.values())
+        {
+            if (flight.getDestinationAirport().equals(airport))
             {
                 returnString += " " + flight.getFlightID();
             }

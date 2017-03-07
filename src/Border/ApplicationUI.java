@@ -1,22 +1,23 @@
 package Border;
 
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Makes up the user interface (text based) of the application.
- * Responsible for all user interaction, like displaying the menu
- * and receiving input from the user.
- * 
+ * Makes up the user interface (text based) of the application. Responsible for
+ * all user interaction, like displaying the menu and receiving input from the
+ * user.
+ *
  * @author asty
  * @version 1.0
  */
-class ApplicationUI {
+class ApplicationUI
+{
 
     private Application application = null;
-    
-    String[] menuItems = {
+
+    String[] menuItems =
+    {
         "1. Create flight",
         "2. Register passenger",
         "3. Sell ticket to passenger",
@@ -28,7 +29,8 @@ class ApplicationUI {
      * Creates an instance of the POSApplicationUI User interface. An instance
      * of the POSApplication is created, and initialized.
      */
-    public ApplicationUI() {
+    public ApplicationUI()
+    {
         //TODO: Replace "new Application" with your application class.
         this.application = new Application();
     }
@@ -37,15 +39,19 @@ class ApplicationUI {
      * Starts the application by showing the menu and retrieving input from the
      * user.
      */
-    void start() {
+    void start()
+    {
         this.application.init();
 
         boolean quit = false;
 
-        while (!quit) {
-            try {
+        while (!quit)
+        {
+            try
+            {
                 int menuSelection = this.showMenu();
-                switch (menuSelection) {
+                switch (menuSelection)
+                {
                     case 1:
                         this.application.doCreateFlight();
                         break;
@@ -73,28 +79,28 @@ class ApplicationUI {
 
                     default:
                 }
-            } 
-            catch (InputMismatchException ime) 
+            } catch (InputMismatchException ime)
             {
                 System.out.println("\nERROR: Please provide a number between 1 and " + this.menuItems.length + "..\n");
             }
-        }        
-        
+        }
+
     }
 
     /**
      * Displays the menu to the user, and waits for the users input. The user is
-     * expected to input an integer between 1 and the max number of menu items. 
-     * If the user inputs anything
-     * else, an InputMismatchException is thrown. The method returns the valid
-     * input from the user.
+     * expected to input an integer between 1 and the max number of menu items.
+     * If the user inputs anything else, an InputMismatchException is thrown.
+     * The method returns the valid input from the user.
      *
-     * @return the menu number (between 1 and max menu item number) provided by the user.
+     * @return the menu number (between 1 and max menu item number) provided by
+     * the user.
      * @throws InputMismatchException
      */
-    private int showMenu() throws InputMismatchException {
+    private int showMenu() throws InputMismatchException
+    {
         System.out.println("\n**** Application v0.1 ****\n");
-        for ( String menuItem : menuItems )
+        for (String menuItem : menuItems)
         {
             System.out.println(menuItem);
         }
@@ -104,7 +110,8 @@ class ApplicationUI {
 
         Scanner reader = new Scanner(System.in);
         int menuSelection = reader.nextInt();
-        if ((menuSelection < 1) || (menuSelection > maxMenuItemNumber)) {
+        if ((menuSelection < 1) || (menuSelection > maxMenuItemNumber))
+        {
             throw new InputMismatchException();
         }
         return menuSelection;

@@ -5,11 +5,34 @@
  */
 package flightregisterapp;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Håkon
  */
 public class TicketRegister
 {
-    
+
+    private HashMap<String, Ticket> tickets;
+
+    public TicketRegister()
+    {
+        this.tickets = new HashMap<>();
+    }
+
+    public void addTicket(String passenger, Ticket ticket)
+    {
+        this.tickets.put(passenger, ticket);
+    }
+
+    public void removeTicketOfPassenger(String name)
+    {
+        this.tickets.remove(name);
+    }
+
+    public Ticket getTicketByName(String name)
+    {
+        return tickets.get(name);
+    }
 }

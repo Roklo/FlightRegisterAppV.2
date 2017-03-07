@@ -25,14 +25,14 @@ public class Main
         /*
         System.out.println("test");
         SeatRegister seatReg = new SeatRegister(4, 4);
-        Seat getSeat = seatReg.getSeatById("3B"); */
+        Seat getSeat = seatReg.getSeatById("3B"); 
         
         Flight newflight = new  Flight("#F242", "ALE", 
                 "OSL", 13, 30, 14, 30, 1, 1, 2017, 31, 1, 2017, 5, 6);
         newflight.getFlightTime();
-
-        //ApplicationUI appUI = new ApplicationUI();
-        //appUI.start();
+*/
+        ApplicationUI appUI = new ApplicationUI();
+        appUI.start();
     }
 
 }

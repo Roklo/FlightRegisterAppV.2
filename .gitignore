@@ -21,3 +21,6 @@ build/classes/flightregisterapp/TicketRegister.class
 build/test/classes/.netbeans_automatic_build
 build/test/classes/.netbeans_update_resources
 build/test/classes/flightregisterapp/FlightTest.class
+/FlightRegisterV.2/nbproject/private/
+/build/
+/dist/

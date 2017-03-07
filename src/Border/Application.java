@@ -5,6 +5,7 @@ import flightregisterapp.Passenger;
 import flightregisterapp.FlightRegister;
 import flightregisterapp.Seat;
 import flightregisterapp.Ticket;
+import flightregisterapp.TicketRegister;
 import java.util.Scanner;
 
 /**
@@ -16,11 +17,13 @@ import java.util.Scanner;
 public class Application
 {
 
-    private FlightRegister flights;
+    private final FlightRegister flights;
+    private final TicketRegister tickets;
 
     public Application()
     {
-        flights = new FlightRegister();
+        this.flights = new FlightRegister();
+        this.tickets = new TicketRegister();
     }
 
     public void init()
@@ -85,7 +88,7 @@ public class Application
                 departureMonth, departureYear, arrivalDay,
                 arrivalMonth, arrivalYear, numberOfRows, numberOfLetters);
         flights.addFlight(flightID, newFlight);
-        flights.listAllFlights();
+        System.out.println(flights.getAllFlights());
 
     }
 
@@ -119,7 +122,7 @@ public class Application
         String destination = reader.nextLine();
 
         System.out.println("Please choose a flight:");
-        System.out.println(flights.listFlightsByDestination(destination));
+        System.out.println(flights.getFlightsByDestination(destination));
         String flightID = reader.nextLine();
         String flight = (flights.getFlightByID(flightID).getDepartureAirport()
                 + "->" + destination);
@@ -137,7 +140,7 @@ public class Application
 
         Ticket newTicket = new Ticket(passenger, flight,
                 seat, flightID, ticketID, price);
-        //tickets.addTicket()
+        tickets.addTicket(passenger, newTicket);
         System.out.println("Ticket:\n" + passenger + " " + flight + "\nSeat "
                 + seat + ", Flight " + flightID + ", TicketNr " + ticketID
                 + ", Price " + price);
@@ -146,11 +149,17 @@ public class Application
     void doListSeatsInFlight()
     {
         System.out.println("doListSeatsInFlight() was called");
+
+        //TODO: List all seats from an entered flight.
     }
 
     void doListPassengersInFlight()
     {
-        System.out.println("doListPassengersInFlight() was called");
+        System.out.println("\n--- List Passengers in a Flight ---");
+        System.out.println("Please enter a valid flight ID:");
+        Scanner reader = new Scanner(System.in);
+        String flightID = reader.nextLine();
+        //TODO: List all passengers from an entered flight.
     }
 
 }

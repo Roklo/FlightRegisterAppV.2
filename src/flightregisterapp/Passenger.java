@@ -51,11 +51,13 @@ public class Passenger
 
     /**
      * Prints the details of the passenger. Name and Email address.
+     *
+     * @return The full details of the passenger.
      */
-    public void printDetails()
+    public String getDetails()
     {
-        System.out.println("Name: " + foreName + " "
-                + lastName + "\nEmail: " + emailAddress);
+        return ("Name: " + foreName + " " + lastName
+                + "\nEmail: " + emailAddress);
     }
 
 }
