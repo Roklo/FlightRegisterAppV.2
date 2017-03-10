@@ -6,7 +6,8 @@
 package flightregisterapp;
 
 /**
- *
+ * Creates a ticket for the passenger with all information
+ * regarding his/her flight.
  *
  */
 public class Ticket
