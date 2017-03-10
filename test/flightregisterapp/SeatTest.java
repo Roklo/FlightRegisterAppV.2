@@ -35,6 +35,9 @@ public class SeatTest
 
     /**
      * Test of getSeatId method, of class Seat.
+     * Sets an expected result
+     * Gets result from getSeatId method in passenger class
+     * compares expected result with result
      */
     @Test
     public void testGetSeatId()
@@ -47,6 +50,8 @@ public class SeatTest
 
     /**
      * Test of isAvailable method, of class Seat.
+     * Sets expected result to be true
+     * Checks if isAvalable result is equal to expResult.
      */
     @Test
     public void testIsAvailable()
@@ -59,6 +64,9 @@ public class SeatTest
 
     /**
      * Test of setUnavailable method, of class Seat.
+     * Sets the seat as unavailable 
+     * Sets expected result to false 
+     * checks if isAvailable result is equal to expResult.
      */
     @Test
     public void testSetUnavailable()
@@ -72,6 +80,9 @@ public class SeatTest
 
     /**
      * Test of setAvailable method, of class Seat.
+     * Sets the seat as available 
+     * Sets the expected result as true 
+     * checks if isAvailable result is equal to expResult
      */
     @Test
     public void testSetAvailable()
@@ -82,5 +93,5 @@ public class SeatTest
         boolean result = instance.isAvailable();
         assertEquals(expResult, result);
     }
-
+    
 }

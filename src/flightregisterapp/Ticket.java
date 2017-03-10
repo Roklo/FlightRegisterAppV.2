@@ -29,37 +29,58 @@ public class Ticket
         this.flightID = flightID;
         this.price = price;
     }
-
+/**
+ * Returns ticket ID
+ * @return ticketID
+ */
     public int getTicketID()
     {
         return ticketID;
     }
-
+/**
+ * Returns seat number
+ * @return seat
+ */
     public Seat getSeat()
     {
         return seat;
     }
-
+/**
+ * Returns passenger name and email.
+ * @return passenger 
+ */
     public Passenger getPassenger()
     {
         return passenger;
     }
-
+/**
+ * Returns flight class with flight information
+ * @return flight
+ */
     public Flight getFlight()
     {
         return flight;
     }
-
+/**
+ * Return the flightID of the flight
+ * @return flightID
+ */
     public String getFlightID()
     {
         return flightID;
     }
-
+/**
+ * Returns the price of the ticket
+ * @return price 
+ */
     public int getPrice()
     {
         return price;
     }
-
+/**
+ * Sets the price of the ticket
+ * @param price 
+ */
     public void setPrice(int price)
     {
         this.price = price;

@@ -14,40 +14,23 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author rocio
+ * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
+ * @version 1.1 (10.03.2017)
  */
 public class FlightTest
 {
 
-    Flight instance = new  Flight("#F242", "AES", 
-                "OSL", 13, 30, 14, 35, 1, 2, 2016, 3, 4, 2017, 5, 6);
+    Flight instance = new Flight("#F242", "AES",
+            "OSL", 13, 30, 14, 35, 1, 2, 2016, 3, 4, 2017, 5, 6);
 
     public FlightTest()
     {
     }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception
-    {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception
-    {
-    }
-
-    @Before
-    public void setUp() throws Exception
-    {
-    }
-
-    @After
-    public void tearDown() throws Exception
-    {
-    }
-
     /**
-     * Test of getFlightID method, of class Flight.
+     * Test of getFlightID method, of class Flight. Gets the FlightID checks
+     * expected result. compares expected result with result
+     *
      */
     @Test
     public void testGetFlightID()
@@ -61,7 +44,9 @@ public class FlightTest
     }
 
     /**
-     * Test of getDestinationAirport method, of class Flight.
+     * Test of getDestinationAirport method, of class Flight. Gets the
+     * DestinationAirport checks expected result. compares expected result with
+     * result
      */
     @Test
     public void testGetDestinationAirport()
@@ -75,7 +60,9 @@ public class FlightTest
     }
 
     /**
-     * Test of getDepartureAirport method, of class Flight.
+     * Test of getDepartureAirport method, of class Flight. Gets the
+     * DepartureAirport checks expected result. compares expected result with
+     * result
      */
     @Test
     public void testGetDepartureAirport()
@@ -89,7 +76,8 @@ public class FlightTest
     }
 
     /**
-     * Test of getDepartureHour method, of class Flight.
+     * Test of getDepartureHour method, of class Flight. Gets the DepartureHour
+     * checks expected result compares expected result with result
      */
     @Test
     public void testGetDepartureHour()
@@ -102,7 +90,8 @@ public class FlightTest
     }
 
     /**
-     * Test of setDepartureHour method, of class Flight.
+     * Test of setDepartureHour method, of class Flight. Sets the DepartureHour
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testSetDepartureHour()
@@ -112,11 +101,13 @@ public class FlightTest
         int expResult = 10;
         int result = instance.getDepartureHour();
         assertEquals(expResult, result);
-   
+
     }
 
     /**
-     * Test of getDepartureMinute method, of class Flight.
+     * Test of getDepartureMinute method, of class Flight. Gets the
+     * DepartureMinute checks expected result. compares expected result with
+     * result
      */
     @Test
     public void testGetDepartureMinute()
@@ -128,150 +119,166 @@ public class FlightTest
     }
 
     /**
-     * Test of setDepartureMinute method, of class Flight.
+     * Test of setDepartureMinute method, of class Flight. Sets the
+     * DepartureMinute checks expected result. compares expected result with
+     * result
      */
     @Test
     public void testSetDepartureMinute()
     {
-        
+
         System.out.println("setDepartureMinute");
         instance.setDepartureMinute(9);
-        int expResult = 9;                
+        int expResult = 9;
         int result = instance.getDepartureMinute();
-        assertEquals(expResult, result);     
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getArrivalMinute method, of class Flight.
+     * Test of getArrivalMinute method, of class Flight. Gets the ArrivalMinute
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testGetArrivalMinute()
     {
-        
-         
-     System.out.println("getArrivalMinute");
+
+        System.out.println("getArrivalMinute");
+
         int expResult = 35;
         int result = instance.getArrivalMinute();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of setArrivalMinute method, of class Flight.
+     * Test of setArrivalMinute method, of class Flight. Sets the ArrivalMinute
+     * checks expected result. compares expected result with result
      */
     @Test
+
     public void testSetArrivalMinute()
     {
         System.out.println("setArrivalMinute");
         instance.setArrivalMinute(8);
-        int expResult = 8;                
+        int expResult = 8;
         int result = instance.getArrivalMinute();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getArrivalHour method, of class Flight.
+     * Test of getArrivalHour method, of class Flight. Gets the ArrivalHour
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testGetArrivalHour()
     {
-         System.out.println("getArrivalHour");
+        System.out.println("getArrivalHour");
         int expResult = 13;
         int result = instance.getDepartureHour();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of setArrivalHour method, of class Flight.
+     * Test of setArrivalHour method, of class Flight. Sets the ArrivalHour
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testSetArrivalHour()
     {
         System.out.println("setArrivalHour");
         instance.setArrivalHour(8);
-        int expResult = 8;                
+        int expResult = 8;
         int result = instance.getArrivalHour();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getDepartureDay method, of class Flight.
+     * Test of getDepartureDay method, of class Flight. Gets the DepartureDay
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testGetDepartureDay()
     {
-         System.out.println("getDepartureDay");
+        System.out.println("getDepartureDay");
         int expResult = 1;
         int result = instance.getDepartureDay();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of setDepartureDay method, of class Flight.
+     * Test of setDepartureDay method, of class Flight. Sets the DepartureDay
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testSetDepartureDay()
     {
         System.out.println("setDepartureDay");
         instance.setDepartureDay(6);
-        int expResult = 6;                
+        int expResult = 6;
         int result = instance.getDepartureDay();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getDepartureMonth method, of class Flight.
+     * Test of getDepartureMonth method, of class Flight. Gets the
+     * DepartureMonth checks expected result. compares expected result with
+     * result
      */
     @Test
     public void testGetDepartureMonth()
     {
-         System.out.println("getDepartureMonth");
+        System.out.println("getDepartureMonth");
         int expResult = 2;
         int result = instance.getDepartureMonth();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of setDepartureMonth method, of class Flight.
+     * Test of setDepartureMonth method, of class Flight. Sets the
+     * DepartureMonth checks expected result. compares expected result with
+     * result
      */
     @Test
     public void testSetDepartureMonth()
     {
-         System.out.println("getDepartureMonth");
-        
+        System.out.println("getDepartureMonth");
+
         instance.setDepartureMonth(5);
-        int expResult = 5;                
+        int expResult = 5;
         int result = instance.getDepartureMonth();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getDepartureYear method, of class Flight.
+     * Test of getDepartureYear method, of class Flight. Gets the DepartureYear
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testGetDepartureYear()
     {
-         System.out.println("getDepartureHour");
+        System.out.println("getDepartureHour");
         int expResult = 2016;
         int result = instance.getDepartureYear();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of setDepartureYear method, of class Flight.
+     * Test of setDepartureYear method, of class Flight. Sets the DepartureYear
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testSetDepartureYear()
     {
         System.out.println("setDepartureYear");
-        
+
         instance.setDepartureYear(2015);
-        int expResult = 2015;                
+        int expResult = 2015;
         int result = instance.getDepartureYear();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getArrivalDay method, of class Flight.
+     * Test of getArrivalDay method, of class Flight. Gets the ArrivalDay checks
+     * expected result. compares expected result with result
      */
     @Test
     public void testGetArrivalDay()
@@ -283,20 +290,22 @@ public class FlightTest
     }
 
     /**
-     * Test of setArrivalDay method, of class Flight.
+     * Test of setArrivalDay method, of class Flight. Sets the ArrivalDay checks
+     * expected result. compares expected result with result
      */
     @Test
     public void testSetArrivalDay()
     {
         System.out.println("setArrivalDay");
         instance.setArrivalDay(11);
-        int expResult = 11;                
+        int expResult = 11;
         int result = instance.getArrivalDay();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getArrivalMonth method, of class Flight.
+     * Test of getArrivalMonth method, of class Flight. Gets the ArrivalMonth
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testGetArrivalMonth()
@@ -308,21 +317,23 @@ public class FlightTest
     }
 
     /**
-     * Test of setArrivalMonth method, of class Flight.
+     * Test of setArrivalMonth method, of class Flight. Sets the ArrivalMonth
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testSetArrivalMonth()
     {
-        
+
         System.out.println("setDepartureMinute");
         instance.setArrivalMonth(12);
-        int expResult = 12;                
+        int expResult = 12;
         int result = instance.getArrivalMonth();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getArrivalYear method, of class Flight.
+     * Test of getArrivalYear method, of class Flight. Gets the ArrivalYear
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testGetArrivalYear()
@@ -334,33 +345,32 @@ public class FlightTest
     }
 
     /**
-     * Test of setArrivalYear method, of class Flight.
+     * Test of setArrivalYear method, of class Flight. Sets the ArrivalYear
+     * checks expected result. compares expected result with result
      */
     @Test
     public void testSetArrivalYear()
     {
         System.out.println("setArrivalYear");
-        
+
         instance.setArrivalYear(13);
-        int expResult = 13;                
+        int expResult = 13;
         int result = instance.getArrivalYear();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
-     * Test of getFlightTime method, of class Flight.
+     * Test of getFlightTime method, of class Flight. Gets the FlightTime checks
+     * expected result. compares expected result with result
      */
     @Test
     public void testGetFlightTime()
     {
-       System.out.println("getFlightTime");
+        System.out.println("getFlightTime");
         String expResult = "01:05";
         String result = instance.getFlightTime();
         assertEquals(expResult, result);
     }
 
-  
-
-   
-
 }
+

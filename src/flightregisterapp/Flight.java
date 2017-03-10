@@ -28,12 +28,17 @@ public class Flight
     private int arrivalDay;
     private int arrivalMonth;
     private int arrivalYear;
+<<<<<<< HEAD
     
     private int numberOfRows;
     private int numberOfLetters;
     
     private SeatRegister seats;
     private PassengerRegister passengers;
+=======
+
+    SeatRegister seats;
+>>>>>>> c3c6637498b74edc2d0b3ea4c80ccd2ff30710fa
 
     /**
      * The constructor of the Flight class
@@ -54,6 +59,7 @@ public class Flight
      * @param numberOfRows
      * @param numberOfLetters
      *
+     * 
      */
     public Flight(String flightID, String destinationAirport,
             String departureAirport, int departureHour, int departureMinute,
@@ -79,8 +85,12 @@ public class Flight
         this.numberOfRows = numberOfRows;
         this.numberOfLetters = numberOfLetters;
         seats = new SeatRegister();
+<<<<<<< HEAD
         addSeats(numberOfRows, numberOfLetters);
         passengers = new PassengerRegister();
+=======
+
+>>>>>>> c3c6637498b74edc2d0b3ea4c80ccd2ff30710fa
     }
 
     /**
@@ -355,7 +365,10 @@ public class Flight
      */
     /**
      * Calculates the total flight time of the flight n TODO: Add a return
+     * TODO: Add a return Calculates the total flight time of the flight
      * statement so it will return the time as string
+     *
+     * @return Returns the total flighttime
      */
     public String getFlightTime()
     {
@@ -402,19 +415,35 @@ public class Flight
         }
         
         
+
         return (deltaHourString + ":" + deltaMinuteString);
 
                 /*
+        /*
         System.out.println("Flight time: "
                 + deltaHourString + ":" + deltaMinuteString + " Hours");
 */
+         */
     }
 
+    /**
+     * Adds seats to the flight
+     *
+     * @param numberOfRows
+     * @param numberOfLetters
+     *
+     */
     public void addSeats(int numberOfRows, int numberOfLetters)
     {
         seats.addSeats(numberOfRows, numberOfLetters);
     }
     
+
+    /**
+     * Gets all seats for the flight
+     *
+     * @return Return all seats on the flight
+     */
     public SeatRegister getSeats()
     {
         return seats;
