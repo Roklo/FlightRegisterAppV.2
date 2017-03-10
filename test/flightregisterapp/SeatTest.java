@@ -82,5 +82,5 @@ public class SeatTest
         boolean result = instance.isAvailable();
         assertEquals(expResult, result);
     }
-
+    
 }

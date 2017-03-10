@@ -14,13 +14,14 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author rocio
+ * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
+ * @version 1.1 (10.03.2017)
  */
 public class FlightTest
 {
 
-    Flight instance = new  Flight("#F242", "AES", 
-                "OSL", 13, 30, 14, 35, 1, 2, 2016, 3, 4, 2017, 5, 6);
+    Flight instance = new Flight("#F242", "AES",
+            "OSL", 13, 30, 14, 35, 1, 2, 2016, 3, 4, 2017, 5, 6);
 
     public FlightTest()
     {
@@ -112,7 +113,7 @@ public class FlightTest
         int expResult = 10;
         int result = instance.getDepartureHour();
         assertEquals(expResult, result);
-   
+
     }
 
     /**
@@ -133,12 +134,12 @@ public class FlightTest
     @Test
     public void testSetDepartureMinute()
     {
-        
+
         System.out.println("setDepartureMinute");
         instance.setDepartureMinute(9);
-        int expResult = 9;                
+        int expResult = 9;
         int result = instance.getDepartureMinute();
-        assertEquals(expResult, result);     
+        assertEquals(expResult, result);
     }
 
     /**
@@ -147,9 +148,8 @@ public class FlightTest
     @Test
     public void testGetArrivalMinute()
     {
-        
-         
-     System.out.println("getArrivalMinute");
+
+        System.out.println("getArrivalMinute");
         int expResult = 35;
         int result = instance.getArrivalMinute();
         assertEquals(expResult, result);
@@ -163,9 +163,9 @@ public class FlightTest
     {
         System.out.println("setArrivalMinute");
         instance.setArrivalMinute(8);
-        int expResult = 8;                
+        int expResult = 8;
         int result = instance.getArrivalMinute();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
@@ -174,7 +174,7 @@ public class FlightTest
     @Test
     public void testGetArrivalHour()
     {
-         System.out.println("getArrivalHour");
+        System.out.println("getArrivalHour");
         int expResult = 13;
         int result = instance.getDepartureHour();
         assertEquals(expResult, result);
@@ -188,9 +188,9 @@ public class FlightTest
     {
         System.out.println("setArrivalHour");
         instance.setArrivalHour(8);
-        int expResult = 8;                
+        int expResult = 8;
         int result = instance.getArrivalHour();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
@@ -199,7 +199,7 @@ public class FlightTest
     @Test
     public void testGetDepartureDay()
     {
-         System.out.println("getDepartureDay");
+        System.out.println("getDepartureDay");
         int expResult = 1;
         int result = instance.getDepartureDay();
         assertEquals(expResult, result);
@@ -213,9 +213,9 @@ public class FlightTest
     {
         System.out.println("setDepartureDay");
         instance.setDepartureDay(6);
-        int expResult = 6;                
+        int expResult = 6;
         int result = instance.getDepartureDay();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
@@ -224,7 +224,7 @@ public class FlightTest
     @Test
     public void testGetDepartureMonth()
     {
-         System.out.println("getDepartureMonth");
+        System.out.println("getDepartureMonth");
         int expResult = 2;
         int result = instance.getDepartureMonth();
         assertEquals(expResult, result);
@@ -236,12 +236,12 @@ public class FlightTest
     @Test
     public void testSetDepartureMonth()
     {
-         System.out.println("getDepartureMonth");
-        
+        System.out.println("getDepartureMonth");
+
         instance.setDepartureMonth(5);
-        int expResult = 5;                
+        int expResult = 5;
         int result = instance.getDepartureMonth();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
@@ -250,7 +250,7 @@ public class FlightTest
     @Test
     public void testGetDepartureYear()
     {
-         System.out.println("getDepartureHour");
+        System.out.println("getDepartureHour");
         int expResult = 2016;
         int result = instance.getDepartureYear();
         assertEquals(expResult, result);
@@ -263,11 +263,11 @@ public class FlightTest
     public void testSetDepartureYear()
     {
         System.out.println("setDepartureYear");
-        
+
         instance.setDepartureYear(2015);
-        int expResult = 2015;                
+        int expResult = 2015;
         int result = instance.getDepartureYear();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
@@ -290,9 +290,9 @@ public class FlightTest
     {
         System.out.println("setArrivalDay");
         instance.setArrivalDay(11);
-        int expResult = 11;                
+        int expResult = 11;
         int result = instance.getArrivalDay();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
@@ -313,12 +313,12 @@ public class FlightTest
     @Test
     public void testSetArrivalMonth()
     {
-        
+
         System.out.println("setDepartureMinute");
         instance.setArrivalMonth(12);
-        int expResult = 12;                
+        int expResult = 12;
         int result = instance.getArrivalMonth();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
@@ -340,11 +340,11 @@ public class FlightTest
     public void testSetArrivalYear()
     {
         System.out.println("setArrivalYear");
-        
+
         instance.setArrivalYear(13);
-        int expResult = 13;                
+        int expResult = 13;
         int result = instance.getArrivalYear();
-        assertEquals(expResult, result);    
+        assertEquals(expResult, result);
     }
 
     /**
@@ -353,14 +353,10 @@ public class FlightTest
     @Test
     public void testGetFlightTime()
     {
-       System.out.println("getFlightTime");
+        System.out.println("getFlightTime");
         String expResult = "01:05";
         String result = instance.getFlightTime();
         assertEquals(expResult, result);
     }
-
-  
-
-   
 
 }
