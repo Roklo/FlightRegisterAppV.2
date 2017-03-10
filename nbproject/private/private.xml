@@ -3,6 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/rocio/Google%20Drive/NTNU/1.År/2.Semester/Objektorientert%20programering/FlightRegisterAppV.2/src/flightregisterapp/SeatRegister.java</file>
+            <file>file:/C:/Users/rocio/Google%20Drive/NTNU/1.År/2.Semester/Objektorientert%20programering/FlightRegisterAppV.2/test/flightregisterapp/SeatTest.java</file>
+            <file>file:/C:/Users/rocio/Google%20Drive/NTNU/1.År/2.Semester/Objektorientert%20programering/FlightRegisterAppV.2/test/flightregisterapp/FlightTest.java</file>
+            <file>file:/C:/Users/rocio/Google%20Drive/NTNU/1.År/2.Semester/Objektorientert%20programering/FlightRegisterAppV.2/src/flightregisterapp/Seat.java</file>
+            <file>file:/C:/Users/rocio/Google%20Drive/NTNU/1.År/2.Semester/Objektorientert%20programering/FlightRegisterAppV.2/src/flightregisterapp/FlightRegister.java</file>
+            <file>file:/C:/Users/rocio/Google%20Drive/NTNU/1.År/2.Semester/Objektorientert%20programering/FlightRegisterAppV.2/src/Border/Main.java</file>
+            <file>file:/C:/Users/rocio/Google%20Drive/NTNU/1.År/2.Semester/Objektorientert%20programering/FlightRegisterAppV.2/src/flightregisterapp/Ticket.java</file>
+=======
             <file>file:/C:/Users/Håkon/Documents/NTNU/2.%20Semester/Objektorientert%20Programmering/NetBeans/Prosjektoppgave%20Fase%202/FlightRegisterAppV.2/src/flightregisterapp/TicketRegister.java</file>
             <file>file:/C:/Users/Håkon/Documents/NTNU/2.%20Semester/Objektorientert%20Programmering/NetBeans/Prosjektoppgave%20Fase%202/FlightRegisterAppV.2/src/flightregisterapp/Seat.java</file>
             <file>file:/C:/Users/Håkon/Documents/NTNU/2.%20Semester/Objektorientert%20Programmering/NetBeans/Prosjektoppgave%20Fase%202/FlightRegisterAppV.2/src/flightregisterapp/Ticket.java</file>
@@ -13,6 +21,7 @@
             <file>file:/C:/Users/Håkon/Documents/NTNU/2.%20Semester/Objektorientert%20Programmering/NetBeans/Prosjektoppgave%20Fase%202/FlightRegisterAppV.2/src/Border/Application.java</file>
             <file>file:/C:/Users/Håkon/Documents/NTNU/2.%20Semester/Objektorientert%20Programmering/NetBeans/Prosjektoppgave%20Fase%202/FlightRegisterAppV.2/src/Border/ApplicationUI.java</file>
             <file>file:/C:/Users/Håkon/Documents/NTNU/2.%20Semester/Objektorientert%20Programmering/NetBeans/Prosjektoppgave%20Fase%202/FlightRegisterAppV.2/src/flightregisterapp/FlightRegister.java</file>
+>>>>>>> 7a30135fc06f1bec70a05ccabed2a5f60f59a86d
         </group>
     </open-files>
 </project-private>
