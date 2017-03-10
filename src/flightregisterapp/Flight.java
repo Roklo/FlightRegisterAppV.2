@@ -28,17 +28,12 @@ public class Flight
     private int arrivalDay;
     private int arrivalMonth;
     private int arrivalYear;
-<<<<<<< HEAD
     
     private int numberOfRows;
     private int numberOfLetters;
     
     private SeatRegister seats;
     private PassengerRegister passengers;
-=======
-
-    SeatRegister seats;
->>>>>>> c3c6637498b74edc2d0b3ea4c80ccd2ff30710fa
 
     /**
      * The constructor of the Flight class
@@ -85,12 +80,9 @@ public class Flight
         this.numberOfRows = numberOfRows;
         this.numberOfLetters = numberOfLetters;
         seats = new SeatRegister();
-<<<<<<< HEAD
         addSeats(numberOfRows, numberOfLetters);
         passengers = new PassengerRegister();
-=======
 
->>>>>>> c3c6637498b74edc2d0b3ea4c80ccd2ff30710fa
     }
 
     /**
@@ -422,7 +414,6 @@ public class Flight
         /*
         System.out.println("Flight time: "
                 + deltaHourString + ":" + deltaMinuteString + " Hours");
-*/
          */
     }
 
