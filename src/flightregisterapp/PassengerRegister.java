@@ -14,26 +14,27 @@ import java.util.Iterator;
  */
 public class PassengerRegister
 {
+
     private HashSet<Passenger> passengers;
-    
+
     public PassengerRegister()
     {
         this.passengers = new HashSet<>();
     }
-    
+
     public void addPassenger(Passenger pas)
     {
         this.passengers.add(pas);
     }
-    
+
     public void removePassenger(Passenger pas)
     {
         this.passengers.remove(pas);
     }
-    
+
     public Iterator<Passenger> getPassengerRegIterator()
     {
         return this.passengers.iterator();
     }
-    
+
 }
