@@ -29,6 +29,7 @@ public class Application
         this.flights = new FlightRegister();
         this.tickets = new TicketRegister();
         this.passengers = new PassengerRegister();
+        this.ticketSystem = new TicketReservationSystem();
     }
 
     public void init()
@@ -98,7 +99,8 @@ public class Application
         System.out.println(newFlight.getFlightID() + ", "
                 + newFlight.getDepartureAirport() + "->"
                 + newFlight.getDestinationAirport() + ", "
-                + numberOfRows + " rows, " + numberOfLetters + " columns.");
+                + (newFlight.getNumberOfRows() * newFlight.getNumberOfLetters())
+                + " seats.");
         System.out.println("Departure: " + newFlight.getDepartureHour() + ":"
                 + newFlight.getDepartureMinute() + ", "
                 + newFlight.getDepartureDay() + "."
@@ -129,7 +131,7 @@ public class Application
         Passenger newPassenger = new Passenger(firstName, lastName, eMail);
         //this.passengers.addPassenger(newPassenger);
         ticketSystem.addPassenger(newPassenger);
-        System.out.println("The following passenger has been registered:");
+        System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newPassenger.getFirstName() + " "
                 + newPassenger.getLastName() + ", "
                 + newPassenger.getEmail());
@@ -167,6 +169,7 @@ public class Application
         Ticket newTicket = new Ticket(passenger, flight,
                 selectedSeat, flightID, ticketID, price);
         tickets.addTicket(newTicket);
+        flight.addPassenger(passenger);
 
         System.out.println("\n\nThe following ticket has been sold:");
         System.out.println(newTicket.getPassenger().getFirstName() + " "
@@ -174,27 +177,40 @@ public class Application
                 + ", TicketNr: " + newTicket.getTicketID());
         System.out.println("Flight: " + newTicket.getFlightID() + " "
                 + newTicket.getFlight().getDepartureAirport()
-                + "->" + newTicket.getFlight().getDestinationAirport());
+                + "->" + newTicket.getFlight().getDestinationAirport()
+                + ", Seat " + newTicket.getSeat().getSeatId());
+        System.out.println("Departure: " + flight.getDepartureHour() + ":"
+                + flight.getDepartureMinute() + ", "
+                + flight.getDepartureDay() + "."
+                + flight.getDepartureMonth() + "."
+                + flight.getDepartureYear());
+        System.out.println("Arrival: " + flight.getArrivalHour() + ":"
+                + flight.getArrivalMinute() + ", "
+                + flight.getArrivalDay() + "."
+                + flight.getArrivalMonth() + "."
+                + flight.getArrivalYear());
         System.out.println("Price: " + newTicket.getPrice() + "\n");
     }
 
     void doListSeatsInFlight()
     {
         System.out.println("\n--- List Seats in a Flight ---");
-        System.out.println("Please enter a valid flight ID:");
-        //TODO: List all seats from an entered flight.
-        //seats.getAllSeatsInFlight();
+        System.out.println("Please choose a flight ID:");
+        System.out.println(ticketSystem.getAllFlights());
+        Scanner reader = new Scanner(System.in);
+        Flight flight = ticketSystem.getFlightByID(reader.nextLine());
+        System.out.println("\n" + ticketSystem.getSeats(flight));
 
     }
 
     void doListPassengersInFlight()
     {
         System.out.println("\n--- List Passengers in a Flight ---");
-        System.out.println("Please enter a valid flight ID:");
+        System.out.println("Please choose a flight ID:");
+        System.out.println(ticketSystem.getAllFlights());
         Scanner reader = new Scanner(System.in);
-        String flightID = reader.nextLine();
-        //TODO: List all passengers from an entered flight.
-        //passengers.getAllPassengersInFlight();
+        Flight flight = ticketSystem.getFlightByID(reader.nextLine());
+        System.out.println("\n" + ticketSystem.getPassengersInFlight(flight));
     }
 
 }

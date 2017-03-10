@@ -1,5 +1,7 @@
 package flightregisterapp;
 
+import java.util.Iterator;
+
 /**
  * The flight class represents a flight in a flight reservation system. It holds
  * the details about the flight such as flightID, destinationAirport,
@@ -26,8 +28,12 @@ public class Flight
     private int arrivalDay;
     private int arrivalMonth;
     private int arrivalYear;
-
-    SeatRegister seats;
+    
+    private int numberOfRows;
+    private int numberOfLetters;
+    
+    private SeatRegister seats;
+    private PassengerRegister passengers;
 
     /**
      * The constructor of the Flight class
@@ -47,6 +53,7 @@ public class Flight
      * @param arrivalYear
      * @param numberOfRows
      * @param numberOfLetters
+     *
      * 
      */
     public Flight(String flightID, String destinationAirport,
@@ -70,7 +77,11 @@ public class Flight
         this.arrivalDay = arrivalDay;
         this.arrivalMonth = arrivalMonth;
         this.arrivalYear = arrivalYear;
+        this.numberOfRows = numberOfRows;
+        this.numberOfLetters = numberOfLetters;
         seats = new SeatRegister();
+        addSeats(numberOfRows, numberOfLetters);
+        passengers = new PassengerRegister();
 
     }
 
@@ -303,6 +314,17 @@ public class Flight
     {
         this.arrivalYear = arrivalYear;
     }
+    
+    public int getNumberOfRows()
+    {
+        return this.numberOfRows;
+    }
+    
+    public int getNumberOfLetters()
+    {
+        return this.numberOfLetters;
+    }
+
 
     /**
      * A method for returning number of flight days Not nessesarry for Task3
@@ -334,6 +356,7 @@ public class Flight
     }
      */
     /**
+     * Calculates the total flight time of the flight n TODO: Add a return
      * TODO: Add a return Calculates the total flight time of the flight
      * statement so it will return the time as string
      *
@@ -382,9 +405,12 @@ public class Flight
         {
             deltaHourString = Integer.toString(deltaHour);
         }
+        
+        
 
         return (deltaHourString + ":" + deltaMinuteString);
 
+                /*
         /*
         System.out.println("Flight time: "
                 + deltaHourString + ":" + deltaMinuteString + " Hours");
@@ -402,6 +428,7 @@ public class Flight
     {
         seats.addSeats(numberOfRows, numberOfLetters);
     }
+    
 
     /**
      * Gets all seats for the flight
@@ -411,6 +438,16 @@ public class Flight
     public SeatRegister getSeats()
     {
         return seats;
+    }
+    
+    public void addPassenger(Passenger pas)
+    {
+        passengers.addPassenger(pas);
+    }
+    
+    public Iterator<Passenger> getPassRegIterator()
+    {
+        return passengers.getPassengerRegIterator();
     }
 
 }

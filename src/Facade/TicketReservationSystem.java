@@ -11,6 +11,8 @@ import flightregisterapp.Passenger;
 import flightregisterapp.PassengerRegister;
 import flightregisterapp.Seat;
 import flightregisterapp.SeatRegister;
+import flightregisterapp.Ticket;
+import flightregisterapp.TicketRegister;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -23,6 +25,7 @@ public class TicketReservationSystem
 
     private PassengerRegister passengers;
     private FlightRegister flights;
+    private TicketRegister tickets;
     private SeatRegister seats;
 
     public TicketReservationSystem()
@@ -36,12 +39,17 @@ public class TicketReservationSystem
     {
         this.passengers.addPassenger(pas);
     }
-    
+
     public void addFlight(Flight flight)
     {
         this.flights.addFlight(flight);
     }
-    
+
+    public void addTicket(Ticket ticket)
+    {
+        this.tickets.addTicket(ticket);
+    }
+
     public Passenger getPassengerByLastName(String lastName)
     {
         boolean searching = true;
@@ -74,9 +82,9 @@ public class TicketReservationSystem
         return flight;
     }
 
-    public Set getAllFlights()
+    public String getAllFlights()
     {
-        Set flightsToReturn = null;
+        String flightsToReturn = "";
         Flight flight = null;
         Iterator<Flight> it = this.flights.getFlightRegIterator();
         while (it.hasNext())
@@ -84,15 +92,15 @@ public class TicketReservationSystem
             flight = it.next();
             if (flight != null)
             {
-                flightsToReturn.add(flight);
+                flightsToReturn += flight.getFlightID() + " ";
             }
         }
         return flightsToReturn;
     }
 
-    public Set getAllFlightsByDestination(String destination)
+    public String getAllFlightsByDestination(String destination)
     {
-        Set flightsToReturn = null;
+        String flightsToReturn = "";
         Flight flight = null;
         Iterator<Flight> it = this.flights.getFlightRegIterator();
         while (it.hasNext())
@@ -100,7 +108,7 @@ public class TicketReservationSystem
             flight = it.next();
             if (flight.getDestinationAirport().equals(destination))
             {
-                flightsToReturn.add(flight);
+                flightsToReturn += flight.getFlightID() + " ";
             }
         }
         return flightsToReturn;
@@ -122,9 +130,9 @@ public class TicketReservationSystem
         return seat;
     }
 
-    public Set getSeats(Flight flight)
+    public String getSeats(Flight flight)
     {
-        Set seatsToReturn = null;
+        String seatsToReturn = "";
         Seat seat = null;
         Iterator<Seat> it = flight.getSeats().getSeatRegIterator();
         while (it.hasNext())
@@ -132,7 +140,7 @@ public class TicketReservationSystem
             seat = it.next();
             if (seat != null)
             {
-                seatsToReturn.add(seat);
+                seatsToReturn += seat.getSeatId() + " ";
             }
         }
         return seatsToReturn;
@@ -142,4 +150,22 @@ public class TicketReservationSystem
     {
         seat.setUnavailable();
     }
+
+    public String getPassengersInFlight(Flight flight)
+    {
+        String passengersToReturn = "";
+        Passenger pas = null;
+        Iterator<Passenger> it = flight.getPassRegIterator();
+        while (it.hasNext())
+        {
+            pas = it.next();
+            if (pas != null)
+            {
+                passengersToReturn += pas.getFirstName() + " "
+                        + pas.getLastName() + ", ";
+            }
+        }
+        return passengersToReturn;
+    }
+
 }
