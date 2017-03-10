@@ -14,7 +14,6 @@ public class Flight
     private final String flightID;
     private final String destinationAirport;
     private final String departureAirport;
-    private SeatRegister seats;
 
     private int departureHour;
     private int departureMinute;
@@ -27,6 +26,8 @@ public class Flight
     private int arrivalDay;
     private int arrivalMonth;
     private int arrivalYear;
+    
+    SeatRegister seats;
 
     /**
      * The constructor of the Flight class
@@ -69,8 +70,8 @@ public class Flight
         this.arrivalDay = arrivalDay;
         this.arrivalMonth = arrivalMonth;
         this.arrivalYear = arrivalYear;
-
-        this.seats = new SeatRegister(numberOfRows, numberOfLetters);
+        seats = new SeatRegister();
+        
 
     }
 
@@ -304,14 +305,6 @@ public class Flight
         this.arrivalYear = arrivalYear;
     }
 
-    /**
-     *
-     */
-    public void listAvailableSeats()
-    {
-        //TODO: Add return statement
-        seats.listAvailableSeats();
-    }
 
     /**
      * A method for returning number of flight days Not nessesarry for Task3
@@ -397,6 +390,16 @@ public class Flight
         System.out.println("Flight time: "
                 + deltaHourString + ":" + deltaMinuteString + " Hours");
 */
+    }
+
+    public void addSeats(int numberOfRows, int numberOfLetters)
+    {
+        seats.addSeats(numberOfRows, numberOfLetters);
+    }
+    
+    public SeatRegister getSeats()
+    {
+        return seats;
     }
 
 }

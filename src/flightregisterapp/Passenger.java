@@ -30,13 +30,23 @@ public class Passenger
     }
 
     /**
-     * Returns the whole name of the passenger.
+     * Returns the first name of the passenger.
      *
-     * @return The whole name of the passenger.
+     * @return The first name of the passenger.
      */
-    public String getName()
+    public String getFirstName()
     {
-        return foreName + " " + lastName;
+        return this.foreName;
+    }
+
+    /**
+     * Returns the last name of the passenger.
+     *
+     * @return The last name of the passenger.
+     */
+    public String getLastName()
+    {
+        return this.lastName;
     }
 
     /**
@@ -46,18 +56,7 @@ public class Passenger
      */
     public String getEmail()
     {
-        return emailAddress;
-    }
-
-    /**
-     * Prints the details of the passenger. Name and Email address.
-     *
-     * @return The full details of the passenger.
-     */
-    public String getDetails()
-    {
-        return ("Name: " + foreName + " " + lastName
-                + "\nEmail: " + emailAddress);
+        return this.emailAddress;
     }
 
 }
