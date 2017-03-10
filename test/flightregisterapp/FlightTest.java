@@ -22,32 +22,12 @@ public class FlightTest
     Flight instance = new  Flight("#F242", "AES", 
                 "OSL", 13, 30, 14, 35, 1, 2, 2016, 3, 4, 2017, 5, 6);
 
-    public FlightTest()
-    {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception
-    {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception
-    {
-    }
-
-    @Before
-    public void setUp() throws Exception
-    {
-    }
-
-    @After
-    public void tearDown() throws Exception
-    {
-    }
 
     /**
      * Test of getFlightID method, of class Flight.
+     * Gets the FlightID checks expected result.
+     * compares expected result with result
+     * 
      */
     @Test
     public void testGetFlightID()
@@ -62,6 +42,8 @@ public class FlightTest
 
     /**
      * Test of getDestinationAirport method, of class Flight.
+     * Gets the DestinationAirport checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetDestinationAirport()
@@ -76,6 +58,8 @@ public class FlightTest
 
     /**
      * Test of getDepartureAirport method, of class Flight.
+     * Gets the DepartureAirport checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetDepartureAirport()
@@ -90,6 +74,8 @@ public class FlightTest
 
     /**
      * Test of getDepartureHour method, of class Flight.
+     * Gets the DepartureHour checks expected result
+     * compares expected result with result
      */
     @Test
     public void testGetDepartureHour()
@@ -103,8 +89,10 @@ public class FlightTest
 
     /**
      * Test of setDepartureHour method, of class Flight.
+     * Sets the DepartureHour checks expected result.
+     * compares expected result with result
      */
-    @Test
+    @Test 
     public void testSetDepartureHour()
     {
         System.out.println("getDepartureHour");
@@ -117,6 +105,8 @@ public class FlightTest
 
     /**
      * Test of getDepartureMinute method, of class Flight.
+     * Gets the DepartureMinute checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetDepartureMinute()
@@ -129,6 +119,8 @@ public class FlightTest
 
     /**
      * Test of setDepartureMinute method, of class Flight.
+     * Sets the DepartureMinute checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testSetDepartureMinute()
@@ -143,12 +135,12 @@ public class FlightTest
 
     /**
      * Test of getArrivalMinute method, of class Flight.
+     * Gets the ArrivalMinute checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetArrivalMinute()
-    {
-        
-         
+    {     
      System.out.println("getArrivalMinute");
         int expResult = 35;
         int result = instance.getArrivalMinute();
@@ -157,6 +149,8 @@ public class FlightTest
 
     /**
      * Test of setArrivalMinute method, of class Flight.
+     * Sets the ArrivalMinute checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testSetArrivalMinute()
@@ -170,6 +164,8 @@ public class FlightTest
 
     /**
      * Test of getArrivalHour method, of class Flight.
+     * Gets the ArrivalHour checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetArrivalHour()
@@ -182,6 +178,8 @@ public class FlightTest
 
     /**
      * Test of setArrivalHour method, of class Flight.
+     * Sets the ArrivalHour checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testSetArrivalHour()
@@ -195,6 +193,8 @@ public class FlightTest
 
     /**
      * Test of getDepartureDay method, of class Flight.
+     * Gets the DepartureDay checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetDepartureDay()
@@ -207,6 +207,8 @@ public class FlightTest
 
     /**
      * Test of setDepartureDay method, of class Flight.
+     * Sets the DepartureDay checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testSetDepartureDay()
@@ -220,6 +222,8 @@ public class FlightTest
 
     /**
      * Test of getDepartureMonth method, of class Flight.
+     * Gets the DepartureMonth checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetDepartureMonth()
@@ -232,6 +236,8 @@ public class FlightTest
 
     /**
      * Test of setDepartureMonth method, of class Flight.
+     * Sets the DepartureMonth checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testSetDepartureMonth()
@@ -246,6 +252,8 @@ public class FlightTest
 
     /**
      * Test of getDepartureYear method, of class Flight.
+     * Gets the DepartureYear checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetDepartureYear()
@@ -258,6 +266,8 @@ public class FlightTest
 
     /**
      * Test of setDepartureYear method, of class Flight.
+     * Sets the DepartureYear checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testSetDepartureYear()
@@ -272,6 +282,8 @@ public class FlightTest
 
     /**
      * Test of getArrivalDay method, of class Flight.
+     * Gets the ArrivalDay checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetArrivalDay()
@@ -284,6 +296,8 @@ public class FlightTest
 
     /**
      * Test of setArrivalDay method, of class Flight.
+     * Sets the ArrivalDay checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testSetArrivalDay()
@@ -297,6 +311,8 @@ public class FlightTest
 
     /**
      * Test of getArrivalMonth method, of class Flight.
+     * Gets the ArrivalMonth checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetArrivalMonth()
@@ -309,6 +325,8 @@ public class FlightTest
 
     /**
      * Test of setArrivalMonth method, of class Flight.
+     * Sets the ArrivalMonth checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testSetArrivalMonth()
@@ -323,6 +341,8 @@ public class FlightTest
 
     /**
      * Test of getArrivalYear method, of class Flight.
+     * Gets the ArrivalYear checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetArrivalYear()
@@ -335,6 +355,8 @@ public class FlightTest
 
     /**
      * Test of setArrivalYear method, of class Flight.
+     * Sets the ArrivalYear checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testSetArrivalYear()
@@ -349,6 +371,8 @@ public class FlightTest
 
     /**
      * Test of getFlightTime method, of class Flight.
+     * Gets the FlightTime checks expected result.
+     * compares expected result with result
      */
     @Test
     public void testGetFlightTime()
