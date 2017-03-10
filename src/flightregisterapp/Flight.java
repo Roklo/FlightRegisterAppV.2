@@ -26,7 +26,7 @@ public class Flight
     private int arrivalDay;
     private int arrivalMonth;
     private int arrivalYear;
-    
+
     SeatRegister seats;
 
     /**
@@ -47,7 +47,7 @@ public class Flight
      * @param arrivalYear
      * @param numberOfRows
      * @param numberOfLetters
-     *
+     * 
      */
     public Flight(String flightID, String destinationAirport,
             String departureAirport, int departureHour, int departureMinute,
@@ -71,7 +71,6 @@ public class Flight
         this.arrivalMonth = arrivalMonth;
         this.arrivalYear = arrivalYear;
         seats = new SeatRegister();
-        
 
     }
 
@@ -305,7 +304,6 @@ public class Flight
         this.arrivalYear = arrivalYear;
     }
 
-
     /**
      * A method for returning number of flight days Not nessesarry for Task3
      */
@@ -336,8 +334,10 @@ public class Flight
     }
      */
     /**
-     * Calculates the total flight time of the flight n TODO: Add a return
+     * TODO: Add a return Calculates the total flight time of the flight
      * statement so it will return the time as string
+     *
+     * @return Returns the total flighttime
      */
     public String getFlightTime()
     {
@@ -382,21 +382,32 @@ public class Flight
         {
             deltaHourString = Integer.toString(deltaHour);
         }
-        
-        
+
         return (deltaHourString + ":" + deltaMinuteString);
 
-                /*
+        /*
         System.out.println("Flight time: "
                 + deltaHourString + ":" + deltaMinuteString + " Hours");
-*/
+         */
     }
 
+    /**
+     * Adds seats to the flight
+     *
+     * @param numberOfRows
+     * @param numberOfLetters
+     *
+     */
     public void addSeats(int numberOfRows, int numberOfLetters)
     {
         seats.addSeats(numberOfRows, numberOfLetters);
     }
-    
+
+    /**
+     * Gets all seats for the flight
+     *
+     * @return Return all seats on the flight
+     */
     public SeatRegister getSeats()
     {
         return seats;
