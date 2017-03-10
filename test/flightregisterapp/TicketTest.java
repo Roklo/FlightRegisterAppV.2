@@ -45,41 +45,25 @@ public class TicketTest
     public void testGetSeat()
     {
         System.out.println("getSeat");
-
         String expResult = "5A";
         String result = instance.getSeat().getSeatId();
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of getPassenger method, of class Ticket.
-     */
-    @Test
-    public void testGetPassenger()
-    {
-        System.out.println("getPassenger");
-
-        String expResult = "Chuck Finley";
-        String result = instance.getPassenger().getName();
-        assertEquals(expResult, result);
-
-    }
-
+   
     /**
      * Test of getFlight method, of class Ticket.
      */
     @Test
     public void testGetFlight()
     {
-        
-        System.out.println("getFlight");
 
+        System.out.println("getFlight");
         String expResult = "#F242";
         String expResultDestination = "AES";
         String resultFlightID = instance.getFlight().getFlightID();
         String resultDestinationAirport = instance.getFlight().
                 getDestinationAirport();
-        
         assertEquals(expResult, resultFlightID);
         assertEquals(expResultDestination, resultDestinationAirport);
     }
@@ -114,13 +98,11 @@ public class TicketTest
     @Test
     public void testSetPrice()
     {
-            System.out.println("setPrice");
-            instance.setPrice(5000);
-            
+        System.out.println("setPrice");
+        instance.setPrice(5000);
         int expResult = 5000;
         int result = instance.getPrice();
         assertEquals(expResult, result);
-        
-    }
 
+    }
 }

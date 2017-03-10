@@ -22,18 +22,6 @@ public class PassengerTest
     {
     }
 
-    /**
-     * Test of getName method, of class Passenger.
-     */
-    @Test
-    public void testGetName()
-    {
-        System.out.println("getName");
-        String expResult = "Chuck Finley";
-        String result = instance.getName();
-        assertEquals(expResult, result);
-
-    }
 
     /**
      * Test of getEmail method, of class Passenger.
@@ -49,19 +37,6 @@ public class PassengerTest
         
     }
 
-    /**
-     * Test of getDetails method, of class Passenger.
-     */
-    @Test
-    public void testGetDetails()
-    {
-        System.out.println("getDetails");
-        
-        String expResult = "Name: Chuck Finley" 
-                + "\nEmail: chuck.finley@gmail.com";
-        String result = instance.getDetails();
-        assertEquals(expResult, result);
-        
-    }
+    
 
 }
