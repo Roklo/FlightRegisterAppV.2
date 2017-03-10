@@ -12,14 +12,14 @@ package flightregisterapp;
 public class Ticket
 {
 
-    private final String passenger;
-    private final String flight;
-    private final String seat;
+    private final Passenger passenger;
+    private final Flight flight;
+    private final Seat seat;
     private final String flightID;
     private final int ticketID;
     private int price;
 
-    public Ticket(String passenger, String flight, String seat, String flightID,
+    public Ticket(Passenger passenger, Flight flight, Seat seat, String flightID,
             int ticketID, int price)
     {
         this.passenger = passenger;
@@ -35,17 +35,17 @@ public class Ticket
         return ticketID;
     }
 
-    public String getSeat()
+    public Seat getSeat()
     {
         return seat;
     }
 
-    public String getPassenger()
+    public Passenger getPassenger()
     {
         return passenger;
     }
 
-    public String getFlight()
+    public Flight getFlight()
     {
         return flight;
     }

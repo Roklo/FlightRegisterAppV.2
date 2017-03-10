@@ -148,9 +148,11 @@ public class Application
 
     void doListSeatsInFlight()
     {
-        System.out.println("doListSeatsInFlight() was called");
-
+        System.out.println("\n--- List Seats in a Flight ---");
+        System.out.println("Please enter a valid flight ID:");
         //TODO: List all seats from an entered flight.
+        //seats.getAllSeatsInFlight();
+
     }
 
     void doListPassengersInFlight()
@@ -160,6 +162,7 @@ public class Application
         Scanner reader = new Scanner(System.in);
         String flightID = reader.nextLine();
         //TODO: List all passengers from an entered flight.
+        //passengers.getAllPassengersInFlight();
     }
 
 }
