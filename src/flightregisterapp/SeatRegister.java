@@ -25,10 +25,9 @@ public class SeatRegister
      * @param numberOfLetters The number of letters (columns) to be created, max
      * 25.
      */
-    public SeatRegister(int numberOfRows, int numberOfLetters)
+    public SeatRegister()
     {
         this.seats = new ArrayList<>();
-        this.fillSeats(numberOfRows, numberOfLetters);
     }
 
     /**
@@ -37,9 +36,14 @@ public class SeatRegister
      * @param seatRow The seat row number.
      * @param seatPos The seat position letter.
      */
-    public void addSeat(int seatRow, String seatPos)
+    public void addSeats(int numberOfRows, int numberOfLetters)
     {
-        this.seats.add(new Seat(seatRow, seatPos));
+        fillSeats(numberOfRows, numberOfLetters);
+    }
+    
+    private void addSeat(int row, String seatLetter)
+    {
+        this.seats.add(new Seat(row, seatLetter));
     }
 
     /**
@@ -225,7 +229,7 @@ public class SeatRegister
         {
             for (int letter = 0; letter < numberOfLetters; letter++)
             {
-                addSeat(index, getCharForNumber(letter));
+                this.addSeat(index, getCharForNumber(letter));
             }
         }
     }
