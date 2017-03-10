@@ -25,6 +25,8 @@ public class PassengerTest
 
     /**
      * Test of getEmail method, of class Passenger.
+     * Sets expected result 
+     * Gets eMail result compares expResult to result
      */
     @Test
     public void testGetEmail()
