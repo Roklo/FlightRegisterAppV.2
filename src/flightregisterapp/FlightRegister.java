@@ -5,8 +5,8 @@
  */
 package flightregisterapp;
 
-import java.util.HashMap;
-import java.util.Set;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  *
@@ -15,52 +15,25 @@ import java.util.Set;
 public class FlightRegister
 {
 
-    private HashMap<String, Flight> flights;
+    private HashSet<Flight> flights;
 
     public FlightRegister()
     {
-        this.flights = new HashMap<>();
+        this.flights = new HashSet<>();
     }
 
-    public void addFlight(String flightID, Flight flight)
+    public void addFlight(Flight flight)
     {
-        this.flights.put(flightID, flight);
+        this.flights.add(flight);
     }
-
-    public Set getAllFlights()
+    
+    public void removeFlight(Flight flight)
     {
-        return flights.keySet();
+        this.flights.remove(flight);
     }
 
-    public Flight getFlightByID(String flightID)
+    public Iterator<Flight> getFlightRegIterator()
     {
-        return flights.get(flightID);
+        return flights.iterator();
     }
-
-    public String getFlightsByDestination(String destination)
-    {
-        String returnString = "";
-        for (Flight flight : this.flights.values())
-        {
-            if (flight.getDestinationAirport().equals(destination))
-            {
-                returnString += " " + flight.getFlightID();
-            }
-        }
-        return returnString;
-    }
-
-    public String getFlightsFromAirport(String airport)
-    {
-        String returnString = "";
-        for (Flight flight : this.flights.values())
-        {
-            if (flight.getDestinationAirport().equals(airport))
-            {
-                returnString += " " + flight.getFlightID();
-            }
-        }
-        return returnString;
-    }
-
 }
