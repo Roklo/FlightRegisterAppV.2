@@ -5,7 +5,8 @@
  */
 package flightregisterapp;
 
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  *
@@ -14,25 +15,20 @@ import java.util.HashMap;
 public class TicketRegister
 {
 
-    private HashMap<String, Ticket> tickets;
+    private HashSet<Ticket> tickets;
 
     public TicketRegister()
     {
-        this.tickets = new HashMap<>();
+        this.tickets = new HashSet<>();
     }
 
-    public void addTicket(String passenger, Ticket ticket)
+    public void addTicket(Ticket ticket)
     {
-        this.tickets.put(passenger, ticket);
+        this.tickets.add(ticket);
     }
 
-    public void removeTicketOfPassenger(String name)
+    public Iterator<Ticket> getTicketRegIterator()
     {
-        this.tickets.remove(name);
-    }
-
-    public Ticket getTicketByName(String name)
-    {
-        return tickets.get(name);
+        return this.tickets.iterator();
     }
 }

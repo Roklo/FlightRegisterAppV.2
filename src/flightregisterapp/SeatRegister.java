@@ -229,6 +229,11 @@ public class SeatRegister
             }
         }
     }
+    
+    public Iterator<Seat> getSeatRegIterator()
+    {
+        return this.seats.iterator();
+    }
 
     /**
      * Returns the letter of the given input number.
