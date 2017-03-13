@@ -5,10 +5,10 @@ import java.util.Iterator;
 
 /**
  * The SeatRegister class represents a seat register in a flight reservation
- * system. It creates a seat register with the given amount of rows and letters
- * (columns), and holds a list of all the seats within the flight where you have
- * the possibility to add, remove and search for seats, as well as getting the
- * number, or a list of the available/unavailable seats.
+ * system. It creates a seat register, where you can add a number of seats by
+ * the given amount of rows and letters (columns), and holds a list of all the
+ * seats where you have the possibility to add, remove and search for seats, as
+ * well as getting the number of seats in the collection.
  *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.0 (14.02.2017)
@@ -19,11 +19,7 @@ public class SeatRegister
     private final ArrayList<Seat> seats;
 
     /**
-     * Constructor for objects of class SeatRegister
-     *
-     * @param numberOfRows The number of rows to be created, max 25.
-     * @param numberOfLetters The number of letters (columns) to be created, max
-     * 25.
+     * Constructor for objects of class SeatRegister.
      */
     public SeatRegister()
     {
@@ -31,23 +27,29 @@ public class SeatRegister
     }
 
     /**
-     * Adds a seat to the seat register.
+     * Adds a given amount of seats to the seat register.
      *
-     * @param seatRow The seat row number.
-     * @param seatPos The seat position letter.
+     * @param numberOfRows The number of rows to be added.
+     * @param numberOfLetters The numer of seats within a row to be added.
      */
     public void addSeats(int numberOfRows, int numberOfLetters)
     {
-        fillSeats(numberOfRows, numberOfLetters);
+        this.fillSeats(numberOfRows, numberOfLetters);
     }
-    
+
+    /**
+     * Adds a seat to the collection, given by the seat row and column (letter).
+     *
+     * @param row The row of where the seat should be added.
+     * @param seatLetter The column of where the seat should be added.
+     */
     private void addSeat(int row, String seatLetter)
     {
         this.seats.add(new Seat(row, seatLetter));
     }
 
     /**
-     * Removes the given seat from the seat collection.d
+     * Removes the given seat from the seat register.
      *
      * @param seat The seat to be removed.
      */
@@ -56,7 +58,7 @@ public class SeatRegister
         Iterator<Seat> it = this.seats.iterator();
         boolean found = false;
         Seat s = null;
-        while (it.hasNext())
+        while (it.hasNext() && !found)
         {
             s = it.next();
             if (s.getSeatId().equals(seat.toUpperCase()))
@@ -65,45 +67,6 @@ public class SeatRegister
                 it.remove();
             }
         }
-    /*    if (found)
-        {
-            System.out.println("Removed seat " + seat + ".");
-        }
-        else
-        {
-            System.out.println("Invalid seat ID: No seat found!");
-        } */
-    }
-
-    /**
-     * Prints the details of the given seat ID (The seat ID, and available
-     * status).
-     *
-     * @param seatId The seat ID to be searched for.
-     */
-    public void searchSeat(String seatId)
-    {
-        Iterator<Seat> it = this.seats.iterator();
-        Seat s = null;
-        boolean found = false;
-        while (it.hasNext() && !found)
-        {
-            s = it.next();
-            if (s.getSeatId().equals(seatId.toUpperCase()))
-            {
-                found = true;
-            }
-        }
-     /*   if (found)
-        {
-            System.out.println("Seat " + s.getSeatId()
-                    + ":\nAvailable: " + s.isAvailable());
-        }
-        else
-        {
-            System.out.println("Invalid seat ID: No seat found!");
-        } */
-
     }
 
     /**
@@ -129,7 +92,6 @@ public class SeatRegister
         return foundSeat;
     }
 
-
     /**
      * Sets the given seat to be unavailable.
      *
@@ -141,9 +103,9 @@ public class SeatRegister
     }
 
     /**
-     * Returns the total number of seats.
+     * Returns the total number of seats in the register.
      *
-     * @return The total number of seats in the flight.
+     * @return The total number of seats.
      */
     public int getNumberOfSeats()
     {
@@ -153,7 +115,7 @@ public class SeatRegister
     /**
      * Returns the total number of available seats.
      *
-     * @return The total number of available seats in the flight.
+     * @return The total number of available seats.
      */
     public int getNumberOfAvailableSeats()
     {
@@ -170,7 +132,7 @@ public class SeatRegister
 
     /**
      * Fills the flight with the right amount of seats by the number of rows and
-     * letters from the given numbers.
+     * letters from the given inputs.
      *
      * @param numberOfRows How many rows of seats to be created.
      * @param numberOfLetters How many letters (columns) of seats to be created.
@@ -185,7 +147,12 @@ public class SeatRegister
             }
         }
     }
-    
+
+    /**
+     * Returns the iterator of the Seat Register class.
+     *
+     * @return The iterator of the Seat Register class.
+     */
     public Iterator<Seat> getSeatRegIterator()
     {
         return this.seats.iterator();
