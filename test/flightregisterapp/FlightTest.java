@@ -1,5 +1,6 @@
 package flightregisterapp;
 
+import java.util.Iterator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -361,7 +362,6 @@ public class FlightTest
     public void testGetNumberOfRows()
     {
         System.out.println("getNumberofRows");
-        instance.setArrivalYear(5);
         int expResult = 5;
         int result = instance.getNumberOfRows();
         assertEquals(expResult, result);
@@ -374,8 +374,7 @@ public class FlightTest
     public void testGetNumberOfLetters()
     {
         System.out.println("getNumberofLetters");
-        instance.setArrivalYear(7);
-        int expResult = 7;
+        int expResult = 6;
         int result = instance.getNumberOfLetters();
         assertEquals(expResult, result);
     }
@@ -386,6 +385,13 @@ public class FlightTest
     @Test
     public void testAddSeats()
     {
+        instance.addSeats(2, 3);
+        
+        SeatRegister result = instance.getSeats();
+        String expResult = "10";
+        
+        assertEquals(expResult, result);
+        
     }
 
     /**
@@ -394,6 +400,12 @@ public class FlightTest
     @Test
     public void testGetSeats()
     {
+        /*
+        System.out.println("getSeats");
+        String expResult = "10";
+        String result = instance.getSeats();
+        assertEquals(expResult, result);
+        */
     }
 
     /**
@@ -402,6 +414,38 @@ public class FlightTest
     @Test
     public void testAddPassenger()
     {
+        System.out.println("AddPassenger");
+        
+        Passenger passenger = new Passenger("Chuck", "Finley", 
+                "chuck.finley@gmail.com");
+
+        instance.addPassenger(passenger);     
+               
+        String expResult = "Finley";
+        
+        String result; 
+        boolean searching = true;
+        Passenger pasFound = null;
+        Iterator<Passenger> it = instance.getPassRegIterator();
+        while (it.hasNext() && searching)
+        {
+            Passenger pas = it.next();
+            if ((pas != null) && pas.getLastName()
+                    .equals(passenger.getLastName()))
+            {
+                pasFound = pas;
+                searching = false;
+            }
+        }
+        if (pasFound != null)
+        { 
+            result = pasFound.getLastName(); 
+        }
+        else
+        {
+            result = "Not found";
+        }
+        assertEquals(expResult, result);        
     }
 
     /**
@@ -410,6 +454,7 @@ public class FlightTest
     @Test
     public void testGetPassRegIterator()
     {
+        //This is tested in the testAddPassenger test.       
     }
 }
 
