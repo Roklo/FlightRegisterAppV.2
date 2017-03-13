@@ -1,20 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightregisterapp;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * This JUnit test will perform tests for all mutator and accessor methods 
+ * in the TivketTest class.
+ *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.0 (14.02.2017)
  */
 public class TicketTest
 {
-
     Passenger instancePassenger = new Passenger("Chuck", "Finley",
             "chuck.finley@gmail.com");
 
@@ -58,7 +55,6 @@ public class TicketTest
     @Test
     public void testGetFlight()
     {
-
         System.out.println("getFlight");
         String expResult = "#F242";
         String expResultDestination = "AES";
@@ -108,7 +104,6 @@ public class TicketTest
         int expResult = 5000;
         int result = instance.getPrice();
         assertEquals(expResult, result);
-
     }
     
      /**
@@ -126,6 +121,5 @@ public class TicketTest
         int expResult = 3000000;
         int result = instance.getPrice();
         assertEquals(expResult, result);
-
     }
 }

@@ -1,43 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightregisterapp;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * This JUnit test will perform tests for all mutator and accessor methods in
+ * the SeatTest class.
  *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.0 (14.02.2017)
  */
 public class SeatTest
 {
-
     Seat instance = new Seat(5, "A");
-    
+
     /**
-     * Test of getSeatId method, of class Seat.
-     * Test for negative numbers 
+     * Test of getSeatId method, of class Seat. Test for negative numbers
      */
     @Test
     public void testSeatNumberForNegatives()
     {
-        Seat instance = new Seat(-4, "B");
+        Seat instanceNegative = new Seat(-4, "B");
         System.out.println("getSeatId");
         boolean expResult = true;
-        boolean result = instance.getSeatId().contains("-");
+        boolean result = instanceNegative.getSeatId().contains("-");
         assertEquals(expResult, result);
     }
-    
 
     /**
-     * Test of getSeatId method, of class Seat.
-     * Sets an expected result
-     * Gets result from getSeatId method in passenger class
-     * compares expected result with result
+     * Test of getSeatId method, of class Seat. Sets an expected result Gets
+     * result from getSeatId method in passenger class compares expected result
+     * with result
      */
     @Test
     public void testGetSeatId()
@@ -49,9 +42,8 @@ public class SeatTest
     }
 
     /**
-     * Test of isAvailable method, of class Seat.
-     * Sets expected result to be true
-     * Checks if isAvalable result is equal to expResult.
+     * Test of isAvailable method, of class Seat. Sets expected result to be
+     * true Checks if isAvalable result is equal to expResult.
      */
     @Test
     public void testIsAvailable()
@@ -63,10 +55,9 @@ public class SeatTest
     }
 
     /**
-     * Test of setUnavailable method, of class Seat.
-     * Sets the seat as unavailable 
-     * Sets expected result to false 
-     * checks if isAvailable result is equal to expResult.
+     * Test of setUnavailable method, of class Seat. Sets the seat as
+     * unavailable Sets expected result to false checks if isAvailable result is
+     * equal to expResult.
      */
     @Test
     public void testSetUnavailable()
@@ -79,10 +70,9 @@ public class SeatTest
     }
 
     /**
-     * Test of setAvailable method, of class Seat.
-     * Sets the seat as available 
-     * Sets the expected result as true 
-     * checks if isAvailable result is equal to expResult
+     * Test of setAvailable method, of class Seat. Sets the seat as available
+     * Sets the expected result as true checks if isAvailable result is equal to
+     * expResult
      */
     @Test
     public void testSetAvailable()
@@ -93,5 +83,4 @@ public class SeatTest
         boolean result = instance.isAvailable();
         assertEquals(expResult, result);
     }
-    
 }

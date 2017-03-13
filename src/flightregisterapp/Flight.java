@@ -419,10 +419,9 @@ public class Flight
 
     /**
      * Adds seats to the flight
-     *
+     * 
      * @param numberOfRows
-     * @param numberOfLetters
-     *
+     * @param numberOfLetters 
      */
     public void addSeats(int numberOfRows, int numberOfLetters)
     {

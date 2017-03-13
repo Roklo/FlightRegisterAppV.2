@@ -1,31 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightregisterapp;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * This JUnit test will perform tests for all mutator and accessor methods 
+ * in the FlightTest class.
  *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
- * @version 1.1 (10.03.2017)
+ * @version 1.1 (14.02.2017)
  */
 public class FlightTest
 {
-
     Flight instance = new Flight("#F242", "AES",
             "OSL", 13, 30, 14, 35, 1, 2, 2016, 3, 4, 2017, 5, 6);
-
-    public FlightTest()
-    {
-    }
 
     /**
      * Test of getFlightID method, of class Flight. Gets the FlightID checks
@@ -40,7 +28,6 @@ public class FlightTest
         String expResult = "#F242";
         String result = instance.getFlightID();
         assertEquals(expResult, result);
-
     }
 
     /**
@@ -56,7 +43,6 @@ public class FlightTest
         String expResult = "AES";
         String result = instance.getDestinationAirport();
         assertEquals(expResult, result);
-
     }
 
     /**
@@ -68,11 +54,9 @@ public class FlightTest
     public void testGetDepartureAirport()
     {
         System.out.println("getDepartureAirport");
-
         String expResult = "OSL";
         String result = instance.getDepartureAirport();
         assertEquals(expResult, result);
-
     }
 
     /**
@@ -86,7 +70,6 @@ public class FlightTest
         int expResult = 13;
         int result = instance.getDepartureHour();
         assertEquals(expResult, result);
-
     }
 
     /**
@@ -101,7 +84,6 @@ public class FlightTest
         int expResult = 10;
         int result = instance.getDepartureHour();
         assertEquals(expResult, result);
-
     }
 
     /**
@@ -372,5 +354,62 @@ public class FlightTest
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test of getNumberOfRows method, of class Flight.
+     */
+    @Test
+    public void testGetNumberOfRows()
+    {
+        System.out.println("getNumberofRows");
+        instance.setArrivalYear(5);
+        int expResult = 5;
+        int result = instance.getNumberOfRows();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getNumberOfLetters method, of class Flight.
+     */
+    @Test
+    public void testGetNumberOfLetters()
+    {
+        System.out.println("getNumberofLetters");
+        instance.setArrivalYear(7);
+        int expResult = 7;
+        int result = instance.getNumberOfLetters();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of addSeats method, of class Flight.
+     */
+    @Test
+    public void testAddSeats()
+    {
+    }
+
+    /**
+     * Test of getSeats method, of class Flight.
+     */
+    @Test
+    public void testGetSeats()
+    {
+    }
+
+    /**
+     * Test of addPassenger method, of class Flight.
+     */
+    @Test
+    public void testAddPassenger()
+    {
+    }
+
+    /**
+     * Test of getPassRegIterator method, of class Flight.
+     */
+    @Test
+    public void testGetPassRegIterator()
+    {
+    }
 }
 

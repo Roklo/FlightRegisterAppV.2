@@ -20,6 +20,16 @@ public class Ticket
     private final int ticketID;
     private int price;
 
+    /**
+     * Generates a ticket with information about passengers name, 
+     * flight information, seat number and flightID
+     * @param passenger
+     * @param flight
+     * @param seat
+     * @param flightID
+     * @param ticketID
+     * @param price 
+     */
     public Ticket(Passenger passenger, Flight flight, Seat seat, String flightID,
             int ticketID, int price)
     {
@@ -30,6 +40,7 @@ public class Ticket
         this.flightID = flightID;
         this.price = price;
     }
+    
 /**
  * Returns ticket ID
  * @return ticketID
@@ -38,6 +49,7 @@ public class Ticket
     {
         return ticketID;
     }
+    
 /**
  * Returns seat number
  * @return seat
@@ -46,6 +58,7 @@ public class Ticket
     {
         return seat;
     }
+    
 /**
  * Returns passenger name and email.
  * @return passenger 
@@ -54,6 +67,7 @@ public class Ticket
     {
         return passenger;
     }
+    
 /**
  * Returns flight class with flight information
  * @return flight
@@ -62,6 +76,7 @@ public class Ticket
     {
         return flight;
     }
+    
 /**
  * Return the flightID of the flight
  * @return flightID
@@ -70,6 +85,7 @@ public class Ticket
     {
         return flightID;
     }
+    
 /**
  * Returns the price of the ticket
  * @return price 
@@ -78,6 +94,7 @@ public class Ticket
     {
         return price;
     }
+    
 /**
  * Sets the price of the ticket
  * @param price 
