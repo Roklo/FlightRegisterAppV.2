@@ -25,7 +25,7 @@ public class PassengerRegister
 
     /**
      * Adds a passenger by the given passenger object to the passenger register.
-     * 
+     *
      * @param pas The passenger to be added.
      */
     public void addPassenger(Passenger pas)
@@ -45,7 +45,7 @@ public class PassengerRegister
 
     /**
      * Returns the iterator of the Passenger Register class.
-     * 
+     *
      * @return The iterator of the Passenger Register class.
      */
     public Iterator<Passenger> getPassengerRegIterator()

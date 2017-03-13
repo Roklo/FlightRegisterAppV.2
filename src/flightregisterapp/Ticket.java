@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flightregisterapp;
 
 /**
- * Creates a ticket for the passenger with all information
- * regarding his/her flight.
+ * Creates a ticket for the passenger with all information regarding his/her
+ * flight.
  *
+ * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
+ * @version 1.0 (14.02.2017)
  */
 public class Ticket
 {
@@ -21,17 +18,18 @@ public class Ticket
     private int price;
 
     /**
-     * Generates a ticket with information about passengers name, 
-     * flight information, seat number and flightID
-     * @param passenger
-     * @param flight
-     * @param seat
-     * @param flightID
-     * @param ticketID
-     * @param price 
+     * Creates a ticket with information about passengers name, flight
+     * information, seat number and flightID
+     *
+     * @param passenger The given passenger
+     * @param flight The given flight
+     * @param seat The given seat
+     * @param flightID The given flight ID
+     * @param ticketID The given ticket ID
+     * @param price The given price
      */
-    public Ticket(Passenger passenger, Flight flight, Seat seat, String flightID,
-            int ticketID, int price)
+    public Ticket(Passenger passenger, Flight flight, Seat seat,
+            String flightID, int ticketID, int price)
     {
         this.passenger = passenger;
         this.flight = flight;
@@ -40,65 +38,72 @@ public class Ticket
         this.flightID = flightID;
         this.price = price;
     }
-    
-/**
- * Returns ticket ID
- * @return ticketID
- */
+
+    /**
+     * Returns the ticket ID.
+     *
+     * @return The ticketID.
+     */
     public int getTicketID()
     {
         return ticketID;
     }
-    
-/**
- * Returns seat number
- * @return seat
- */
+
+    /**
+     * Returns the seat object.
+     *
+     * @return The seat object.
+     */
     public Seat getSeat()
     {
         return seat;
     }
-    
-/**
- * Returns passenger name and email.
- * @return passenger 
- */
+
+    /**
+     * Returns the passenger object.
+     *
+     * @return The passenger object.
+     */
     public Passenger getPassenger()
     {
         return passenger;
     }
-    
-/**
- * Returns flight class with flight information
- * @return flight
- */
+
+    /**
+     * Returns the flight object.
+     *
+     * @return The flight object.
+     */
     public Flight getFlight()
     {
         return flight;
     }
-    
-/**
- * Return the flightID of the flight
- * @return flightID
- */
+
+    /**
+     * Returns the flightID of the flight.
+     *
+     * @return The flightID.
+     */
     public String getFlightID()
     {
         return flightID;
     }
-    
-/**
- * Returns the price of the ticket
- * @return price 
- */
+
+    /**
+     * Returns the price of the ticket.
+     *
+     * @return The price.
+     */
     public int getPrice()
     {
         return price;
     }
-    
-/**
- * Sets the price of the ticket
- * @param price 
- */
+
+    /**
+     * Sets the price of the ticket.
+     *
+     * @param price The price of the ticket.
+     */
     public void setPrice(int price)
     {
         this.price = price;

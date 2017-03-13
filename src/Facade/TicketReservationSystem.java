@@ -11,9 +11,9 @@ import flightregisterapp.TicketRegister;
 import java.util.Iterator;
 
 /**
- * The TicketReservationSystem class represents the connection between the
- * UI (User Interface) and the entity classes. It handles most of the tasks
- * needed for the system to work, and deligates the tasks to the right places.
+ * The TicketReservationSystem class represents the connection between the UI
+ * (User Interface) and the entity classes. It handles most of the tasks needed
+ * for the system to work, and deligates the tasks to the right places.
  *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.0 (14.02.2017)
@@ -26,14 +26,15 @@ public class TicketReservationSystem
     private TicketRegister tickets;
 
     /**
-     * Constructor for objects of class TicketReservationSystem.
-     * Creates a register for passengers and flights.
-     * 
+     * Constructor for objects of class TicketReservationSystem. Creates a
+     * register for passengers and flights.
+     *
      */
     public TicketReservationSystem()
     {
-        passengers = new PassengerRegister();
-        flights = new FlightRegister();
+        this.passengers = new PassengerRegister();
+        this.flights = new FlightRegister();
+        this.tickets = new TicketRegister();
     }
 
     /**
@@ -48,7 +49,7 @@ public class TicketReservationSystem
 
     /**
      * Adds the given flight to the flight register.
-     * 
+     *
      * @param flight The flight to be added.
      */
     public void addFlight(Flight flight)
@@ -58,7 +59,7 @@ public class TicketReservationSystem
 
     /**
      * Adds the given ticket to the ticket register.
-     * 
+     *
      * @param ticket The ticket to be added.
      */
     public void addTicket(Ticket ticket)
@@ -232,5 +233,3 @@ public class TicketReservationSystem
     }
 
 }
-
-

@@ -5,14 +5,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * This JUnit test will perform tests for all mutator and accessor methods 
- * in the FlightTest class.
+ * This JUnit test will perform tests for all mutator and accessor methods in
+ * the FlightTest class.
  *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.1 (14.02.2017)
  */
 public class FlightTest
 {
+
     Flight instance = new Flight("#F242", "AES",
             "OSL", 13, 30, 14, 35, 1, 2, 2016, 3, 4, 2017, 5, 6);
 
@@ -386,12 +387,9 @@ public class FlightTest
     public void testAddSeats()
     {
         instance.addSeats(2, 3);
-        
-        SeatRegister result = instance.getSeats();
-        String expResult = "10";
-        
+        int result = instance.getSeats().getNumberOfSeats();
+        int expResult = 6;
         assertEquals(expResult, result);
-        
     }
 
     /**
@@ -400,12 +398,10 @@ public class FlightTest
     @Test
     public void testGetSeats()
     {
-        /*
-        System.out.println("getSeats");
-        String expResult = "10";
-        String result = instance.getSeats();
+        instance.addSeats(2, 4);
+        int result = instance.getSeats().getNumberOfSeats();
+        int expResult = 8;
         assertEquals(expResult, result);
-        */
     }
 
     /**
@@ -415,15 +411,15 @@ public class FlightTest
     public void testAddPassenger()
     {
         System.out.println("AddPassenger");
-        
-        Passenger passenger = new Passenger("Chuck", "Finley", 
+
+        Passenger passenger = new Passenger("Chuck", "Finley",
                 "chuck.finley@gmail.com");
 
-        instance.addPassenger(passenger);     
-               
+        instance.addPassenger(passenger);
+
         String expResult = "Finley";
-        
-        String result; 
+
+        String result;
         boolean searching = true;
         Passenger pasFound = null;
         Iterator<Passenger> it = instance.getPassRegIterator();
@@ -438,14 +434,14 @@ public class FlightTest
             }
         }
         if (pasFound != null)
-        { 
-            result = pasFound.getLastName(); 
+        {
+            result = pasFound.getLastName();
         }
         else
         {
             result = "Not found";
         }
-        assertEquals(expResult, result);        
+        assertEquals(expResult, result);
     }
 
     /**
@@ -457,4 +453,3 @@ public class FlightTest
         //This is tested in the testAddPassenger test.       
     }
 }
-

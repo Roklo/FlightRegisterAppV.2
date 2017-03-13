@@ -8,8 +8,8 @@ import java.util.Scanner;
  * all user interaction, like displaying the menu and receiving input from the
  * user.
  *
- * @author asty
- * @version 1.0
+ * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
+ * @version 1.0 (14.02.2017)
  */
 class ApplicationUI
 {
@@ -73,15 +73,18 @@ class ApplicationUI
                         break;
 
                     case 6:
-                        System.out.println("\nThank you for using Application v0.1. Bye!\n");
+                        System.out.println("\nThank you for using"
+                                + " Application v0.1. Bye!\n");
                         quit = true;
                         break;
 
                     default:
                 }
-            } catch (InputMismatchException ime)
+            }
+            catch (InputMismatchException ime)
             {
-                System.out.println("\nERROR: Please provide a number between 1 and " + (this.menuItems.length + 1) + "..\n");
+                System.out.println("\nERROR: Please provide a number between"
+                        + " 1 and " + (this.menuItems.length + 1) + "..\n");
             }
         }
 
@@ -106,7 +109,8 @@ class ApplicationUI
         }
         int maxMenuItemNumber = menuItems.length + 1;
         System.out.println(maxMenuItemNumber + ". Exit\n");
-        System.out.println("Please choose menu item (1-" + maxMenuItemNumber + "): ");
+        System.out.println("Please choose menu item (1-"
+                + maxMenuItemNumber + "): ");
 
         Scanner reader = new Scanner(System.in);
         int menuSelection = reader.nextInt();
@@ -116,5 +120,4 @@ class ApplicationUI
         }
         return menuSelection;
     }
-
 }

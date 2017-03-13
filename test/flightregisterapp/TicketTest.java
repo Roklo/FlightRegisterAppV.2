@@ -4,14 +4,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * This JUnit test will perform tests for all mutator and accessor methods 
- * in the TivketTest class.
+ * This JUnit test will perform tests for all mutator and accessor methods in
+ * the TicketTest class.
  *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.0 (14.02.2017)
  */
 public class TicketTest
 {
+
     Passenger instancePassenger = new Passenger("Chuck", "Finley",
             "chuck.finley@gmail.com");
 
@@ -59,8 +60,8 @@ public class TicketTest
         String expResult = "#F242";
         String expResultDestination = "AES";
         String resultFlightID = instance.getFlight().getFlightID();
-        String resultDestinationAirport = instance.getFlight().
-                getDestinationAirport();
+        String resultDestinationAirport = instance.getFlight()
+                .getDestinationAirport();
         assertEquals(expResult, resultFlightID);
         assertEquals(expResultDestination, resultDestinationAirport);
     }
@@ -105,13 +106,13 @@ public class TicketTest
         int result = instance.getPrice();
         assertEquals(expResult, result);
     }
-    
-     /**
+
+    /**
      * Test of setPrice method, of class Ticket. Sets method setPrice to 90000
      * expected result 90000 checks if getPrice result is equal to expResult
-     * This test will check if it is possible to buy expensive tickets over 
-     * the limit of int.
-     *  
+     * This test will check if it is possible to buy expensive tickets over the
+     * limit of int.
+     *
      */
     @Test
     public void testSetExpensivePrice()

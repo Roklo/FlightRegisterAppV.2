@@ -6,7 +6,7 @@ import java.util.Iterator;
 /**
  * The FlightRegister class represents a flight register in a flight reservation
  * system where you can add and remove flights.
- * 
+ *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.0 (14.02.2017)
  */
@@ -25,14 +25,14 @@ public class FlightRegister
 
     /**
      * Adds a flight by the given flight object to the flight register.
-     * 
+     *
      * @param flight The flight to be added.
      */
     public void addFlight(Flight flight)
     {
         this.flights.add(flight);
     }
-    
+
     /**
      * Removes the given flight object from the flight register.
      *
@@ -45,7 +45,7 @@ public class FlightRegister
 
     /**
      * Returns the iterator of the Flight Register class.
-     * 
+     *
      * @return The iterator of the Flight Register class.
      */
     public Iterator<Flight> getFlightRegIterator()

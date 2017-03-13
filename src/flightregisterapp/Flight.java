@@ -5,7 +5,7 @@ import java.util.Iterator;
 /**
  * The flight class represents a flight in a flight reservation system. It holds
  * the details about the flight such as flightID, destinationAirport,
- * departureAirport, departureTime, departureDate, arrivalTime and arrivalDate
+ * departureAirport, departureTime, departureDate, arrivalTime and arrivalDate.
  *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 2.0 (07.03.2017)
@@ -28,33 +28,33 @@ public class Flight
     private int arrivalDay;
     private int arrivalMonth;
     private int arrivalYear;
-    
+
     private int numberOfRows;
     private int numberOfLetters;
-    
+
     private SeatRegister seats;
     private PassengerRegister passengers;
 
     /**
      * The constructor of the Flight class
      *
-     * @param flightID
-     * @param destinationAirport
-     * @param departureAirport
-     * @param departureHour
-     * @param departureMinute
-     * @param arrivalHour
-     * @param arrivalMinute
-     * @param departureDay
-     * @param departureMonth
-     * @param departureYear
-     * @param arrivalDay
-     * @param arrivalMonth
-     * @param arrivalYear
-     * @param numberOfRows
-     * @param numberOfLetters
+     * @param flightID The flight ID
+     * @param destinationAirport The destination airport
+     * @param departureAirport The departure airport
+     * @param departureHour The departure hour
+     * @param departureMinute The departure minute
+     * @param arrivalHour The arrival hour
+     * @param arrivalMinute The arrival minute
+     * @param departureDay The departure day
+     * @param departureMonth The departure month
+     * @param departureYear The departure year
+     * @param arrivalDay The arrival day
+     * @param arrivalMonth The arrival month
+     * @param arrivalYear The arrival year
+     * @param numberOfRows The amount of rows
+     * @param numberOfLetters The amount of seats within a row
      *
-     * 
+     *
      */
     public Flight(String flightID, String destinationAirport,
             String departureAirport, int departureHour, int departureMinute,
@@ -96,9 +96,9 @@ public class Flight
     }
 
     /**
-     * Return the IATA of the destination airport.
+     * Returns the IATA of the destination airport.
      *
-     * @return Return the IATA of the destination airport.
+     * @return Returns the IATA of the destination airport.
      */
     public String getDestinationAirport()
     {
@@ -106,9 +106,9 @@ public class Flight
     }
 
     /**
-     * Return the IATA of the departure airport
+     * Returns the IATA of the departure airport
      *
-     * @return Return the IATA of the departure airport
+     * @return Returns the IATA of the departure airport
      */
     public String getDepartureAirport()
     {
@@ -116,9 +116,9 @@ public class Flight
     }
 
     /**
-     * Return the departure hour of the flight
+     * Returns the departure hour of the flight
      *
-     * @return Return the departure hour of the flight
+     * @return Returns the departure hour of the flight
      */
     public int getDepartureHour()
     {
@@ -128,7 +128,7 @@ public class Flight
     /**
      * Sets the departure hour of the flight
      *
-     * @param departureHour Sets the departure hour of the flight
+     * @param departureHour The departure hour of the flight
      */
     public void setDepartureHour(int departureHour)
     {
@@ -136,9 +136,9 @@ public class Flight
     }
 
     /**
-     * Return the departure minute of the flight
+     * Returns the departure minute of the flight
      *
-     * @return Return the departure minute of the flight
+     * @return Returns the departure minute of the flight
      */
     public int getDepartureMinute()
     {
@@ -148,7 +148,7 @@ public class Flight
     /**
      * Sets the departure minute of the flight
      *
-     * @param departureMinute Sets the departure minute of the flight
+     * @param departureMinute The departure minute of the flight
      */
     public void setDepartureMinute(int departureMinute)
     {
@@ -156,9 +156,9 @@ public class Flight
     }
 
     /**
-     * Return the arrival minute of the flight
+     * Returns the arrival minute of the flight
      *
-     * @return Return the arrival minute of the flight
+     * @return Returns the arrival minute of the flight
      */
     public int getArrivalMinute()
     {
@@ -168,7 +168,7 @@ public class Flight
     /**
      * Sets the arrival minute of the flight
      *
-     * @param arrivalMinute Sets the arrival minute of the flight
+     * @param arrivalMinute The arrival minute of the flight
      */
     public void setArrivalMinute(int arrivalMinute)
     {
@@ -176,9 +176,9 @@ public class Flight
     }
 
     /**
-     * Return the arrival hour of the flight
+     * Returns the arrival hour of the flight
      *
-     * @return Return the arrival hour of the flight
+     * @return Returns the arrival hour of the flight
      */
     public int getArrivalHour()
     {
@@ -188,7 +188,7 @@ public class Flight
     /**
      * Sets the arrival hour of the flight
      *
-     * @param arrivalHour Sets the arrival hour of the flight
+     * @param arrivalHour The arrival hour of the flight
      */
     public void setArrivalHour(int arrivalHour)
     {
@@ -196,9 +196,9 @@ public class Flight
     }
 
     /**
-     * Return the departure day of the flight
+     * Returns the departure day of the flight
      *
-     * @return Return the departure day of the flight
+     * @return Returns the departure day of the flight
      */
     public int getDepartureDay()
     {
@@ -208,7 +208,7 @@ public class Flight
     /**
      * Sets the departure day of the flight
      *
-     * @param departureDay Sets the departure day of the flight
+     * @param departureDay The departure day of the flight
      */
     public void setDepartureDay(int departureDay)
     {
@@ -216,9 +216,9 @@ public class Flight
     }
 
     /**
-     * Return the departure month of the flight
+     * Returns the departure month of the flight
      *
-     * @return Return the departure month of the flight
+     * @return Returns the departure month of the flight
      */
     public int getDepartureMonth()
     {
@@ -226,9 +226,9 @@ public class Flight
     }
 
     /**
-     * Return the departure month of the flight
+     * Sets the departure month of the flight
      *
-     * @param departureMonth Return the departure month of the flight
+     * @param departureMonth The departure month of the flight
      */
     public void setDepartureMonth(int departureMonth)
     {
@@ -236,9 +236,9 @@ public class Flight
     }
 
     /**
-     * Return the departure year of the flight
+     * Returns the departure year of the flight
      *
-     * @return Return the departure year of the flight
+     * @return Returns the departure year of the flight
      */
     public int getDepartureYear()
     {
@@ -248,7 +248,7 @@ public class Flight
     /**
      * Sets the arrival year of the flight
      *
-     * @param departureYear Sets the arrival year of the flight
+     * @param departureYear The arrival year of the flight
      */
     public void setDepartureYear(int departureYear)
     {
@@ -256,9 +256,9 @@ public class Flight
     }
 
     /**
-     * Return the arrival day of the flight
+     * Returns the arrival day of the flight
      *
-     * @return Return the arrival day of the flight
+     * @return Returns the arrival day of the flight
      */
     public int getArrivalDay()
     {
@@ -268,7 +268,7 @@ public class Flight
     /**
      * Sets the arrival day of the flight
      *
-     * @param arrivalDay Sets the arrival day of the flight
+     * @param arrivalDay The arrival day of the flight
      */
     public void setArrivalDay(int arrivalDay)
     {
@@ -276,9 +276,9 @@ public class Flight
     }
 
     /**
-     * Return the arrival month of the flight
+     * Returns the arrival month of the flight
      *
-     * @return Return the arrival month of the flight
+     * @return Returns the arrival month of the flight
      */
     public int getArrivalMonth()
     {
@@ -288,7 +288,7 @@ public class Flight
     /**
      * Sets the arrival month of the flight
      *
-     * @param arrivalMonth Sets the arrival month of the flight
+     * @param arrivalMonth The arrival month of the flight
      */
     public void setArrivalMonth(int arrivalMonth)
     {
@@ -296,9 +296,9 @@ public class Flight
     }
 
     /**
-     * Return the arrival year of the flight
+     * Returns the arrival year of the flight
      *
-     * @return Return the arrival year of the flight
+     * @return Returns the arrival year of the flight
      */
     public int getArrivalYear()
     {
@@ -308,62 +308,55 @@ public class Flight
     /**
      * Sets the arrival year of the flight
      *
-     * @param arrivalYear Sets the arrival year of the flight
+     * @param arrivalYear The arrival year of the flight
      */
     public void setArrivalYear(int arrivalYear)
     {
         this.arrivalYear = arrivalYear;
     }
-    
+
+    /**
+     * Returns the number of rows in the flight.
+     *
+     * @return The number of rows in the flight.
+     */
     public int getNumberOfRows()
     {
         return this.numberOfRows;
     }
-    
+
+    /**
+     * Returns the number of seats within a row.
+     *
+     * @return The number of seats within a row.
+     */
     public int getNumberOfLetters()
     {
         return this.numberOfLetters;
     }
 
-
     /**
-     * A method for returning number of flight days Not nessesarry for Task3
-     */
-    /*
-    
-    public void getFlightDays()
-    {
-        int deltaDay = 0;
-        int deltaMonth = 0;
-        int deltaYear = 0;
-                
-                
-        deltaDay = getDepartureDay() - getArrivalDay();  
-        deltaMonth = getDepartureMonth() - getArrivalMonth();
-        deltaYear = getDepartureYear() - getArrivalYear();
-        
-        if (deltaDay < 0)
-        {
-            
-            
-          deltaDayString = Integer.toString(deltaDay)  
-                  
-                   
-        }
-        
-        
-        System.out.println("Days: " + deltaDay + );
-    }
-     */
-    /**
-     * Calculates the total flight time of the flight n TODO: Add a return
-     * TODO: Add a return Calculates the total flight time of the flight
-     * statement so it will return the time as string
+     * A method for returning number of flight days Not nessesarry for Fase 2
      *
-     * @return Returns the total flighttime
+     * /*
+     * public void getFlightDays() { int deltaDay = 0; int deltaMonth = 0; int
+     * deltaYear = 0; deltaDay = getDepartureDay() - getArrivalDay(); deltaMonth
+     * = getDepartureMonth() - getArrivalMonth(); deltaYear = getDepartureYear()
+     * - getArrivalYear();
+     *
+     * if (deltaDay < 0) { deltaDayString = Integer.toString(deltaDay) }
+     * System.out.println("Days: " + deltaDay + ); }
+     */
+    /**
+     * Returns the calculates total flight time.
+     *
+     * @return Returns the total flight time.
      */
     public String getFlightTime()
     {
+        //TODO: Add a return Calculates the total flight time of the flight
+        //statement so it will return the time as string.
+
         String deltaMinuteString = null;
         String deltaHourString = null;
 
@@ -379,9 +372,7 @@ public class Flight
             deltaHour = deltaHour - 1;
             deltaMinute = 60 + deltaMinute;
         }
-
         if (deltaHour < 0)
-
         {
             deltaHour = 24 + deltaHour;
         }
@@ -396,7 +387,6 @@ public class Flight
         {
             deltaMinuteString = Integer.toString(deltaMinute);
         }
-
         if (deltaHour < 10)
         {
             deltaHourString = "0" + deltaHour;
@@ -405,12 +395,8 @@ public class Flight
         {
             deltaHourString = Integer.toString(deltaHour);
         }
-        
-        
-
         return (deltaHourString + ":" + deltaMinuteString);
 
-                /*
         /*
         System.out.println("Flight time: "
                 + deltaHourString + ":" + deltaMinuteString + " Hours");
@@ -418,32 +404,41 @@ public class Flight
     }
 
     /**
-     * Adds seats to the flight
-     * 
-     * @param numberOfRows
-     * @param numberOfLetters 
+     * Adds seats to the flight with the given amount of rows and columns.
+     *
+     * @param rows The amount of rows
+     * @param letters The amount of columns
      */
-    public void addSeats(int numberOfRows, int numberOfLetters)
+    public void addSeats(int rows, int letters)
     {
-        seats.addSeats(numberOfRows, numberOfLetters);
+        seats.addSeats(rows, letters);
     }
-    
 
     /**
-     * Gets all seats for the flight
+     * Returns all seats for the flight
      *
-     * @return Return all seats on the flight
+     * @return Returns all seats on the flight
      */
     public SeatRegister getSeats()
     {
         return seats;
     }
-    
+
+    /**
+     * Adds a given passenger to the passenger register.
+     *
+     * @param pas The given passenger.
+     */
     public void addPassenger(Passenger pas)
     {
         passengers.addPassenger(pas);
     }
-    
+
+    /**
+     * Returns the iterator for the Passenger Register class.
+     *
+     * @return The iterator for the Passenger Register class.
+     */
     public Iterator<Passenger> getPassRegIterator()
     {
         return passengers.getPassengerRegIterator();

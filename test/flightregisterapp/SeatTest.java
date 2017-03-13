@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
  */
 public class SeatTest
 {
+
     Seat instance = new Seat(5, "A");
 
     /**
