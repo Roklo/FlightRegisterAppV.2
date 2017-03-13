@@ -16,29 +16,31 @@ import java.util.Scanner;
  *
  * @author asty
  */
-public class Application
-{
+public class Application {
 
     private final FlightRegister flights;
     private final TicketRegister tickets;
     private final PassengerRegister passengers;
-    private TicketReservationSystem ticketSystem;
+    private final TicketReservationSystem ticketSystem;
+    
+    public void init() {
+        System.out.println("Init was called");
+    }
 
-    public Application()
-    {
+    /**
+     * Constructor for application class
+     */
+    public Application() {
         this.flights = new FlightRegister();
         this.tickets = new TicketRegister();
         this.passengers = new PassengerRegister();
         this.ticketSystem = new TicketReservationSystem();
     }
 
-    public void init()
-    {
-        System.out.println("init() was called");
-    }
-
-    void doCreateFlight()
-    {
+    /**
+     * Creates a new flight. Prompts user for flight information.
+     */
+    void doCreateFlight() {
         System.out.println("---- Create a Flight ----");
         System.out.println("Please enter the flight ID (e.g. SK4145):");
         Scanner reader = new Scanner(System.in);
@@ -50,6 +52,43 @@ public class Application
         System.out.println("\nPlease enter the departure airport (e.g. AES):");
         String departureAirport = reader.nextLine();
 
+        int departureHour = getLimitedInt(0, 23,
+                "Please enter the departure hour");
+
+        int departureMinute = getLimitedInt(0, 59,
+                "Please enter departure minute");
+
+        int arrivalHour = getLimitedInt(0, 23,
+                "Please enter arrival hour");
+
+        int arrivalMinute = getLimitedInt(0, 59,
+                "Please enter arrival minute");
+
+        int departureDay = getLimitedInt(1, 31,
+                "Please enter departure day");
+
+        int departureMonth = getLimitedInt(1, 12,
+                "Please enter departureMonth");
+
+        System.out.println("\nPlease enter the departure year:");
+        int departureYear = reader.nextInt();
+
+        int arrivalDay = getLimitedInt(1, 31,
+                "Please enter arrival day");
+
+        int arrivalMonth = getLimitedInt(1, 12,
+                "Please enter arrival month");
+
+        System.out.println("\nPlease enter the arrival year:");
+        int arrivalYear = reader.nextInt();
+
+        int numberOfRows = getLimitedInt(1, 1000,
+                "Please enter the amount of rows of seats in plane");
+
+        int numberOfLetters = getLimitedInt(1, 27,
+                "Please enter the amount of seats within a row");
+
+        /*    
         System.out.println("\nPlease enter the departure hour (0-23):");
         int departureHour = reader.nextInt();
 
@@ -87,7 +126,7 @@ public class Application
         System.out.println("\nPlease enter the amount of seats"
                 + " within a row:");
         int numberOfLetters = reader.nextInt();
-
+         */
         Flight newFlight = new Flight(flightID, destinationAirport,
                 departureAirport, departureHour, departureMinute,
                 arrivalHour, arrivalMinute, departureDay,
@@ -115,8 +154,10 @@ public class Application
         //System.out.println(ticketSystem.getAllFlights());
     }
 
-    void doRegisterPassenger()
-    {
+    /**
+     * Registers a new passenger. Prompts user for passenger information.
+     */
+    void doRegisterPassenger() {
         System.out.println("\n---- Register a Passenger ----");
         System.out.println("Please enter the forename:");
         Scanner reader = new Scanner(System.in);
@@ -129,7 +170,7 @@ public class Application
         String eMail = reader.nextLine();
 
         Passenger newPassenger = new Passenger(firstName, lastName, eMail);
-        //this.passengers.addPassenger(newPassenger);
+
         ticketSystem.addPassenger(newPassenger);
         System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newPassenger.getFirstName() + " "
@@ -137,9 +178,11 @@ public class Application
                 + newPassenger.getEmail());
     }
 
-    void doSellTicket()
-    {
-        System.out.println("\n---- Sell Ticket to Passenger ----");
+    /**
+     * Sells Ticket to a passenger. Prompts user for passenger and flight info.
+     */
+    void doSellTicket() {
+        System.out.println("\n-- Sell Ticket to Passenger --");
         System.out.println("Please enter the last name of the passenger:");
         Scanner reader = new Scanner(System.in);
         Passenger passenger = ticketSystem.getPassengerByLastName(reader.nextLine());
@@ -160,8 +203,10 @@ public class Application
         Seat selectedSeat = ticketSystem.getSeatByID(flight, seat);
         ticketSystem.setSeatToUnavailable(selectedSeat);
 
-        System.out.println("Please enter a valid ticket ID (e.g. 1001):");
-        int ticketID = reader.nextInt();
+        //System.out.println("Please enter a valid ticket ID (e.g. 1001):");
+        //int ticketID = reader.nextInt();
+        int ticketID = getLimitedInt(0, 35000,
+                "Please enter a Valid ticket ID (e.g 1001)");
 
         System.out.println("Please enter the ticket price in NOK:");
         int price = reader.nextInt();
@@ -192,19 +237,22 @@ public class Application
         System.out.println("Price: " + newTicket.getPrice() + "\n");
     }
 
-    void doListSeatsInFlight()
-    {
+    /**
+     * Listis seats in a flight. Prompts user for flight id using reader.
+     */
+    void doListSeatsInFlight() {
         System.out.println("\n--- List Seats in a Flight ---");
         System.out.println("Please choose a flight ID:");
         System.out.println(ticketSystem.getAllFlights());
         Scanner reader = new Scanner(System.in);
         Flight flight = ticketSystem.getFlightByID(reader.nextLine());
         System.out.println("\n" + ticketSystem.getSeats(flight));
-
     }
 
-    void doListPassengersInFlight()
-    {
+    /**
+     * Lists passengers in a flight. Prompts user for flight id using reader.
+     */
+    void doListPassengersInFlight() {
         System.out.println("\n--- List Passengers in a Flight ---");
         System.out.println("Please choose a flight ID:");
         System.out.println(ticketSystem.getAllFlights());
@@ -213,4 +261,27 @@ public class Application
         System.out.println("\n" + ticketSystem.getPassengersInFlight(flight));
     }
 
+    /**
+     * Prompts for a int input between two values, will not return value before
+     * requirements are met..
+     *
+     * @param minValue is minim input value.
+     * @param maxValue is maxiumum input value.
+     * @param displayInfo is meddsage to display to user.
+     * @return integer from reader.
+     */
+    private int getLimitedInt(int minValue, int maxValue, String displayInfo) {
+        Scanner reader = new Scanner(System.in);
+        int returnInt = maxValue + 1;
+        System.out.println("\n" + displayInfo + " ("
+                + minValue + "-" + maxValue + ")");
+        while ((returnInt > maxValue) || (returnInt < minValue)) {
+            returnInt = reader.nextInt();
+            if ((returnInt > maxValue) || (returnInt < minValue)) {
+                System.out.println("Error: number must be betweeen "
+                        + minValue + " and " + maxValue);
+            }
+        }
+        return returnInt;
+    }
 }
