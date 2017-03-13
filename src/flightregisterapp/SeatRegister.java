@@ -65,14 +65,14 @@ public class SeatRegister
                 it.remove();
             }
         }
-        if (found)
+    /*    if (found)
         {
             System.out.println("Removed seat " + seat + ".");
         }
         else
         {
             System.out.println("Invalid seat ID: No seat found!");
-        }
+        } */
     }
 
     /**
@@ -94,7 +94,7 @@ public class SeatRegister
                 found = true;
             }
         }
-        if (found)
+     /*   if (found)
         {
             System.out.println("Seat " + s.getSeatId()
                     + ":\nAvailable: " + s.isAvailable());
@@ -102,7 +102,7 @@ public class SeatRegister
         else
         {
             System.out.println("Invalid seat ID: No seat found!");
-        }
+        } */
 
     }
 
@@ -129,52 +129,6 @@ public class SeatRegister
         return foundSeat;
     }
 
-    /**
-     * Lists all the seats in the flight.
-     */
-    public void listAllSeats()
-    {
-        for (Seat seat : this.seats)
-        {
-            System.out.println(seat.getSeatId());
-        }
-    }
-
-    /**
-     * Lists all the available seats in the flight.
-     */
-    public void listAvailableSeats()
-    {
-        System.out.println("Available seats:");
-        Iterator<Seat> it = this.seats.iterator();
-        Seat s = null;
-        while (it.hasNext())
-        {
-            s = it.next();
-            if (s.isAvailable())
-            {
-                System.out.println(s.getSeatId());
-            }
-        }
-    }
-
-    /**
-     * Lists all the unavailable seats in the flight.
-     */
-    public void listUnavailableSeats()
-    {
-        System.out.println("Unavailable seats:");
-        Iterator<Seat> it = this.seats.iterator();
-        Seat s = null;
-        while (it.hasNext())
-        {
-            s = it.next();
-            if (!s.isAvailable())
-            {
-                System.out.println(s.getSeatId());
-            }
-        }
-    }
 
     /**
      * Sets the given seat to be unavailable.
@@ -184,8 +138,6 @@ public class SeatRegister
     public void setSeatToUnavailable(String seatId)
     {
         this.getSeatById(seatId).setUnavailable();
-        System.out.println("Seat " + seatId.toUpperCase()
-                + " set to unavailable.");
     }
 
     /**

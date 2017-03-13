@@ -9,8 +9,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author rocio
+ * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
+ * @version 1.0 (14.02.2017)
  */
 public class TicketTest
 {
@@ -50,12 +50,10 @@ public class TicketTest
         assertEquals(expResult, result);
     }
 
-   
     /**
-     * Test of getFlight method, of class Ticket.
-     * Creates an expected result and desination
-     * Gets FlightID and destination airport
-     * checks if expected result is equl to result and destination
+     * Test of getFlight method, of class Ticket. Creates an expected result and
+     * desination Gets FlightID and destination airport checks if expected
+     * result is equl to result and destination
      */
     @Test
     public void testGetFlight()
@@ -72,10 +70,8 @@ public class TicketTest
     }
 
     /**
-     * Test of getFlightID method, of class Ticket.
-     * Creates an expected result
-     * Gets FlightID result 
-     * checks if expected result is equal to result
+     * Test of getFlightID method, of class Ticket. Creates an expected result
+     * Gets FlightID result checks if expected result is equal to result
      */
     @Test
     public void testGetFlightID()
@@ -87,10 +83,9 @@ public class TicketTest
     }
 
     /**
-     * Test of getPrice method, of class Ticket.
-     * Creates an expected value to the price 
-     * Gets result from getPrice method 
-     * checks expected result with result
+     * Test of getPrice method, of class Ticket. Creates an expected value to
+     * the price Gets result from getPrice method checks expected result with
+     * result
      */
     @Test
     public void testGetPrice()
@@ -102,10 +97,8 @@ public class TicketTest
     }
 
     /**
-     * Test of setPrice method, of class Ticket.
-     * Sets method setPrice to 5000 
-     * expected result 5000
-     * checks if getPrice result is equal to expResult
+     * Test of setPrice method, of class Ticket. Sets method setPrice to 5000
+     * expected result 5000 checks if getPrice result is equal to expResult
      */
     @Test
     public void testSetPrice()
@@ -113,6 +106,24 @@ public class TicketTest
         System.out.println("setPrice");
         instance.setPrice(5000);
         int expResult = 5000;
+        int result = instance.getPrice();
+        assertEquals(expResult, result);
+
+    }
+    
+     /**
+     * Test of setPrice method, of class Ticket. Sets method setPrice to 90000
+     * expected result 90000 checks if getPrice result is equal to expResult
+     * This test will check if it is possible to buy expensive tickets over 
+     * the limit of int.
+     *  
+     */
+    @Test
+    public void testSetExpensivePrice()
+    {
+        System.out.println("setPrice");
+        instance.setPrice(3000000);
+        int expResult = 3000000;
         int result = instance.getPrice();
         assertEquals(expResult, result);
 
