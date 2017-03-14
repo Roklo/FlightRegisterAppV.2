@@ -390,7 +390,7 @@ public class FlightTest
     {
         instance.addSeats(2, 3);
         int result = instance.getSeats().getNumberOfSeats();
-        int expResult = 6;
+        int expResult = 36;
         assertEquals(expResult, result);
     }
 
@@ -400,9 +400,8 @@ public class FlightTest
     @Test
     public void testGetSeats()
     {
-        instance.addSeats(2, 4);
         int result = instance.getSeats().getNumberOfSeats();
-        int expResult = 8;
+        int expResult = 30;
         assertEquals(expResult, result);
     }
 
