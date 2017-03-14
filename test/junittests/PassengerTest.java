@@ -1,4 +1,4 @@
-package flightregisterapp;
+package junittests;
 
 import entity.Passenger;
 import org.junit.Test;
