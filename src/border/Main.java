@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Border;
-import flightregisterapp.Flight;
-
-import flightregisterapp.Seat;
-import flightregisterapp.SeatRegister;
+package border;
+import entity.Flight;
+import entity.Seat;
+import entity.SeatRegister;
 
 /**
  *

@@ -1,4 +1,4 @@
-package flightregisterapp;
+package entity;
 
 /**
  * The Seat class represents a seat in a flight reservation system. It holds the

@@ -1,4 +1,4 @@
-package flightregisterapp;
+package entity;
 
 import java.util.Iterator;
 

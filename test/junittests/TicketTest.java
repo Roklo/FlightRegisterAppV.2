@@ -1,5 +1,9 @@
-package flightregisterapp;
+package junittests;
 
+import entity.Seat;
+import entity.Flight;
+import entity.Passenger;
+import entity.Ticket;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
