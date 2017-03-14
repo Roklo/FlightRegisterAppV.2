@@ -1,4 +1,4 @@
-package flightregisterapp;
+package entity;
 
 /**
  * The Passenger class represents a passenger in a flight reservation system. It

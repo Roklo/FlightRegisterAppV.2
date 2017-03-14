@@ -1,10 +1,10 @@
-package Border;
+package border;
 
-import Facade.TicketReservationSystem;
-import flightregisterapp.Flight;
-import flightregisterapp.Passenger;
-import flightregisterapp.Seat;
-import flightregisterapp.Ticket;
+import facade.TicketReservationSystem;
+import entity.Flight;
+import entity.Passenger;
+import entity.Seat;
+import entity.Ticket;
 import java.util.Scanner;
 
 /**

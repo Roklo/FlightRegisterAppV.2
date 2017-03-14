@@ -1,13 +1,13 @@
-package Facade;
+package facade;
 
-import flightregisterapp.Flight;
-import flightregisterapp.FlightRegister;
-import flightregisterapp.Passenger;
-import flightregisterapp.PassengerRegister;
-import flightregisterapp.Seat;
-import flightregisterapp.SeatRegister;
-import flightregisterapp.Ticket;
-import flightregisterapp.TicketRegister;
+import entity.Flight;
+import entity.FlightRegister;
+import entity.Passenger;
+import entity.PassengerRegister;
+import entity.Seat;
+import entity.SeatRegister;
+import entity.Ticket;
+import entity.TicketRegister;
 import java.util.Iterator;
 
 /**

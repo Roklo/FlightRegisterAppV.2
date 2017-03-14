@@ -1,4 +1,4 @@
-package flightregisterapp;
+package entity;
 
 /**
  * Creates a ticket for the passenger with all information regarding his/her
