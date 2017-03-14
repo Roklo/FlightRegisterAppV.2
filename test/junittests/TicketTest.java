@@ -1,16 +1,11 @@
 package junittests;
 
-<<<<<<< HEAD:test/flightregisterapp/TicketTest.java
-import entity.Ticket;
-import entity.Seat;
-import entity.Flight;
-import entity.Passenger;
-=======
+
 import entity.Seat;
 import entity.Flight;
 import entity.Passenger;
 import entity.Ticket;
->>>>>>> 1fe9032743e14cac028373aab69b7eda3561526b:test/junittests/TicketTest.java
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
