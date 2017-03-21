@@ -19,10 +19,13 @@ class ApplicationUI
     String[] menuItems =
     {
         "1. Create flight",
-        "2. Register passenger",
-        "3. Sell ticket to passenger",
-        "4. List seats in flight",
-        "5. List passangers in flight"
+        "2. Register pilot",
+        "3. Register crew",
+        "4. Register passenger",
+        "5. Sell ticket to passenger",
+        "6. List seats in flight",
+        "7. List available seats in flight",
+        "8. List passangers in flight"
     };
 
     /**
@@ -57,22 +60,34 @@ class ApplicationUI
                         break;
 
                     case 2:
-                        this.application.doRegisterPassenger();
+                        this.application.doRegisterPilot();
                         break;
 
                     case 3:
-                        this.application.doSellTicket();
+                        this.application.doRegisterCrew();
                         break;
 
                     case 4:
-                        this.application.doListSeatsInFlight();
+                        this.application.doRegisterPassenger();
                         break;
 
                     case 5:
-                        this.application.doListPassengersInFlight();
+                        this.application.doSellTicket();
+                        break;
+                        
+                    case 6:
+                        this.application.doListSeatsInFlight();
                         break;
 
-                    case 6:
+                    case 7:
+                        this.application.doListAvailableSeatsInFlight();
+                        break;
+
+                    case 8:
+                        this.application.doListPassengersInFlight();
+                        break;
+                        
+                    case 9:
                         System.out.println("\nThank you for using"
                                 + " Application v0.1. Bye!\n");
                         quit = true;

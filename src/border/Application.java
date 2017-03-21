@@ -1,8 +1,11 @@
 package border;
 
+import entity.Crew;
 import facade.TicketReservationSystem;
 import entity.Flight;
 import entity.Passenger;
+import entity.Person;
+import entity.Pilot;
 import entity.Seat;
 import entity.Ticket;
 import java.util.Scanner;
@@ -117,6 +120,50 @@ public class Application
         //System.out.println(ticketSystem.getAllFlights());
     }
 
+    void doRegisterPilot()
+    {
+        System.out.println("\n---- Register a Pilot ----");
+        System.out.println("Please enter the forename:");
+        Scanner reader = new Scanner(System.in);
+        String firstName = reader.nextLine();
+
+        System.out.println("Please enter the surname:");
+        String lastName = reader.nextLine();
+
+        System.out.println("Please enter the email address:");
+        String eMail = reader.nextLine();
+
+        Person newPilot = new Pilot(firstName, lastName, eMail);
+
+        ticketSystem.addPerson(newPilot);
+        System.out.println("\n\nThe following passenger has been registered:");
+        System.out.println(newPilot.getFirstName() + " "
+                + newPilot.getLastName() + ", "
+                + newPilot.getEmail());
+    }
+
+    void doRegisterCrew()
+    {
+        System.out.println("\n---- Register a Crew ----");
+        System.out.println("Please enter the forename:");
+        Scanner reader = new Scanner(System.in);
+        String firstName = reader.nextLine();
+
+        System.out.println("Please enter the surname:");
+        String lastName = reader.nextLine();
+
+        System.out.println("Please enter the email address:");
+        String eMail = reader.nextLine();
+
+        Person newCrew = new Crew(firstName, lastName, eMail);
+
+        ticketSystem.addPerson(newCrew);
+        System.out.println("\n\nThe following passenger has been registered:");
+        System.out.println(newCrew.getFirstName() + " "
+                + newCrew.getLastName() + ", "
+                + newCrew.getEmail());
+    }
+
     /**
      * Registers a new passenger. Prompts user for passenger information.
      */
@@ -133,9 +180,9 @@ public class Application
         System.out.println("Please enter the email address:");
         String eMail = reader.nextLine();
 
-        Passenger newPassenger = new Passenger(firstName, lastName, eMail);
+        Person newPassenger = new Passenger(firstName, lastName, eMail);
 
-        ticketSystem.addPassenger(newPassenger);
+        ticketSystem.addPerson(newPassenger);
         System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newPassenger.getFirstName() + " "
                 + newPassenger.getLastName() + ", "
@@ -166,7 +213,7 @@ public class Application
 
         System.out.println("Please choose a seat:");
         //flights.getSeats(flight).listAvailableSeats();
-        System.out.println(ticketSystem.getSeats(flight));
+        System.out.println(ticketSystem.getAvailableSeatsInFlight(flight));
         String seat = reader.nextLine();
         Seat selectedSeat = ticketSystem.getSeatByID(flight, seat);
         ticketSystem.setSeatToUnavailable(selectedSeat);
@@ -218,6 +265,21 @@ public class Application
     }
 
     /**
+     * Lists all the available seats in a given flight. Prompts user for flight
+     * id using reader.
+     */
+    void doListAvailableSeatsInFlight()
+    {
+        System.out.println("\n--- List Seats in a Flight ---");
+        System.out.println("Please choose a flight ID:");
+        System.out.println(ticketSystem.getAllFlights());
+        Scanner reader = new Scanner(System.in);
+        Flight flight = ticketSystem.getFlightByID(reader.nextLine());
+        System.out.println("\n"
+                + ticketSystem.getAvailableSeatsInFlight(flight));
+    }
+
+    /**
      * Lists passengers in a flight. Prompts user for flight id using reader.
      */
     void doListPassengersInFlight()
@@ -256,4 +318,5 @@ public class Application
         }
         return returnInt;
     }
+
 }

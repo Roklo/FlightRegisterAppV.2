@@ -7,56 +7,21 @@ package entity;
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.0 (14.02.2017)
  */
-public class Passenger
+public class Passenger extends Person
 {
-
-    private final String foreName;
-    private final String lastName;
-    private final String emailAddress;
 
     /**
      * Creates a new passanger given by his or hers forename, lastname, and an
      * email address.
-     *
-     * @param foreName The forename of the passenger
-     * @param lastName The lastname of the passenger.
-     * @param emailAddress The email address of the passenger.
      */
     public Passenger(String foreName, String lastName, String emailAddress)
     {
-        this.foreName = foreName;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
+        super(foreName, lastName, emailAddress);
     }
 
-    /**
-     * Returns the first name of the passenger.
-     *
-     * @return The first name of the passenger.
-     */
-    public String getFirstName()
+    public String toString()
     {
-        return this.foreName;
-    }
-
-    /**
-     * Returns the last name of the passenger.
-     *
-     * @return The last name of the passenger.
-     */
-    public String getLastName()
-    {
-        return this.lastName;
-    }
-
-    /**
-     * Returns the email address of the passenger.
-     *
-     * @return The email address of the passenger.
-     */
-    public String getEmail()
-    {
-        return this.emailAddress;
+        return getFirstName() + " " + getLastName() + " - " + getEmail();
     }
 
 }

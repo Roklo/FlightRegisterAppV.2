@@ -3,7 +3,8 @@ package facade;
 import entity.Flight;
 import entity.FlightRegister;
 import entity.Passenger;
-import entity.PassengerRegister;
+import entity.Person;
+import entity.PersonRegister;
 import entity.Seat;
 import entity.SeatRegister;
 import entity.Ticket;
@@ -21,30 +22,30 @@ import java.util.Iterator;
 public class TicketReservationSystem
 {
 
-    private PassengerRegister passengers;
+    private PersonRegister persons;
     private FlightRegister flights;
     private TicketRegister tickets;
 
     /**
      * Constructor for objects of class TicketReservationSystem. Creates a
-     * register for passengers and flights.
+     * register for persons and flights.
      *
      */
     public TicketReservationSystem()
     {
-        this.passengers = new PassengerRegister();
+        this.persons = new PersonRegister();
         this.flights = new FlightRegister();
         this.tickets = new TicketRegister();
     }
 
     /**
-     * Adds the given passenger to the passenger register.
+     * Adds the given person to the person register.
      *
-     * @param pas The passenger to be added.
+     * @param person The person to be added.
      */
-    public void addPassenger(Passenger pas)
+    public void addPerson(Person person)
     {
-        this.passengers.addPassenger(pas);
+        this.persons.addPerson(person);
     }
 
     /**
@@ -77,10 +78,10 @@ public class TicketReservationSystem
     {
         boolean searching = true;
         Passenger passenger = null;
-        Iterator<Passenger> it = passengers.getPassengerRegIterator();
+        Iterator<Person> it = persons.getPersonRegIterator();
         while (it.hasNext() && searching)
         {
-            passenger = it.next();
+            passenger = (Passenger) it.next();
             if (passenger.getLastName().equals(lastName))
             {
                 searching = false;
@@ -185,15 +186,55 @@ public class TicketReservationSystem
      */
     public String getSeats(Flight flight)
     {
+        int counter = 0;
         String seatsToReturn = "";
         Seat seat = null;
         Iterator<Seat> it = flight.getSeats().getSeatRegIterator();
         while (it.hasNext())
         {
+            counter++;
             seat = it.next();
             if (seat != null)
+                if (counter == flight.getNumberOfLetters())
+                {
+                    seatsToReturn += seat.getSeatId() + "\n";
+                    counter = 0;
+                }
+                else
+                {
+                    seatsToReturn += seat.getSeatId() + " ";
+                }
+        }
+        return seatsToReturn;
+    }
+
+    /**
+     * Returns a string of all the seats in a given flight.
+     *
+     * @param flight The flight where the seats are located.
+     * @return All the seats within the flight.
+     */
+    public String getAvailableSeatsInFlight(Flight flight)
+    {
+        int counter = 0;
+        String seatsToReturn = "";
+        Seat seat = null;
+        Iterator<Seat> it = flight.getSeats().getSeatRegIterator();
+        while (it.hasNext())
+        {
+            counter++;
+            seat = it.next();
+            if (seat != null && seat.isAvailable())
             {
-                seatsToReturn += seat.getSeatId() + " ";
+                if (counter == flight.getNumberOfLetters())
+                {
+                    seatsToReturn += seat.getSeatId() + "\n";
+                    counter = 0;
+                }
+                else
+                {
+                    seatsToReturn += seat.getSeatId() + " ";
+                }
             }
         }
         return seatsToReturn;
