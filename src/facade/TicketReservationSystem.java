@@ -14,7 +14,6 @@ import entity.Crew;
 
 import java.util.Iterator;
 
-
 /**
  * The TicketReservationSystem class represents the connection between the UI
  * (User Interface) and the entity classes. It handles most of the tasks needed
@@ -81,17 +80,37 @@ public class TicketReservationSystem
     public Passenger getPassengerByLastName(String lastName)
     {
         boolean searching = true;
-        Passenger passenger = null;
+        Person passenger = null;
         Iterator<Person> it = persons.getPersonRegIterator();
         while (it.hasNext() && searching)
         {
-            passenger = (Passenger) it.next();
-            if (passenger.getLastName().equals(lastName))
+            passenger = it.next();
+            if (passenger instanceof Passenger
+                    && passenger.getLastName().equals(lastName))
             {
                 searching = false;
             }
         }
-        return passenger;
+        return (Passenger) passenger;
+    }
+
+    //test
+    public Person getPersonByLastName(String lastName)
+    {
+        int counter = 0;
+        Person person = null;
+        Person personToReturn = null;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            if (person.getLastName().equals(lastName))
+            {
+                personToReturn = person;
+                counter++;
+            }
+        }
+        return personToReturn;
     }
 
     /**
@@ -158,7 +177,7 @@ public class TicketReservationSystem
         }
         return flightsToReturn;
     }
-    
+
     public String getAllAvailablePilots()
     {
         String pilotsToReturn = "";
@@ -175,7 +194,7 @@ public class TicketReservationSystem
         }
         return pilotsToReturn;
     }
-    
+
     public String getAllAvailableCrew()
     {
         String crewToReturn = "";
@@ -192,7 +211,6 @@ public class TicketReservationSystem
         }
         return crewToReturn;
     }
-
 
     /**
      * Returns a seat from the given flight and seat ID.
@@ -234,6 +252,7 @@ public class TicketReservationSystem
             counter++;
             seat = it.next();
             if (seat != null)
+            {
                 if (counter == flight.getNumberOfLetters())
                 {
                     seatsToReturn += seat.getSeatId() + "\n";
@@ -243,6 +262,7 @@ public class TicketReservationSystem
                 {
                     seatsToReturn += seat.getSeatId() + " ";
                 }
+            }
         }
         return seatsToReturn;
     }

@@ -10,6 +10,8 @@ import entity.Seat;
 import entity.Ticket;
 import java.util.Scanner;
 
+import java.util.HashSet;
+
 /**
  * This is just a DUMMY-class representing an Application. To be replaced with a
  * "proper" class.
@@ -21,6 +23,8 @@ public class Application
 {
 
     private final TicketReservationSystem ticketSystem;
+
+    private HashSet<Person> crewList;
 
     /**
      * Initializes the application.
@@ -36,6 +40,7 @@ public class Application
     public Application()
     {
         this.ticketSystem = new TicketReservationSystem();
+        this.crewList = new HashSet<>();
     }
 
     /**
@@ -68,13 +73,17 @@ public class Application
             {
                 doneAddPilot = true;
             }
+            else
+            {
+              
+            }
         }
 
         //Add crew
         System.out.println("\nPlease enter the name of the crew" + "\n"
                 + "Enter *list* to list all crew" + "\n"
                 + "Enter *done* when finish adding crew");
-       
+
         boolean doneAddCrew = false;
         while (!doneAddCrew)
         {
@@ -145,6 +154,8 @@ public class Application
                 departureMonth, departureYear, arrivalDay,
                 arrivalMonth, arrivalYear, numberOfRows, numberOfLetters);
         ticketSystem.addFlight(newFlight);
+        
+
         System.out.println("\n\nThe following flight has been created:");
         System.out.println(newFlight.getFlightID() + ", "
                 + newFlight.getDepartureAirport() + "->"
@@ -364,4 +375,8 @@ public class Application
         return returnInt;
     }
 
+    public TicketReservationSystem getTicketSystem()
+    {
+        return this.ticketSystem;
+    }
 }
