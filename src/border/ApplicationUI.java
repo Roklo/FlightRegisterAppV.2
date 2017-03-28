@@ -19,13 +19,26 @@ class ApplicationUI
     String[] menuItems =
     {
         "1. Create flight",
-        "2. Register pilot",
-        "3. Register crew",
-        "4. Register passenger",
-        "5. Sell ticket to passenger",
-        "6. List seats in flight",
-        "7. List available seats in flight",
-        "8. List passangers in flight"
+        "2. Sell ticket to passenger",
+        "3. Register ...",
+        "4. List ..."
+    };
+
+    String[] regMenuItems =
+    {
+        "1. Register pilot",
+        "2. Register crew",
+        "3. Register passenger",
+        "4. Back"
+    };
+
+    String[] listMenuItems =
+    {
+        "1. List seats in flight",
+        "2. List available seats in flight",
+        "3. List passangers in flight",
+        "4. List crew and pilot in flight",
+        "5. Back"
     };
 
     /**
@@ -60,34 +73,90 @@ class ApplicationUI
                         break;
 
                     case 2:
-                        this.application.doRegisterPilot();
+                        this.application.doSellTicket();
                         break;
 
                     case 3:
-                        this.application.doRegisterCrew();
+                        boolean back = false;
+                        while (!back)
+                        {
+                            try
+                            {
+                                int regMenuSelection = this.showRegMenu();
+                                switch (regMenuSelection)
+                                {
+                                    case 1:
+                                        this.application.doRegisterPilot();
+                                        break;
+                                    case 2:
+                                        this.application.doRegisterCrew();
+                                        break;
+                                    case 3:
+                                        this.application.doRegisterPassenger();
+                                        break;
+                                    case 4:
+                                        back = true;
+                                        break;
+                                    case 5:
+                                        System.out.println("\nThank you for using"
+                                                + " Application v0.1. Bye!\n");
+                                        back = true;
+                                        quit = true;
+                                        break;
+                                    default:
+                                }
+                            }
+                            catch (InputMismatchException ime)
+                            {
+                                System.out.println("\nERROR: Please provide a number between"
+                                        + " 1 and " + (this.regMenuItems.length + 1) + "..\n");
+                            }
+                        }
                         break;
-
                     case 4:
-                        this.application.doRegisterPassenger();
+                        back = false;
+                        while (!back)
+                        {
+                            try
+                            {
+                                int listMenuSelection = this.showListMenu();
+                                switch (listMenuSelection)
+                                {
+                                    case 1:
+                                        this.application.doListSeatsInFlight();
+                                        break;
+
+                                    case 2:
+                                        this.application.doListAvailableSeatsInFlight();
+                                        break;
+
+                                    case 3:
+                                        this.application.doListPassengersInFlight();
+                                        break;
+                                    case 4:
+                                        //List crew and pilot
+                                        break;
+                                    case 5:
+                                        back = true;
+                                        break;
+                                    case 6:
+                                        System.out.println("\nThank you for using"
+                                                + " Application v0.1. Bye!\n");
+                                        back = true;
+                                        quit = true;
+                                        break;
+                                    default:
+                                }
+                            }
+                            catch (InputMismatchException ime)
+                            {
+                                System.out.println("\nERROR: Please provide a number between"
+                                        + " 1 and " + (this.listMenuItems.length + 1) + "..\n");
+                            }
+                        }
                         break;
 
                     case 5:
-                        this.application.doSellTicket();
-                        break;
-                        
-                    case 6:
-                        this.application.doListSeatsInFlight();
-                        break;
-
-                    case 7:
-                        this.application.doListAvailableSeatsInFlight();
-                        break;
-
-                    case 8:
-                        this.application.doListPassengersInFlight();
-                        break;
-                        
-                    case 9:
                         System.out.println("\nThank you for using"
                                 + " Application v0.1. Bye!\n");
                         quit = true;
@@ -134,5 +203,47 @@ class ApplicationUI
             throw new InputMismatchException();
         }
         return menuSelection;
+    }
+
+    private int showRegMenu() throws InputMismatchException
+    {
+        System.out.println("\n**** Application v0.1 ****\n");
+        for (String regMenuItem : regMenuItems)
+        {
+            System.out.println(regMenuItem);
+        }
+        int maxMenuItemNumber = regMenuItems.length + 1;
+        System.out.println(maxMenuItemNumber + ". Exit\n");
+        System.out.println("Please choose menu item (1-"
+                + maxMenuItemNumber + "): ");
+
+        Scanner reader = new Scanner(System.in);
+        int regMenuSelection = reader.nextInt();
+        if ((regMenuSelection < 1) || (regMenuSelection > maxMenuItemNumber))
+        {
+            throw new InputMismatchException();
+        }
+        return regMenuSelection;
+    }
+
+    private int showListMenu() throws InputMismatchException
+    {
+        System.out.println("\n**** Application v0.1 ****\n");
+        for (String listMenuItem : listMenuItems)
+        {
+            System.out.println(listMenuItem);
+        }
+        int maxMenuItemNumber = listMenuItems.length + 1;
+        System.out.println(maxMenuItemNumber + ". Exit\n");
+        System.out.println("Please choose menu item (1-"
+                + maxMenuItemNumber + "): ");
+
+        Scanner reader = new Scanner(System.in);
+        int listMenuSelection = reader.nextInt();
+        if ((listMenuSelection < 1) || (listMenuSelection > maxMenuItemNumber))
+        {
+            throw new InputMismatchException();
+        }
+        return listMenuSelection;
     }
 }
