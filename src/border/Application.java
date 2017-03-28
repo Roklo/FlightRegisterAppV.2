@@ -48,10 +48,55 @@ public class Application
         Scanner reader = new Scanner(System.in);
         String flightID = reader.nextLine();
 
+        //Add pilot
+        System.out.println("\nPlease enter the name of the Pilot" + "\n"
+                + "Enter *list* to list all pilots" + "\n"
+                + "Enter *done* when finish adding pilot");
+
+        boolean doneAddPilot = false;
+        while (!doneAddPilot)
+        {
+            System.out.print("Add: ");
+            String pilot = reader.nextLine();
+            if (pilot.equals("list"))
+            {
+                System.out.println("List of all availible pilots:\n"
+                        + ticketSystem.getAllAvailablePilots());
+            }
+
+            if (pilot.equals("done"))
+            {
+                doneAddPilot = true;
+            }
+        }
+
+        //Add crew
+        System.out.println("\nPlease enter the name of the crew" + "\n"
+                + "Enter *list* to list all crew" + "\n"
+                + "Enter *done* when finish adding crew");
+       
+        boolean doneAddCrew = false;
+        while (!doneAddCrew)
+        {
+            System.out.print("Add:");
+            String crew = reader.nextLine();
+            if (crew.equals("list"))
+            {
+                System.out.println("List of all availible crew:\n"
+                        + ticketSystem.getAllAvailableCrew());
+            }
+
+            if (crew.equals("done"))
+            {
+                doneAddCrew = true;
+            }
+        }
+
+        //Add destination airport
         System.out.println("\nPlease enter the destination"
                 + "airport (e.g. OSL):");
         String destinationAirport = reader.nextLine();
-
+        //Add departure airport
         System.out.println("\nPlease enter the departure airport"
                 + "(e.g. AES):");
         String departureAirport = reader.nextLine();

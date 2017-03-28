@@ -9,7 +9,11 @@ import entity.Seat;
 import entity.SeatRegister;
 import entity.Ticket;
 import entity.TicketRegister;
+import entity.Pilot;
+import entity.Crew;
+
 import java.util.Iterator;
+
 
 /**
  * The TicketReservationSystem class represents the connection between the UI
@@ -154,6 +158,41 @@ public class TicketReservationSystem
         }
         return flightsToReturn;
     }
+    
+    public String getAllAvailablePilots()
+    {
+        String pilotsToReturn = "";
+        Person person = null;
+        Iterator<Person> it = this.persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            if (person instanceof Pilot)
+            {
+                pilotsToReturn += person.getLastName() + " "
+                        + person.getFirstName() + "\n";
+            }
+        }
+        return pilotsToReturn;
+    }
+    
+    public String getAllAvailableCrew()
+    {
+        String crewToReturn = "";
+        Person person = null;
+        Iterator<Person> it = this.persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            if (person instanceof Crew)
+            {
+                crewToReturn += person.getLastName() + " "
+                        + person.getFirstName() + "\n";
+            }
+        }
+        return crewToReturn;
+    }
+
 
     /**
      * Returns a seat from the given flight and seat ID.
