@@ -157,7 +157,7 @@ class ApplicationUI
                         break;
 
                     case 5:
-<<<<<<< HEAD
+
                         this.application.doSellTicket();
                         break;
 
@@ -174,8 +174,7 @@ class ApplicationUI
                         break;
 
                     case 9:
-=======
->>>>>>> f9294e79cba97c62f05f1b2c4f5cbf25f91ed671
+
                         System.out.println("\nThank you for using"
                                 + " Application v0.1. Bye!\n");
                         quit = true;
@@ -223,13 +222,12 @@ class ApplicationUI
         return menuSelection;
     }
 
-<<<<<<< HEAD
+
     public Application getApp()
     {
         return this.application;
     }
 
-=======
     private int showRegMenu() throws InputMismatchException
     {
         System.out.println("\n**** Application v0.1 ****\n");
@@ -271,5 +269,5 @@ class ApplicationUI
         }
         return listMenuSelection;
     }
->>>>>>> f9294e79cba97c62f05f1b2c4f5cbf25f91ed671
+
 }

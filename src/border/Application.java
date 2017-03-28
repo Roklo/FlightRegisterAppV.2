@@ -75,7 +75,7 @@ public class Application
             }
             else
             {
-              
+              //TODO: Add pilot to flight
             }
         }
 
@@ -98,6 +98,10 @@ public class Application
             if (crew.equals("done"))
             {
                 doneAddCrew = true;
+            }
+            else
+            {
+                //TODO: Add crew to flight
             }
         }
 
