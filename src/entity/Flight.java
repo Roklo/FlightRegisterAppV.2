@@ -32,6 +32,7 @@ public class Flight
     private int numberOfRows;
     private int numberOfLetters;
 
+    
     private SeatRegister seats;
     private PassengerRegister passengers;
 
@@ -433,7 +434,7 @@ public class Flight
     {
         passengers.addPassenger(pas);
     }
-    
+
     /**
      * Returns the iterator for the Passenger Register class.
      *
