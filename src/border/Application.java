@@ -147,7 +147,7 @@ public class Application
         System.out.println("\nPlease enter the amount of seats"
                 + " within a row:");
         int numberOfLetters = reader.nextInt();
-
+        
         Flight newFlight = new Flight(flightID, destinationAirport,
                 departureAirport, departureHour, departureMinute,
                 arrivalHour, arrivalMinute, departureDay,
