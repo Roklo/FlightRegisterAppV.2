@@ -36,7 +36,7 @@ class ApplicationUI
     {
         "1. List seats in flight",
         "2. List available seats in flight",
-        "3. List passangers in flight",
+        "3. List passengers in flight",
         "4. Back"
     };
 

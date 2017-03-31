@@ -9,7 +9,7 @@ package entity;
  *
  * @author Håkon
  */
-public class Person
+public abstract class Person
 {
 
     /**
@@ -57,14 +57,8 @@ public class Person
         return this.emailAddress;
     }
 
-    public String getEmployeeID()
-    {
-        return "";
-    }
+    public abstract String getEmployeeID();
 
-    public String getCertificateNumber()
-    {
-        return "";
-    }
+    public abstract String getCertificateNumber();
 
 }

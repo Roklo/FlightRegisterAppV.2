@@ -259,8 +259,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof Pilot)
             {
-                pilotsToReturn += person.getLastName() + " "
-                        + person.getFirstName() + "\n";
+                pilotsToReturn += person.getFirstName() + " "
+                        + person.getLastName() + "\n";
             }
         }
         return pilotsToReturn;
@@ -276,8 +276,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof CabinCrew)
             {
-                crewToReturn += person.getLastName() + " "
-                        + person.getFirstName() + "\n";
+                crewToReturn += person.getFirstName() + " "
+                        + person.getLastName() + "\n";
             }
         }
         return crewToReturn;
@@ -365,6 +365,14 @@ public class TicketReservationSystem
                 {
                     seatsToReturn += seat.getSeatId() + " ";
                 }
+            }
+            else if (seat != null && !seat.isAvailable())
+            {
+                for(int i = 0; i < seat.getSeatId().length(); i++)
+                {
+                    seatsToReturn += "-";
+                }
+                seatsToReturn += " ";
             }
         }
         return seatsToReturn;
