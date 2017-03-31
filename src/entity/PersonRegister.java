@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /**
- * The PersonRegister class represents a person register in a flight
- * reservation system where you can add and remove persons.
+ * The PersonRegister class represents a person register in a flight reservation
+ * system where you can add and remove persons.
  *
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.0 (14.02.2017)

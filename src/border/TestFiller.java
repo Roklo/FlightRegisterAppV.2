@@ -6,7 +6,7 @@
 package border;
 
 import border.ApplicationUI;
-import entity.Crew;
+import entity.CabinCrew;
 import entity.Passenger;
 
 import entity.Person;
@@ -61,16 +61,16 @@ public class TestFiller
 
     private void addSomeCrew()
     {
-        Person crew1 = new Crew("Chuck", "Finley",
-                "chuck@yahoo.com");
-        Person crew2 = new Crew("Chuck", "Bartowski",
-                "chuck@cia.gov.com");
-        Person crew3 = new Crew("Blue", "Jay",
-                "Barnes@Pearson.uk");
-        Person crew4 = new Crew("Dell", "Computer",
-                "computer@dell.no");
-        Person crew5 = new Crew("The", "Machine",
-                "01100011@yahoo.com");
+        Person crew1 = new CabinCrew("Chuck", "Finley",
+                "chuck@yahoo.com", "09001");
+        Person crew2 = new CabinCrew("Chuck", "Bartowski",
+                "chuck@cia.gov.com", "09002");
+        Person crew3 = new CabinCrew("Blue", "Jay",
+                "Barnes@Pearson.uk", "09003");
+        Person crew4 = new CabinCrew("Dell", "Computer",
+                "computer@dell.no", "09004");
+        Person crew5 = new CabinCrew("The", "Machine",
+                "01100011@yahoo.com", "09005");
         appUI.getApp().getTicketSystem().addPerson(crew1);
         appUI.getApp().getTicketSystem().addPerson(crew2);
         appUI.getApp().getTicketSystem().addPerson(crew3);
@@ -82,11 +82,11 @@ public class TestFiller
     private void addSomePilot()
     {
         Person pilot1 = new Pilot("Peter", "Jackson",
-                "peter@movie.com");
+                "peter@movie.com", "0100001", "09006");
         Person pilot2 = new Pilot("Suez", "Canal",
-                "pirate@somalia.com");
+                "pirate@somalia.com", "0100002", "09007");
         Person pilot3 = new Pilot("Jack", "Sparrow",
-                "Jack@pirate.com");
+                "Jack@pirate.com", "0100003", "09008");
 
         appUI.getApp().getTicketSystem().addPerson(pilot1);
         appUI.getApp().getTicketSystem().addPerson(pilot2);

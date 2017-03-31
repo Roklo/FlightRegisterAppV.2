@@ -1,6 +1,6 @@
 package border;
 
-import entity.Crew;
+import entity.CabinCrew;
 import facade.TicketReservationSystem;
 import entity.Flight;
 import entity.Passenger;
@@ -75,7 +75,7 @@ public class Application
             }
             else
             {
-              //TODO: Add pilot to flight
+                //TODO: Add pilot to flight
             }
         }
 
@@ -151,14 +151,13 @@ public class Application
         System.out.println("\nPlease enter the amount of seats"
                 + " within a row:");
         int numberOfLetters = reader.nextInt();
-        
+
         Flight newFlight = new Flight(flightID, destinationAirport,
                 departureAirport, departureHour, departureMinute,
                 arrivalHour, arrivalMinute, departureDay,
                 departureMonth, departureYear, arrivalDay,
                 arrivalMonth, arrivalYear, numberOfRows, numberOfLetters);
         ticketSystem.addFlight(newFlight);
-        
 
         System.out.println("\n\nThe following flight has been created:");
         System.out.println(newFlight.getFlightID() + ", "
@@ -193,13 +192,22 @@ public class Application
         System.out.println("Please enter the email address:");
         String eMail = reader.nextLine();
 
-        Person newPilot = new Pilot(firstName, lastName, eMail);
+        System.out.println("Please enter the certificate number:");
+        String certificateNumber = reader.nextLine();
+
+        System.out.println("Please enter the employee ID:");
+        String employeeID = reader.nextLine();
+
+        Person newPilot = new Pilot(firstName, lastName, eMail,
+                certificateNumber, employeeID);
 
         ticketSystem.addPerson(newPilot);
         System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newPilot.getFirstName() + " "
                 + newPilot.getLastName() + ", "
-                + newPilot.getEmail());
+                + newPilot.getEmail() + ", "
+                + newPilot.getEmployeeID() + ", "
+                + newPilot.getCertificateNumber());
     }
 
     void doRegisterCrew()
@@ -215,13 +223,17 @@ public class Application
         System.out.println("Please enter the email address:");
         String eMail = reader.nextLine();
 
-        Person newCrew = new Crew(firstName, lastName, eMail);
+        System.out.println("Please enter the employee ID:");
+        String employeeID = reader.nextLine();
+
+        Person newCrew = new CabinCrew(firstName, lastName, eMail, employeeID);
 
         ticketSystem.addPerson(newCrew);
         System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newCrew.getFirstName() + " "
                 + newCrew.getLastName() + ", "
-                + newCrew.getEmail());
+                + newCrew.getEmail() + ", "
+                + newCrew.getEmployeeID());
     }
 
     /**
@@ -249,6 +261,51 @@ public class Application
                 + newPassenger.getEmail());
     }
 
+    private Passenger getPassenger()
+    {
+        Scanner reader = new Scanner(System.in);
+        Passenger passenger = null;
+        boolean searching = true;
+        String lastName = "";
+        while (searching)
+        {
+            System.out.println("Please enter the last name of the passenger:");
+            lastName = reader.nextLine();
+            int passengerCount
+                    = ticketSystem.getNumberOfPassengersByLastName(lastName);
+            if (passengerCount == 0)
+            {
+                System.out.println("No passengers with that name was found");
+            }
+            else if (passengerCount == 1)
+            {
+                passenger = ticketSystem.getPassengerByLastName(lastName);
+                searching = false;
+            }
+            else if (passengerCount > 1)
+            {
+                System.out.println(passengerCount + " passenger with that "
+                        + "lastname was found, please enter firstname");
+                if (passengerCount <= 5)
+                {
+                    System.out.println("List of Matches: " + ticketSystem
+                            .getListOfPassengersByLastName(lastName) + "\n");
+                }
+                System.out.println("Please enter the firstname of the "
+                        + "passenger");
+                String firstName = reader.nextLine();
+                passenger = ticketSystem.getPassengerByFullName(firstName,
+                        lastName);
+                if (passenger != null)
+                {
+                    searching = false;
+                }
+            }
+        }
+        System.out.println("Match found\n" + passenger.toString());
+        return passenger;
+    }
+
     /**
      * Sells a ticket to a passenger. Prompts user for passenger and flight
      * info.
@@ -256,58 +313,70 @@ public class Application
     void doSellTicket()
     {
         System.out.println("\n-- Sell Ticket to Passenger --");
-        System.out.println("Please enter the last name of the passenger:");
         Scanner reader = new Scanner(System.in);
-        Passenger passenger
-                = ticketSystem.getPassengerByLastName(reader.nextLine());
+
+        Passenger passenger = getPassenger();
 
         //TODO: Insert 'Please choose the airport you are travelling from:'
-        System.out.println("Please choose a destination (e.g. OSL):");
+        System.out.println(
+                "Please choose a destination (e.g. OSL):");
         String destination = reader.nextLine();
 
-        System.out.println("Please choose a flight:");
+        System.out.println(
+                "Please choose a flight:");
         System.out.println(
                 ticketSystem.getAllFlightsByDestination(destination));
         String flightID = reader.nextLine();
         Flight flight = ticketSystem.getFlightByID(flightID);
 
-        System.out.println("Please choose a seat:");
+        System.out.println(
+                "Please choose a seat:");
         //flights.getSeats(flight).listAvailableSeats();
         System.out.println(ticketSystem.getAvailableSeatsInFlight(flight));
         String seat = reader.nextLine();
         Seat selectedSeat = ticketSystem.getSeatByID(flight, seat);
+
         ticketSystem.setSeatToUnavailable(selectedSeat);
 
-        System.out.println("Please enter a valid ticket ID (e.g. 1001):");
+        System.out.println(
+                "Please enter a valid ticket ID (e.g. 1001):");
         int ticketID = reader.nextInt();
 
-        System.out.println("Please enter the ticket price in NOK:");
+        System.out.println(
+                "Please enter the ticket price in NOK:");
         int price = reader.nextInt();
 
         Ticket newTicket = new Ticket(passenger, flight,
                 selectedSeat, flightID, ticketID, price);
+
         ticketSystem.addTicket(newTicket);
+
         flight.addPassenger(passenger);
 
-        System.out.println("\n\nThe following ticket has been sold:");
+        System.out.println(
+                "\n\nThe following ticket has been sold:");
         System.out.println(newTicket.getPassenger().getFirstName() + " "
                 + newTicket.getPassenger().getLastName()
                 + ", TicketNr: " + newTicket.getTicketID());
-        System.out.println("Flight: " + newTicket.getFlightID() + " "
+        System.out.println(
+                "Flight: " + newTicket.getFlightID() + " "
                 + newTicket.getFlight().getDepartureAirport()
                 + "->" + newTicket.getFlight().getDestinationAirport()
                 + ", Seat " + newTicket.getSeat().getSeatId());
-        System.out.println("Departure: " + flight.getDepartureHour() + ":"
+        System.out.println(
+                "Departure: " + flight.getDepartureHour() + ":"
                 + flight.getDepartureMinute() + ", "
                 + flight.getDepartureDay() + "."
                 + flight.getDepartureMonth() + "."
                 + flight.getDepartureYear());
-        System.out.println("Arrival: " + flight.getArrivalHour() + ":"
+        System.out.println(
+                "Arrival: " + flight.getArrivalHour() + ":"
                 + flight.getArrivalMinute() + ", "
                 + flight.getArrivalDay() + "."
                 + flight.getArrivalMonth() + "."
                 + flight.getArrivalYear());
-        System.out.println("Price: " + newTicket.getPrice() + "\n");
+        System.out.println(
+                "Price: " + newTicket.getPrice() + "\n");
     }
 
     /**

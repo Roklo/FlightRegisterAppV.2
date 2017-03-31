@@ -35,7 +35,7 @@ public class Flight
     private SeatRegister seats;
     private PassengerRegister passengers;
     private PersonRegister pilots;
-    private PersonRegister crew;
+    private PersonRegister cabinCrew;
 
     /**
      * The constructor of the Flight class
@@ -85,7 +85,7 @@ public class Flight
         addSeats(numberOfRows, numberOfLetters);
         passengers = new PassengerRegister();
         pilots = new PersonRegister();
-        crew = new PersonRegister();
+        cabinCrew = new PersonRegister();
 
     }
 
@@ -443,9 +443,9 @@ public class Flight
         this.pilots.addPerson(pilot);
     }
 
-    public void addCrew(Crew crew)
+    public void addCrew(CabinCrew crew)
     {
-        this.crew.addPerson(crew);
+        this.cabinCrew.addPerson(crew);
     }
 
     /**

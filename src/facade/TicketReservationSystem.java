@@ -10,7 +10,7 @@ import entity.SeatRegister;
 import entity.Ticket;
 import entity.TicketRegister;
 import entity.Pilot;
-import entity.Crew;
+import entity.CabinCrew;
 
 import java.util.Iterator;
 
@@ -81,20 +81,112 @@ public class TicketReservationSystem
     {
         boolean searching = true;
         Person passenger = null;
+        Person testPerson = null;
         Iterator<Person> it = persons.getPersonRegIterator();
         while (it.hasNext() && searching)
         {
-            passenger = it.next();
-            if (passenger instanceof Passenger
-                    && passenger.getLastName().equals(lastName))
+            testPerson = it.next();
+            if (testPerson instanceof Passenger
+                    && testPerson.getLastName().equals(lastName))
             {
+                passenger = testPerson;
                 searching = false;
             }
         }
         return (Passenger) passenger;
     }
 
+    /**
+     * Returns a passenger by the given fore, and surname.
+     *
+     * @param firstName is the forename of the passenger to be searched for.
+     * @param lastName The surname of the passenger to be searched for.
+     * @return The found passenger.
+     */
+    public Passenger getPassengerByFullName(String firstName, String lastName)
+    {
+        boolean searching = true;
+        Person passenger = null;
+        Person testPerson;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext() && searching)
+        {
+            testPerson = it.next();
+            if (testPerson instanceof Passenger
+                    && testPerson.getLastName().equals(lastName)
+                    && testPerson.getFirstName().equals(firstName))
+            {
+                passenger = testPerson;
+                searching = false;
+            }
+        }
+        return (Passenger) passenger;
+    }
+
+    public int getNumberOfPassengersByLastName(String lastName)
+    {
+        int personCount = 0;
+        Person passenger;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            passenger = it.next();
+            if (passenger instanceof Passenger
+                    && passenger.getLastName().equals(lastName))
+            {
+                personCount++;
+            }
+        }
+        return personCount;
+    }
+
+    /**
+     * Gets a String list of people with a given last name
+     *
+     * @param lastName
+     * @return a list of passengers lastname, firstname and email multiple
+     * people are seperated by line
+     *
+     */
+    public String getListOfPassengersByLastName(String lastName)
+    {
+        String returnString = "";
+        Person passenger;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            passenger = it.next();
+            if ((passenger instanceof Passenger)
+                    && (passenger.getLastName().equals(lastName)))
+            {
+                returnString += "\n    " + passenger.toString();
+            }
+        }
+        return returnString;
+    }
+
+<<<<<<< HEAD
     
+=======
+    //test
+    public Person getPersonByLastName(String lastName)
+    {
+        int counter = 0;
+        Person person;
+        Person personToReturn = null;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            if (person.getLastName().equals(lastName))
+            {
+                personToReturn = person;
+                counter++;
+            }
+        }
+        return personToReturn;
+    }
+>>>>>>> a19113cf5133163c77672f736ead4febb59dcdbf
 
     /**
      * Returns a flight by the given flight ID.
@@ -186,7 +278,7 @@ public class TicketReservationSystem
         while (it.hasNext())
         {
             person = it.next();
-            if (person instanceof Crew)
+            if (person instanceof CabinCrew)
             {
                 crewToReturn += person.getLastName() + " "
                         + person.getFirstName() + "\n";
