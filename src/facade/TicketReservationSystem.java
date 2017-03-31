@@ -2,6 +2,7 @@ package facade;
 
 import entity.Flight;
 import entity.FlightRegister;
+import entity.EmployeeInfomation;
 import entity.Passenger;
 import entity.Person;
 import entity.PersonRegister;
@@ -29,6 +30,7 @@ public class TicketReservationSystem
     private PersonRegister persons;
     private FlightRegister flights;
     private TicketRegister tickets;
+    private EmployeeInfomation employeeInformation;
 
     /**
      * Constructor for objects of class TicketReservationSystem. Creates a
@@ -40,6 +42,7 @@ public class TicketReservationSystem
         this.persons = new PersonRegister();
         this.flights = new FlightRegister();
         this.tickets = new TicketRegister();
+        this.employeeInformation = new EmployeeInfomation();
     }
 
     /**
@@ -206,6 +209,7 @@ public class TicketReservationSystem
     {
         boolean searching = true;
         Flight flight = null;
+        Flight flightToReturn = null;
         Iterator<Flight> it = this.flights.getFlightRegIterator();
         while (it.hasNext() && searching)
         {
@@ -213,9 +217,10 @@ public class TicketReservationSystem
             if (flight.getFlightID().equals(flightID))
             {
                 searching = false;
+                flightToReturn = flight;
             }
         }
-        return flight;
+        return flightToReturn;
     }
 
     /**
@@ -237,6 +242,11 @@ public class TicketReservationSystem
             }
         }
         return flightsToReturn;
+    }
+    
+    public int getNumberOfFlights()
+    {
+        return this.flights.getNumberOfFlights();
     }
 
     /**
@@ -422,5 +432,20 @@ public class TicketReservationSystem
         }
         return passengersToReturn;
     }
+    
+    public Person getPassengerInSeat()
+    {
+        Passenger passengerToReturn = null;
+        //TODO: Implement this method and add it
+        //      to the getPassengersInFlight method above.
+        return passengerToReturn;
+    }
+
+    public EmployeeInfomation getEmployeeInformation()
+    {
+        return this.employeeInformation;
+    }
+    
+   
 
 }

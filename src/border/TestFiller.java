@@ -7,6 +7,7 @@ package border;
 
 import border.ApplicationUI;
 import entity.CabinCrew;
+import entity.Flight;
 import entity.Passenger;
 
 import entity.Person;
@@ -35,6 +36,7 @@ public class TestFiller
         addSomePassengers();
         addSomeCrew();
         addSomePilot();
+        addSomeFlights();
         appUI.start();
     }
 
@@ -68,8 +70,6 @@ public class TestFiller
                 "tennfjord@gmail.com");
         Person person14 = new Passenger("Bjørnar3", "Tennfjord",
                 "ElPedro@gmail.com");
-        
-        
 
         appUI.getApp().getTicketSystem().addPerson(person1);
         appUI.getApp().getTicketSystem().addPerson(person2);
@@ -120,6 +120,23 @@ public class TestFiller
         appUI.getApp().getTicketSystem().addPerson(pilot1);
         appUI.getApp().getTicketSystem().addPerson(pilot2);
         appUI.getApp().getTicketSystem().addPerson(pilot3);
+    }
+
+    private void addSomeFlights()
+    {
+        Flight flight1 = new Flight("SK1234", "OSL", "AES",
+                10, 15, 11, 35, 4, 6, 2017, 4, 6, 2017, 14, 6);
+        Flight flight2 = new Flight("SK5548", "OSL", "AES",
+                11, 35, 12, 20, 4, 6, 2017, 4, 6, 2017, 14, 6);
+        Flight flight3 = new Flight("WR3321", "BGO", "AES",
+                12, 15, 13, 20, 4, 6, 2017, 4, 6, 2017, 8, 4);
+        Flight flight4 = new Flight("NO4141", "BGO", "AES",
+                11, 20, 12, 05, 4, 6, 2017, 4, 6, 2017, 14, 6);
+        
+        appUI.getApp().getTicketSystem().addFlight(flight1);
+        appUI.getApp().getTicketSystem().addFlight(flight2);
+        appUI.getApp().getTicketSystem().addFlight(flight3);
+        appUI.getApp().getTicketSystem().addFlight(flight4);
     }
 
 }
