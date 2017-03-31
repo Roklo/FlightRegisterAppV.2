@@ -302,16 +302,18 @@ public class TicketReservationSystem
     {
         boolean searching = true;
         Seat seat = null;
+        Seat seatToReturn = null;
         Iterator<Seat> it = flight.getSeats().getSeatRegIterator();
         while (it.hasNext() && searching)
         {
             seat = it.next();
             if (seat.getSeatId().equals(seatID))
             {
+                seatToReturn = seat;
                 searching = false;
             }
         }
-        return seat;
+        return seatToReturn;
     }
 
     /**
@@ -413,18 +415,34 @@ public class TicketReservationSystem
             if (pas != null)
             {
                 passengersToReturn += pas.getFirstName() + " "
-                        + pas.getLastName() + ", ";
+                        + pas.getLastName()
+                        + " - Seat " + getSeatByPassenger(pas) + "\n";
             }
         }
         return passengersToReturn;
     }
     
-    public Person getPassengerInSeat()
+    public String getSeatByPassenger(Passenger pas)
     {
-        Passenger passengerToReturn = null;
-        //TODO: Implement this method and add it
-        //      to the getPassengersInFlight method above.
-        return passengerToReturn;
+        String seatToReturn = "";
+        Ticket ticket = null;
+        boolean searching = true;
+        Iterator<Ticket> it = tickets.getTicketRegIterator();
+        while (it.hasNext() && searching)
+        {
+            ticket = it.next();
+            if(ticket != null &&
+                    ticket.getPassenger().toString().equals(pas.toString()))
+            {
+                seatToReturn = ticket.getSeat().getSeatId();
+                searching = false;
+            }
+            else
+            {
+                seatToReturn = "No seat was found by that passenger.";
+            }
+        }
+        return seatToReturn;
     }
 
 }
