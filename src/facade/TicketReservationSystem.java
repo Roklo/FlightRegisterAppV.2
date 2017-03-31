@@ -12,6 +12,7 @@ import entity.Ticket;
 import entity.TicketRegister;
 import entity.Pilot;
 import entity.CabinCrew;
+import java.util.ArrayList;
 
 import java.util.Iterator;
 
@@ -75,28 +76,34 @@ public class TicketReservationSystem
     }
 
     /**
-     * Returns a passenger by the given surname.
+     * Gets a passenger by the given surname.
      *
      * @param lastName The surname of the passenger to be searched for.
      * @return The found passenger.
      */
     public Passenger getPassengerByLastName(String lastName)
     {
+        ArrayList<Passenger> passengerList
+                = getArrayListOfPassengersByLastName(lastName);
+        return passengerList.get(0);
+    }
+
+    public ArrayList<Passenger> getArrayListOfPassengersByLastName(String lastName)
+    {
         boolean searching = true;
-        Person passenger = null;
-        Person testPerson = null;
+        ArrayList<Passenger> returnArray = new ArrayList<>();
+        Person iteratorPerson;
         Iterator<Person> it = persons.getPersonRegIterator();
         while (it.hasNext() && searching)
         {
-            testPerson = it.next();
-            if (testPerson instanceof Passenger
-                    && testPerson.getLastName().equals(lastName))
+            iteratorPerson = it.next();
+            if (iteratorPerson instanceof Passenger
+                    && iteratorPerson.getLastName().equals(lastName))
             {
-                passenger = testPerson;
-                searching = false;
+                returnArray.add((Passenger) iteratorPerson);
             }
         }
-        return (Passenger) passenger;
+        return returnArray;
     }
 
     /**
@@ -126,20 +133,17 @@ public class TicketReservationSystem
         return (Passenger) passenger;
     }
 
+    /**
+     * Gets the number of passengers with a given surname
+     *
+     * @param lastName is the surname to search for
+     * @return the number of passengers with the given name
+     */
     public int getNumberOfPassengersByLastName(String lastName)
     {
-        int personCount = 0;
-        Person passenger;
-        Iterator<Person> it = persons.getPersonRegIterator();
-        while (it.hasNext())
-        {
-            passenger = it.next();
-            if (passenger instanceof Passenger
-                    && passenger.getLastName().equals(lastName))
-            {
-                personCount++;
-            }
-        }
+        ArrayList<Passenger> passengerList
+                = getArrayListOfPassengersByLastName(lastName);
+        int personCount = passengerList.size();
         return personCount;
     }
 
@@ -151,23 +155,38 @@ public class TicketReservationSystem
      * people are seperated by line
      *
      */
-    public String getListOfPassengersByLastName(String lastName)
+    public String getStringListOfPassengersByLastName(String lastName)
     {
+        ArrayList<Passenger> passengerList
+                = getArrayListOfPassengersByLastName(lastName);
+
+        Iterator<Passenger> it = passengerList.iterator();
+        Person iteratorPerson;
         String returnString = "";
-        Person passenger;
-        Iterator<Person> it = persons.getPersonRegIterator();
         while (it.hasNext())
         {
-            passenger = it.next();
-            if ((passenger instanceof Passenger)
-                    && (passenger.getLastName().equals(lastName)))
-            {
-                returnString += "\n    " + passenger.toString();
-            }
+            iteratorPerson = it.next();
+            returnString += (iteratorPerson.toString() + "\n");
         }
         return returnString;
     }
 
+    //test
+    public Person getPersonByLastName(String lastName)
+    {
+        Person person;
+        Person personToReturn = null;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            if (person.getLastName().equals(lastName))
+            {
+                personToReturn = person;
+            }
+        }
+        return personToReturn;
+    }
 
     /**
      * Returns a flight by the given flight ID.
@@ -179,6 +198,7 @@ public class TicketReservationSystem
     {
         boolean searching = true;
         Flight flight = null;
+        Flight flightToReturn = null;
         Iterator<Flight> it = this.flights.getFlightRegIterator();
         while (it.hasNext() && searching)
         {
@@ -186,9 +206,10 @@ public class TicketReservationSystem
             if (flight.getFlightID().equals(flightID))
             {
                 searching = false;
+                flightToReturn = flight;
             }
         }
-        return flight;
+        return flightToReturn;
     }
 
     /**
@@ -210,6 +231,11 @@ public class TicketReservationSystem
             }
         }
         return flightsToReturn;
+    }
+    
+    public int getNumberOfFlights()
+    {
+        return this.flights.getNumberOfFlights();
     }
 
     /**
@@ -244,8 +270,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof Pilot)
             {
-                pilotsToReturn += person.getFirstName() + " "
-                        + person.getLastName() + "\n";
+                pilotsToReturn += person.getLastName() + " "
+                        + person.getFirstName() + "\n";
             }
         }
         return pilotsToReturn;
@@ -261,8 +287,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof CabinCrew)
             {
-                crewToReturn += person.getFirstName() + " "
-                        + person.getLastName() + "\n";
+                crewToReturn += person.getLastName() + " "
+                        + person.getFirstName() + "\n";
             }
         }
         return crewToReturn;
@@ -394,6 +420,14 @@ public class TicketReservationSystem
             }
         }
         return passengersToReturn;
+    }
+    
+    public Person getPassengerInSeat()
+    {
+        Passenger passengerToReturn = null;
+        //TODO: Implement this method and add it
+        //      to the getPassengersInFlight method above.
+        return passengerToReturn;
     }
 
     public EmployeeInfomation getEmployeeInformation()
