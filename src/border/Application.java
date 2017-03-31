@@ -2,6 +2,7 @@ package border;
 
 import entity.CabinCrew;
 import facade.TicketReservationSystem;
+import entity.EmployeeInfomation;
 import entity.Flight;
 import entity.Passenger;
 import entity.Person;
@@ -41,6 +42,7 @@ public class Application
     {
         this.ticketSystem = new TicketReservationSystem();
         this.crewList = new HashSet<>();
+        EmployeeInfomation employeeInformation = new EmployeeInfomation();
     }
 
     /**
@@ -190,19 +192,51 @@ public class Application
         String lastName = reader.nextLine();
 
         System.out.println("Please enter the email address:");
+
         String eMail = reader.nextLine();
 
         System.out.println("Please enter the certificate number:");
-        String certificateNumber = reader.nextLine();
 
-        System.out.println("Please enter the employee ID:");
-        String employeeID = reader.nextLine();
+        Boolean uniqueCertificateNumber = true;
+        String certificateNumber = "";
+
+        while (uniqueCertificateNumber)
+        {
+            certificateNumber = reader.nextLine();
+
+            if (certificateNumber.length() != 7
+                    || !certificateNumber.matches("[0-9]+"))
+            {
+                System.out.println("Please enter an 7-digit number");
+            }
+
+            if (certificateNumber.length() == 7
+                    && certificateNumber.matches("[0-9]+"))
+            {
+                uniqueCertificateNumber = ticketSystem.getEmployeeInformation()
+                        .addSertificate(firstName, lastName, certificateNumber);
+
+                if (uniqueCertificateNumber)
+                {                    
+                    System.out.println("This sertificate number "
+                        + "is already registered");
+                    System.out.println("Please enter the certificate number");
+                }
+                
+            }
+
+        }
+
+        //System.out.println("Please enter the employee ID:");
+        //String employeeID = reader.nextLine();
+        String employeeID = ticketSystem.getEmployeeInformation()
+                .getNewEmployeeNumber(firstName, lastName);
 
         Person newPilot = new Pilot(firstName, lastName, eMail,
                 certificateNumber, employeeID);
 
         ticketSystem.addPerson(newPilot);
-        System.out.println("\n\nThe following passenger has been registered:");
+        System.out.println("\n\nThe following pilot has been registered:");
         System.out.println(newPilot.getFirstName() + " "
                 + newPilot.getLastName() + ", "
                 + newPilot.getEmail() + ", "

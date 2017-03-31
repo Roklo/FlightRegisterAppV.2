@@ -2,6 +2,7 @@ package facade;
 
 import entity.Flight;
 import entity.FlightRegister;
+import entity.EmployeeInfomation;
 import entity.Passenger;
 import entity.Person;
 import entity.PersonRegister;
@@ -28,6 +29,7 @@ public class TicketReservationSystem
     private PersonRegister persons;
     private FlightRegister flights;
     private TicketRegister tickets;
+    private EmployeeInfomation employeeInformation;
 
     /**
      * Constructor for objects of class TicketReservationSystem. Creates a
@@ -39,6 +41,7 @@ public class TicketReservationSystem
         this.persons = new PersonRegister();
         this.flights = new FlightRegister();
         this.tickets = new TicketRegister();
+        this.employeeInformation = new EmployeeInfomation();
     }
 
     /**
@@ -392,5 +395,12 @@ public class TicketReservationSystem
         }
         return passengersToReturn;
     }
+
+    public EmployeeInfomation getEmployeeInformation()
+    {
+        return this.employeeInformation;
+    }
+    
+   
 
 }

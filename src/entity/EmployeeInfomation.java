@@ -26,52 +26,48 @@ public class EmployeeInfomation
      *
      * @return Return the newly created employee number for the given person.
      */
-    public int getNewEmployeeNumber(String foreName, String lastName)
+    public String getNewEmployeeNumber(String foreName, String lastName)
     {
         lastEmployeeNumber++;
-        String fullName = "foreName " + "lastName";
+        String fullName = foreName + " " + lastName;
 
-        if (lastEmployeeNumber >= 100000)
+        if (lastEmployeeNumber < 100000)
         {
-            currentEmployeeNumberString = "ERROR";
 
-            if (lastEmployeeNumber < 100000)
+            currentEmployeeNumberString = ""
+                    + lastEmployeeNumber;
+
+            if (lastEmployeeNumber < 10000)
             {
-                currentEmployeeNumberString = ""
+                currentEmployeeNumberString = "0"
                         + lastEmployeeNumber;
 
-                if (lastEmployeeNumber < 10000)
+                if (lastEmployeeNumber < 1000)
                 {
-                    currentEmployeeNumberString = "0"
+                    currentEmployeeNumberString = "00"
                             + lastEmployeeNumber;
 
-                    if (lastEmployeeNumber < 1000)
+                    if (lastEmployeeNumber < 100)
                     {
-                        currentEmployeeNumberString = "00"
+                        currentEmployeeNumberString = "000"
                                 + lastEmployeeNumber;
 
-                        if (lastEmployeeNumber < 100)
+                        if (lastEmployeeNumber < 10)
                         {
-                            currentEmployeeNumberString = "000"
+                            currentEmployeeNumberString = "0000"
                                     + lastEmployeeNumber;
-
-                            if (lastEmployeeNumber < 10)
-                            {
-                                currentEmployeeNumberString = "0000"
-                                        + lastEmployeeNumber;
-                            }
                         }
                     }
                 }
             }
         }
 
-        int currentEmployeeNumberInt
-                = Integer.parseInt(currentEmployeeNumberString);
+        Integer currentEmployeeNumberInt = Integer
+                .valueOf(currentEmployeeNumberString);
 
         listOfEmployeeNumbers.put(currentEmployeeNumberInt, fullName);
 
-        return currentEmployeeNumberInt;
+        return currentEmployeeNumberString;
     }
 
     /**
@@ -83,11 +79,13 @@ public class EmployeeInfomation
      *
      */
     public boolean addSertificate(String foreName, String lastName,
-            String sertificateIdString)
+            String sertificateId)
     {
-        String fullName = "foreName " + "lastName";
 
-        int sertificateIdInt = Integer.parseInt(sertificateIdString);
+        String fullName = foreName + " " + lastName;
+        
+        Integer sertificateIdInt = Integer.valueOf(sertificateId);
+
         boolean dublicateExist = true;
 
         if (!listOfSertificateNumbers.containsKey(sertificateIdInt))
@@ -99,5 +97,7 @@ public class EmployeeInfomation
 
         return dublicateExist;
     }
+    
+    //TODO: (ROBIN) Add getter to get lists.
 
 }
