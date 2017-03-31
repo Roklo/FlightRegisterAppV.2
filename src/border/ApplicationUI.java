@@ -153,6 +153,24 @@ class ApplicationUI
                         break;
 
                     case 5:
+
+                        this.application.doSellTicket();
+                        break;
+
+                    case 6:
+                        this.application.doListSeatsInFlight();
+                        break;
+
+                    case 7:
+                        this.application.doListAvailableSeatsInFlight();
+                        break;
+
+                    case 8:
+                        this.application.doListPassengersInFlight();
+                        break;
+
+                    case 9:
+
                         System.out.println("\nThank you for using"
                                 + " Application v0.1. Bye!\n");
                         quit = true;
@@ -160,8 +178,7 @@ class ApplicationUI
 
                     default:
                 }
-            }
-            catch (InputMismatchException ime)
+            } catch (InputMismatchException ime)
             {
                 System.out.println("\nERROR: Please provide a number between"
                         + " 1 and " + (this.menuItems.length + 1) + "..\n");
@@ -199,6 +216,12 @@ class ApplicationUI
             throw new InputMismatchException();
         }
         return menuSelection;
+    }
+
+
+    public Application getApp()
+    {
+        return this.application;
     }
 
     private int showRegMenu() throws InputMismatchException
@@ -242,4 +265,5 @@ class ApplicationUI
         }
         return listMenuSelection;
     }
+
 }

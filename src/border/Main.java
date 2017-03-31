@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package border;
-import entity.Flight;
-import entity.Seat;
-import entity.SeatRegister;
+
+import border.TestFiller;
 
 /**
  *
@@ -16,11 +15,27 @@ import entity.SeatRegister;
 public class Main
 {
 
+    private static TestFiller filler;
+
+    private static final boolean DEBUG = true;
+
     /**
      * @param args the command line arguments.
      */
     public static void main(String[] args)
     {
+        filler = new TestFiller();
+        if (DEBUG == true)
+        {
+
+            filler.startFillingRegister();
+
+        }
+        else
+        {
+            ApplicationUI appUI = new ApplicationUI();
+            appUI.start();
+        }
         /*
         System.out.println("test");
         SeatRegister seatReg = new SeatRegister(4, 4);
@@ -29,9 +44,8 @@ public class Main
         Flight newflight = new  Flight("#F242", "ALE", 
                 "OSL", 13, 30, 14, 30, 1, 1, 2017, 31, 1, 2017, 5, 6);
         newflight.getFlightTime();
-*/
-        ApplicationUI appUI = new ApplicationUI();
-        appUI.start();
+         */
+
     }
 
 }

@@ -8,8 +8,8 @@ package entity;
 public class Pilot extends Person
 {
 
-    private int certificateNumber;
-    private int employeeID;
+    private String certificateNumber;
+    private String employeeID;
 
     /**
      * Creates a new pilot given by his or hers forename, lastname, and an email
@@ -21,7 +21,7 @@ public class Pilot extends Person
      * @param employeeID
      */
     public Pilot(String foreName, String lastName, String emailAddress,
-            int certificateNumber, int employeeID)
+            String certificateNumber, String employeeID)
     {
         super(foreName, lastName, emailAddress);
         this.certificateNumber = certificateNumber;
@@ -29,13 +29,13 @@ public class Pilot extends Person
     }
 
     @Override
-    public int getEmployeeID()
+    public String getEmployeeID()
     {
         return this.employeeID;
     }
 
     @Override
-    public int getCertificateNumber()
+    public String getCertificateNumber()
     {
         return this.certificateNumber;
     }

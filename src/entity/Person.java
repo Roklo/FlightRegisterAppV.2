@@ -57,14 +57,14 @@ public class Person
         return this.emailAddress;
     }
     
-    public int getEmployeeID()
+    public String getEmployeeID()
     {
-        return 0;
+        return "";
     }
     
-    public int getCertificateNumber()
+    public String getCertificateNumber()
     {
-        return 0;
+        return "";
     }
 
 }

@@ -8,7 +8,7 @@ package entity;
 public class CabinCrew extends Person
 {
     
-    private int employeeID;
+    private String employeeID;
     
     /**
      * Creates a new cabin crew given by his or hers forename, lastname,
@@ -19,14 +19,14 @@ public class CabinCrew extends Person
      * @param employeeID
      */
     public CabinCrew(String foreName, String lastName, String emailAddress,
-            int employeeID)
+            String employeeID)
     {
         super(foreName, lastName, emailAddress);
         this.employeeID = employeeID;
     }
     
     @Override
-    public int getEmployeeID()
+    public String getEmployeeID()
     {
         return this.employeeID;
     }
