@@ -20,7 +20,7 @@ public class Person
     private final String lastName;
     private final String emailAddress;
 
-    public  Person(String foreName, String lastName, String emailAddress)
+    public Person(String foreName, String lastName, String emailAddress)
     {
         this.foreName = foreName;
         this.lastName = lastName;
@@ -56,12 +56,12 @@ public class Person
     {
         return this.emailAddress;
     }
-    
+
     public String getEmployeeID()
     {
         return "";
     }
-    
+
     public String getCertificateNumber()
     {
         return "";

@@ -178,7 +178,8 @@ class ApplicationUI
 
                     default:
                 }
-            } catch (InputMismatchException ime)
+            }
+            catch (InputMismatchException ime)
             {
                 System.out.println("\nERROR: Please provide a number between"
                         + " 1 and " + (this.menuItems.length + 1) + "..\n");
@@ -217,7 +218,6 @@ class ApplicationUI
         }
         return menuSelection;
     }
-
 
     public Application getApp()
     {

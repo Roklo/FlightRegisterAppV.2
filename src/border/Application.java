@@ -19,7 +19,8 @@ import java.util.HashSet;
  * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
  * @version 1.0 (14.02.2017)
  */
-public class Application {
+public class Application
+{
 
     private final TicketReservationSystem ticketSystem;
 
@@ -28,14 +29,16 @@ public class Application {
     /**
      * Initializes the application.
      */
-    public void init() {
+    public void init()
+    {
         //System.out.println("Init was called");
     }
 
     /**
      * Constructor for application class
      */
-    public Application() {
+    public Application()
+    {
         this.ticketSystem = new TicketReservationSystem();
         this.crewList = new HashSet<>();
     }
@@ -43,7 +46,8 @@ public class Application {
     /**
      * Creates a new flight. Prompts user for flight information.
      */
-    void doCreateFlight() {
+    void doCreateFlight()
+    {
         System.out.println("---- Create a Flight ----");
         System.out.println("Please enter the flight ID (e.g. SK4145):");
         Scanner reader = new Scanner(System.in);
@@ -55,17 +59,22 @@ public class Application {
                 + "Enter *done* when finish adding pilot");
 
         boolean doneAddPilot = false;
-        while (!doneAddPilot) {
+        while (!doneAddPilot)
+        {
             System.out.print("Add: ");
             String pilot = reader.nextLine();
-            if (pilot.equals("list")) {
+            if (pilot.equals("list"))
+            {
                 System.out.println("List of all availible pilots:\n"
                         + ticketSystem.getAllAvailablePilots());
             }
 
-            if (pilot.equals("done")) {
+            if (pilot.equals("done"))
+            {
                 doneAddPilot = true;
-            } else {
+            }
+            else
+            {
                 //TODO: Add pilot to flight
             }
         }
@@ -76,17 +85,22 @@ public class Application {
                 + "Enter *done* when finish adding crew");
 
         boolean doneAddCrew = false;
-        while (!doneAddCrew) {
+        while (!doneAddCrew)
+        {
             System.out.print("Add:");
             String crew = reader.nextLine();
-            if (crew.equals("list")) {
+            if (crew.equals("list"))
+            {
                 System.out.println("List of all availible crew:\n"
                         + ticketSystem.getAllAvailableCrew());
             }
 
-            if (crew.equals("done")) {
+            if (crew.equals("done"))
+            {
                 doneAddCrew = true;
-            } else {
+            }
+            else
+            {
                 //TODO: Add crew to flight
             }
         }
@@ -165,7 +179,8 @@ public class Application {
         //System.out.println(ticketSystem.getAllFlights());
     }
 
-    void doRegisterPilot() {
+    void doRegisterPilot()
+    {
         System.out.println("\n---- Register a Pilot ----");
         System.out.println("Please enter the forename:");
         Scanner reader = new Scanner(System.in);
@@ -195,7 +210,8 @@ public class Application {
                 + newPilot.getCertificateNumber());
     }
 
-    void doRegisterCrew() {
+    void doRegisterCrew()
+    {
         System.out.println("\n---- Register a Crew ----");
         System.out.println("Please enter the forename:");
         Scanner reader = new Scanner(System.in);
@@ -223,7 +239,8 @@ public class Application {
     /**
      * Registers a new passenger. Prompts user for passenger information.
      */
-    void doRegisterPassenger() {
+    void doRegisterPassenger()
+    {
         System.out.println("\n---- Register a Passenger ----");
         System.out.println("Please enter the forename:");
         Scanner reader = new Scanner(System.in);
@@ -244,43 +261,48 @@ public class Application {
                 + newPassenger.getEmail());
     }
 
-    private Passenger getPassenger() {
+    private Passenger getPassenger()
+    {
         Scanner reader = new Scanner(System.in);
         Passenger passenger = null;
         boolean searching = true;
-
-        while (searching) {
+        String lastName = "";
+        while (searching)
+        {
             System.out.println("Please enter the last name of the passenger:");
-            String lastName = reader.nextLine();
+            lastName = reader.nextLine();
             int passengerCount
                     = ticketSystem.getNumberOfPassengersByLastName(lastName);
-
-            if (passengerCount == 0) {
+            if (passengerCount == 0)
+            {
                 System.out.println("No passengers with that name was found");
             }
-            if (passengerCount == 1) {
+            else if (passengerCount == 1)
+            {
                 passenger = ticketSystem.getPassengerByLastName(lastName);
-                System.out.println("Match found\n" + passenger.toString());
                 searching = false;
             }
-            if (passengerCount >= 1) {
+            else if (passengerCount > 1)
+            {
                 System.out.println(passengerCount + " passenger with that "
                         + "lastname was found, please enter firstname");
-                if (passengerCount <= 6) {
-                    System.out.println("List of Matches: \n" + ticketSystem
-                            .getListOfPassengersByLastName(lastName));
+                if (passengerCount <= 5)
+                {
+                    System.out.println("List of Matches: " + ticketSystem
+                            .getListOfPassengersByLastName(lastName) + "\n");
                 }
                 System.out.println("Please enter the firstname of the "
                         + "passenger");
                 String firstName = reader.nextLine();
-                passenger = ticketSystem.getPassengerByFullName(lastName, 
-                        firstName);
-                if (passenger != null) {
+                passenger = ticketSystem.getPassengerByFullName(firstName,
+                        lastName);
+                if (passenger != null)
+                {
                     searching = false;
                 }
-                        
             }
         }
+        System.out.println("Match found\n" + passenger.toString());
         return passenger;
     }
 
@@ -288,7 +310,8 @@ public class Application {
      * Sells a ticket to a passenger. Prompts user for passenger and flight
      * info.
      */
-    void doSellTicket() {
+    void doSellTicket()
+    {
         System.out.println("\n-- Sell Ticket to Passenger --");
         Scanner reader = new Scanner(System.in);
 
@@ -360,7 +383,8 @@ public class Application {
      * Lists all the seats in a given flight. Prompts user for flight id using
      * reader.
      */
-    void doListSeatsInFlight() {
+    void doListSeatsInFlight()
+    {
         System.out.println("\n--- List Seats in a Flight ---");
         System.out.println("Please choose a flight ID:");
         System.out.println(ticketSystem.getAllFlights());
@@ -373,7 +397,8 @@ public class Application {
      * Lists all the available seats in a given flight. Prompts user for flight
      * id using reader.
      */
-    void doListAvailableSeatsInFlight() {
+    void doListAvailableSeatsInFlight()
+    {
         System.out.println("\n--- List Seats in a Flight ---");
         System.out.println("Please choose a flight ID:");
         System.out.println(ticketSystem.getAllFlights());
@@ -386,7 +411,8 @@ public class Application {
     /**
      * Lists passengers in a flight. Prompts user for flight id using reader.
      */
-    void doListPassengersInFlight() {
+    void doListPassengersInFlight()
+    {
         System.out.println("\n--- List Passengers in a Flight ---");
         System.out.println("Please choose a flight ID:");
         System.out.println(ticketSystem.getAllFlights());
@@ -404,14 +430,17 @@ public class Application {
      * @param displayInfo The message to display to user.
      * @return The integer from reader.
      */
-    private int getLimitedInt(int minValue, int maxValue, String displayInfo) {
+    private int getLimitedInt(int minValue, int maxValue, String displayInfo)
+    {
         Scanner reader = new Scanner(System.in);
         int returnInt = maxValue + 1;
         System.out.println("\n" + displayInfo + " ("
                 + minValue + "-" + maxValue + ")");
-        while ((returnInt > maxValue) || (returnInt < minValue)) {
+        while ((returnInt > maxValue) || (returnInt < minValue))
+        {
             returnInt = reader.nextInt();
-            if ((returnInt > maxValue) || (returnInt < minValue)) {
+            if ((returnInt > maxValue) || (returnInt < minValue))
+            {
                 System.out.println("Error: number must be betweeen "
                         + minValue + " and " + maxValue);
             }
@@ -419,7 +448,8 @@ public class Application {
         return returnInt;
     }
 
-    public TicketReservationSystem getTicketSystem() {
+    public TicketReservationSystem getTicketSystem()
+    {
         return this.ticketSystem;
     }
 }

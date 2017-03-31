@@ -14,6 +14,7 @@ public class Pilot extends Person
     /**
      * Creates a new pilot given by his or hers forename, lastname, and an email
      * address.
+     *
      * @param foreName
      * @param lastName
      * @param emailAddress
