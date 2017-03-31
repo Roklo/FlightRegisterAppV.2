@@ -217,12 +217,12 @@ public class Application
                         .addSertificate(firstName, lastName, certificateNumber);
 
                 if (uniqueCertificateNumber)
-                {                    
+                {
                     System.out.println("This sertificate number "
-                        + "is already registered");
+                            + "is already registered");
                     System.out.println("Please enter the certificate number");
                 }
-                
+
             }
 
         }
@@ -308,7 +308,6 @@ public class Application
             System.out.println(); //spacing
             int passengerCount
                     = ticketSystem.getNumberOfPassengersByLastName(lastName);
-<<<<<<< HEAD
             if (passengerCount == 0)
             {
                 System.out.println("\nNo passengers with that name was found");
@@ -335,49 +334,44 @@ public class Application
                         lastName);
                 if (passenger != null)
                 {
-=======
-            int functionInt = Integer.min(6, passengerCount);
-
-            switch (functionInt)
-            {
-                case 0:
-                    System.out.println("No passengers with that name was found");
-                    break;
-
-                case 1:
-                    passenger = ticketSystem.getPassengerByLastName(lastName);
->>>>>>> 694d82a3667d2aa6ffc7f822c25b13a58f10a6c2
-                    searching = false;
-                    break;
-
-                case 2:
-                case 3:
-                case 4:
-                case 5:
-                    String listOfMatches = ticketSystem
-                            .getStringListOfPassengersByLastName(lastName);
-                    System.out.println("Matches: " + listOfMatches);
-
-                case 6:
-                    System.out.println(passengerCount + " passenger with that "
-                            + "lastname was found, please enter firstname");
-
-                    System.out.println("Please enter the firstname of the "
-                            + "passenger");
-                    String firstName = reader.nextLine();
-                    passenger = ticketSystem.getPassengerByFullName(firstName,
-                            lastName);
-                    if (passenger != null)
+                    int functionInt = Integer.min(6, passengerCount);
+                    switch (functionInt)
                     {
-                        searching = false;
+                        case 0:
+                            System.out.println("No passengers with that name was found");
+                            break;
+
+                        case 1:
+                            passenger = ticketSystem.getPassengerByLastName(lastName);
+                            searching = false;
+                            break;
+
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                            String listOfMatches = ticketSystem
+                                    .getStringListOfPassengersByLastName(lastName);
+                            System.out.println("Matches: " + listOfMatches);
+
+                        case 6:
+                            System.out.println(passengerCount + " passenger with that "
+                                    + "lastname was found, please enter firstname");
+
+                            System.out.println("Please enter the firstname of the "
+                                    + "passenger");
+                            firstName = reader.nextLine();
+                            passenger = ticketSystem.getPassengerByFullName(firstName,
+                                    lastName);
+                            if (passenger != null)
+                            {
+                                searching = false;
+                            }
                     }
+                }
+                System.out.println("\nSelected person: \n" + passenger.toString());
             }
         }
-<<<<<<< HEAD
-        System.out.println("\nSelected person: \n3" + passenger.toString());
-=======
-        System.out.println("Selected person: \n" + passenger.toString());
->>>>>>> 694d82a3667d2aa6ffc7f822c25b13a58f10a6c2
         return passenger;
     }
 
