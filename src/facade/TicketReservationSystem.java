@@ -2,6 +2,7 @@ package facade;
 
 import entity.Flight;
 import entity.FlightRegister;
+import entity.EmployeeInfomation;
 import entity.Passenger;
 import entity.Person;
 import entity.PersonRegister;
@@ -29,6 +30,7 @@ public class TicketReservationSystem
     private PersonRegister persons;
     private FlightRegister flights;
     private TicketRegister tickets;
+    private EmployeeInfomation employeeInformation;
 
     /**
      * Constructor for objects of class TicketReservationSystem. Creates a
@@ -40,6 +42,7 @@ public class TicketReservationSystem
         this.persons = new PersonRegister();
         this.flights = new FlightRegister();
         this.tickets = new TicketRegister();
+        this.employeeInformation = new EmployeeInfomation();
     }
 
     /**
@@ -85,6 +88,12 @@ public class TicketReservationSystem
         return passengerList.get(0);
     }
 
+    /**
+     * Gets an array list of passengers by a given surname
+     *
+     * @param lastName is the surname to search for
+     * @return an array list of passengers with the given name
+     */
     public ArrayList<Passenger> getArrayListOfPassengersByLastName(String lastName)
     {
         boolean searching = true;
@@ -145,7 +154,7 @@ public class TicketReservationSystem
     }
 
     /**
-     * Gets a String list of people with a given last name
+     * Gets a String list of people with a given surname
      *
      * @param lastName
      * @return a list of passengers lastname, firstname and email multiple
@@ -156,7 +165,7 @@ public class TicketReservationSystem
     {
         ArrayList<Passenger> passengerList
                 = getArrayListOfPassengersByLastName(lastName);
-
+        
         Iterator<Passenger> it = passengerList.iterator();
         Person iteratorPerson;
         String returnString = "";
@@ -169,6 +178,11 @@ public class TicketReservationSystem
     }
 
     //test
+    /**
+     * Gets a person with the given surname
+     * @param lastName is the surname to look for
+     * @return a person with the given surname;
+     */
     public Person getPersonByLastName(String lastName)
     {
         Person person;
@@ -378,7 +392,7 @@ public class TicketReservationSystem
             }
             else if (seat != null && !seat.isAvailable())
             {
-                for(int i = 0; i < seat.getSeatId().length(); i++)
+                for (int i = 0; i < seat.getSeatId().length(); i++)
                 {
                     seatsToReturn += "-";
                 }
@@ -444,5 +458,12 @@ public class TicketReservationSystem
         }
         return seatToReturn;
     }
+
+    public EmployeeInfomation getEmployeeInformation()
+    {
+        return this.employeeInformation;
+    }
+    
+   
 
 }
