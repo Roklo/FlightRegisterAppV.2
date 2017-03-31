@@ -266,7 +266,7 @@ public class Application
         Scanner reader = new Scanner(System.in);
         Passenger passenger = null;
         boolean searching = true;
-        String lastName = "";
+        String lastName;
         while (searching)
         {
             System.out.println("Please enter the last name of the passenger:");
@@ -289,7 +289,8 @@ public class Application
                 if (passengerCount <= 5)
                 {
                     System.out.println("List of Matches: " + ticketSystem
-                            .getListOfPassengersByLastName(lastName) + "\n");
+                            .getStringListOfPassengersByLastName(lastName)
+                            + "\n");
                 }
                 System.out.println("Please enter the firstname of the "
                         + "passenger");
@@ -302,7 +303,7 @@ public class Application
                 }
             }
         }
-        System.out.println("Match found\n" + passenger.toString());
+            System.out.println("Selected person: \n3" + passenger.toString());
         return passenger;
     }
 

@@ -11,6 +11,7 @@ import entity.Ticket;
 import entity.TicketRegister;
 import entity.Pilot;
 import entity.CabinCrew;
+import java.util.ArrayList;
 
 import java.util.Iterator;
 
@@ -72,28 +73,34 @@ public class TicketReservationSystem
     }
 
     /**
-     * Returns a passenger by the given surname.
+     * Gets a passenger by the given surname.
      *
      * @param lastName The surname of the passenger to be searched for.
      * @return The found passenger.
      */
     public Passenger getPassengerByLastName(String lastName)
     {
+        ArrayList<Passenger> passengerList
+                = getArrayListOfPassengersByLastName(lastName);
+        return passengerList.get(0);
+    }
+
+    public ArrayList<Passenger> getArrayListOfPassengersByLastName(String lastName)
+    {
         boolean searching = true;
-        Person passenger = null;
-        Person testPerson = null;
+        ArrayList<Passenger> returnArray = new ArrayList<>();
+        Person iteratorPerson;
         Iterator<Person> it = persons.getPersonRegIterator();
         while (it.hasNext() && searching)
         {
-            testPerson = it.next();
-            if (testPerson instanceof Passenger
-                    && testPerson.getLastName().equals(lastName))
+            iteratorPerson = it.next();
+            if (iteratorPerson instanceof Passenger
+                    && iteratorPerson.getLastName().equals(lastName))
             {
-                passenger = testPerson;
-                searching = false;
+                returnArray.add((Passenger) iteratorPerson);
             }
         }
-        return (Passenger) passenger;
+        return returnArray;
     }
 
     /**
@@ -123,20 +130,17 @@ public class TicketReservationSystem
         return (Passenger) passenger;
     }
 
+    /**
+     * Gets the number of passengers with a given surname
+     *
+     * @param lastName is the surname to search for
+     * @return the number of passengers with the given name
+     */
     public int getNumberOfPassengersByLastName(String lastName)
     {
-        int personCount = 0;
-        Person passenger;
-        Iterator<Person> it = persons.getPersonRegIterator();
-        while (it.hasNext())
-        {
-            passenger = it.next();
-            if (passenger instanceof Passenger
-                    && passenger.getLastName().equals(lastName))
-            {
-                personCount++;
-            }
-        }
+        ArrayList<Passenger> passengerList
+                = getArrayListOfPassengersByLastName(lastName);
+        int personCount = passengerList.size();
         return personCount;
     }
 
@@ -148,19 +152,18 @@ public class TicketReservationSystem
      * people are seperated by line
      *
      */
-    public String getListOfPassengersByLastName(String lastName)
+    public String getStringListOfPassengersByLastName(String lastName)
     {
+        ArrayList<Passenger> passengerList
+                = getArrayListOfPassengersByLastName(lastName);
+
+        Iterator<Passenger> it = passengerList.iterator();
+        Person iteratorPerson;
         String returnString = "";
-        Person passenger;
-        Iterator<Person> it = persons.getPersonRegIterator();
         while (it.hasNext())
         {
-            passenger = it.next();
-            if ((passenger instanceof Passenger)
-                    && (passenger.getLastName().equals(lastName)))
-            {
-                returnString += "\n    " + passenger.toString();
-            }
+            iteratorPerson = it.next();
+            returnString += (iteratorPerson.toString() + "\n");
         }
         return returnString;
     }
@@ -168,7 +171,6 @@ public class TicketReservationSystem
     //test
     public Person getPersonByLastName(String lastName)
     {
-        int counter = 0;
         Person person;
         Person personToReturn = null;
         Iterator<Person> it = persons.getPersonRegIterator();
@@ -178,7 +180,6 @@ public class TicketReservationSystem
             if (person.getLastName().equals(lastName))
             {
                 personToReturn = person;
-                counter++;
             }
         }
         return personToReturn;
