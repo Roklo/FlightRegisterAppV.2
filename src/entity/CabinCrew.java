@@ -31,6 +31,12 @@ public class CabinCrew extends Person
     {
         return this.employeeID;
     }
+    
+    @Override
+    public String getCertificateNumber()
+    {
+        return "The cabin crew does not have a certificate number.";
+    }
 
     @Override
     public String toString()

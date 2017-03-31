@@ -367,6 +367,14 @@ public class TicketReservationSystem
                     seatsToReturn += seat.getSeatId() + " ";
                 }
             }
+            else if (seat != null && !seat.isAvailable())
+            {
+                for(int i = 0; i < seat.getSeatId().length(); i++)
+                {
+                    seatsToReturn += "-";
+                }
+                seatsToReturn += " ";
+            }
         }
         return seatsToReturn;
     }
