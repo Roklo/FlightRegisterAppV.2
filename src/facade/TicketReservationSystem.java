@@ -165,28 +165,6 @@ public class TicketReservationSystem
         return returnString;
     }
 
-<<<<<<< HEAD
-    
-=======
-    //test
-    public Person getPersonByLastName(String lastName)
-    {
-        int counter = 0;
-        Person person;
-        Person personToReturn = null;
-        Iterator<Person> it = persons.getPersonRegIterator();
-        while (it.hasNext())
-        {
-            person = it.next();
-            if (person.getLastName().equals(lastName))
-            {
-                personToReturn = person;
-                counter++;
-            }
-        }
-        return personToReturn;
-    }
->>>>>>> a19113cf5133163c77672f736ead4febb59dcdbf
 
     /**
      * Returns a flight by the given flight ID.
