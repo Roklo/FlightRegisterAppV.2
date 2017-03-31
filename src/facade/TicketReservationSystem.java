@@ -10,7 +10,7 @@ import entity.SeatRegister;
 import entity.Ticket;
 import entity.TicketRegister;
 import entity.Pilot;
-import entity.Crew;
+import entity.CabinCrew;
 
 import java.util.Iterator;
 
@@ -184,7 +184,7 @@ public class TicketReservationSystem
         while (it.hasNext())
         {
             person = it.next();
-            if (person instanceof Crew)
+            if (person instanceof CabinCrew)
             {
                 crewToReturn += person.getLastName() + " "
                         + person.getFirstName() + "\n";

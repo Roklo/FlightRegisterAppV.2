@@ -19,6 +19,7 @@ public class Passenger extends Person
         super(foreName, lastName, emailAddress);
     }
 
+    @Override
     public String toString()
     {
         return getFirstName() + " " + getLastName() + " - " + getEmail();

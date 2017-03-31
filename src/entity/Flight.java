@@ -35,6 +35,7 @@ public class Flight
     
     private SeatRegister seats;
     private PassengerRegister passengers;
+    private PersonRegister crew;
 
     /**
      * The constructor of the Flight class

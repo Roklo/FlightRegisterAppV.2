@@ -37,8 +37,7 @@ class ApplicationUI
         "1. List seats in flight",
         "2. List available seats in flight",
         "3. List passangers in flight",
-        "4. List crew and pilot in flight",
-        "5. Back"
+        "4. Back"
     };
 
     /**
@@ -134,12 +133,9 @@ class ApplicationUI
                                         this.application.doListPassengersInFlight();
                                         break;
                                     case 4:
-                                        //List crew and pilot
-                                        break;
-                                    case 5:
                                         back = true;
                                         break;
-                                    case 6:
+                                    case 5:
                                         System.out.println("\nThank you for using"
                                                 + " Application v0.1. Bye!\n");
                                         back = true;

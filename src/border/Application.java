@@ -1,6 +1,6 @@
 package border;
 
-import entity.Crew;
+import entity.CabinCrew;
 import facade.TicketReservationSystem;
 import entity.Flight;
 import entity.Passenger;
@@ -74,7 +74,7 @@ public class Application
         System.out.println("\nPlease enter the name of the crew" + "\n"
                 + "Enter *list* to list all crew" + "\n"
                 + "Enter *done* when finish adding crew");
-       
+
         boolean doneAddCrew = false;
         while (!doneAddCrew)
         {
@@ -138,7 +138,7 @@ public class Application
         System.out.println("\nPlease enter the amount of seats"
                 + " within a row:");
         int numberOfLetters = reader.nextInt();
-        
+
         Flight newFlight = new Flight(flightID, destinationAirport,
                 departureAirport, departureHour, departureMinute,
                 arrivalHour, arrivalMinute, departureDay,
@@ -178,13 +178,22 @@ public class Application
         System.out.println("Please enter the email address:");
         String eMail = reader.nextLine();
 
-        Person newPilot = new Pilot(firstName, lastName, eMail);
+        System.out.println("Please enter the certificate number:");
+        int certificateNumber = reader.nextInt();
+
+        System.out.println("Please enter the employee ID:");
+        int employeeID = reader.nextInt();
+
+        Person newPilot = new Pilot(firstName, lastName, eMail,
+                certificateNumber, employeeID);
 
         ticketSystem.addPerson(newPilot);
         System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newPilot.getFirstName() + " "
                 + newPilot.getLastName() + ", "
-                + newPilot.getEmail());
+                + newPilot.getEmail() + ", "
+                + newPilot.getEmployeeID() + ", "
+                + newPilot.getCertificateNumber());
     }
 
     void doRegisterCrew()
@@ -200,13 +209,17 @@ public class Application
         System.out.println("Please enter the email address:");
         String eMail = reader.nextLine();
 
-        Person newCrew = new Crew(firstName, lastName, eMail);
+        System.out.println("Please enter the employee ID:");
+        int employeeID = reader.nextInt();
+
+        Person newCrew = new CabinCrew(firstName, lastName, eMail, employeeID);
 
         ticketSystem.addPerson(newCrew);
         System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newCrew.getFirstName() + " "
                 + newCrew.getLastName() + ", "
-                + newCrew.getEmail());
+                + newCrew.getEmail() + ", "
+                + newCrew.getEmployeeID());
     }
 
     /**
