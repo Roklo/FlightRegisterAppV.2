@@ -42,9 +42,9 @@ public class TestFiller
     {
         Person person1 = new Passenger("Robin", "Thorholm",
                 "rocio@gmail.com");
-        Person person2 = new Passenger("Håkon", "Haram",
-                "håkon.h@gmail.com");
-        Person person3 = new Passenger("Bjørnar", "Tennfjord",
+        Person person2 = new Passenger("Haakon", "Haram",
+                "haakon.h@gmail.com");
+        Person person3 = new Passenger("Bjornar", "Tennfjord",
                 "bjorn_puzzyDestroyer69@gmail.com");
         Person person4 = new Passenger("Erlend", "Knudsen",
                 "erlender@gmail.com");
@@ -62,11 +62,11 @@ public class TestFiller
                 "vadPower@gmail.com");
         Person person11 = new Passenger("Espen6", "Vad",
                 "tinderEspen@gmail.com");
-        Person person12 = new Passenger("Bjørnar1", "Tennfjord",
+        Person person12 = new Passenger("Bjornar1", "Tennfjord",
                 "bmtennfjord@gmail.com");
-        Person person13 = new Passenger("Bjørnar2", "Tennfjord",
+        Person person13 = new Passenger("Bjornar2", "Tennfjord",
                 "tennfjord@gmail.com");
-        Person person14 = new Passenger("Bjørnar3", "Tennfjord",
+        Person person14 = new Passenger("Bjornar3", "Tennfjord",
                 "ElPedro@gmail.com");
         
         

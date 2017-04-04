@@ -197,6 +197,42 @@ public class Application
 
         System.out.println("Please enter the employee ID:");
         String employeeID = reader.nextLine();
+        System.out.println("Please enter the certificate number (7 digits):");
+
+        Boolean uniqueCertificateNumber = true;
+        String certificateNumber = "";
+
+        while (uniqueCertificateNumber)
+        {
+            certificateNumber = reader.nextLine();
+
+            if (certificateNumber.length() != 7
+                    || !certificateNumber.matches("[0-9]+"))
+            {
+                System.out.println("Please enter an 7-digit number");
+            }
+
+            if (certificateNumber.length() == 7
+                    && certificateNumber.matches("[0-9]+"))
+            {
+                uniqueCertificateNumber = ticketSystem.getEmployeeInformation()
+                        .addSertificate(firstName, lastName, certificateNumber);
+
+                if (uniqueCertificateNumber)
+                {
+                    System.out.println("This sertificate number "
+                            + "is already registered.");
+                    System.out.println("Please enter the certificate number (7 digits):");
+                }
+
+            }
+
+        }
+
+        //System.out.println("Please enter the employee ID:");
+        //String employeeID = reader.nextLine();
+        String employeeID = ticketSystem.getEmployeeInformation()
+                .getNewEmployeeNumber(firstName, lastName);
 
         Person newPilot = new Pilot(firstName, lastName, eMail,
                 certificateNumber, employeeID);
@@ -205,9 +241,9 @@ public class Application
         System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newPilot.getFirstName() + " "
                 + newPilot.getLastName() + ", "
-                + newPilot.getEmail() + ", "
-                + newPilot.getEmployeeID() + ", "
-                + newPilot.getCertificateNumber());
+                + newPilot.getEmail()
+                + ", Employee ID: " + newPilot.getEmployeeID()
+                + ", Certificate Nr: " + newPilot.getCertificateNumber());
     }
 
     void doRegisterCrew()
@@ -271,6 +307,7 @@ public class Application
         {
             System.out.println("Please enter the last name of the passenger:");
             lastName = reader.nextLine();
+            System.out.println(); //spacing
             int passengerCount
                     = ticketSystem.getNumberOfPassengersByLastName(lastName);
             if (passengerCount == 0)
@@ -303,6 +340,45 @@ public class Application
             }
         }
         System.out.println("Match found\n" + passenger.toString());
+            int functionInt = Integer.min(6, passengerCount);
+
+            switch (functionInt)
+            {
+                case 0:
+                    System.out.println("No passengers with that name was found");
+                    break;
+
+                case 1:
+                    passenger = ticketSystem.getPassengerByLastName(lastName);
+                    searching = false;
+                    break;
+
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    String listOfMatches = ticketSystem
+                            .getStringListOfPassengersByLastName(lastName);
+                    System.out.println("Matches: \n" + listOfMatches);
+
+                case 6:
+                    System.out.println(passengerCount + " passenger with that "
+                            + "lastname was found, please enter firstname");
+
+                    System.out.println("Please enter the firstname of the "
+                            + "passenger");
+                    String firstName = reader.nextLine();
+                    passenger = ticketSystem.getPassengerByFullName(firstName,
+                            lastName);
+                    if (passenger != null)
+                    {
+                        searching = false;
+                    }
+            }
+        }
+
+        System.out.println(
+                "Selected person: \n" + passenger.toString());
         return passenger;
     }
 
