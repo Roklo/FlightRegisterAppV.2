@@ -15,7 +15,7 @@ public class EmployeeInfomation
     HashMap<Integer, String> listOfEmployeeNumbers = new HashMap<>();
     HashMap<Integer, String> listOfSertificateNumbers = new HashMap<>();
 
-    int lastEmployeeNumber = 0;
+    int lastEmployeeNumber = 99998;
     int sertificateIdInt = 0;
     String lastEmployeeNumberString = "000000";
     String currentEmployeeNumberString = "";
@@ -30,10 +30,13 @@ public class EmployeeInfomation
     {
         lastEmployeeNumber++;
         String fullName = foreName + " " + lastName;
+        if (lastEmployeeNumber > 100000)
+        {
+            currentEmployeeNumberString = "ERROR";
+        }
 
         if (lastEmployeeNumber < 100000)
         {
-
             currentEmployeeNumberString = ""
                     + lastEmployeeNumber;
 
@@ -83,7 +86,7 @@ public class EmployeeInfomation
     {
 
         String fullName = foreName + " " + lastName;
-        
+
         Integer sertificateIdInt = Integer.valueOf(sertificateId);
 
         boolean dublicateExist = true;
@@ -97,7 +100,6 @@ public class EmployeeInfomation
 
         return dublicateExist;
     }
-    
-    //TODO: (ROBIN) Add getter to get lists.
 
+    //TODO: (ROBIN) Add getter to get lists.
 }

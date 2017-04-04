@@ -191,9 +191,27 @@ public class Application
         System.out.println("Please enter the surname:");
         String lastName = reader.nextLine();
 
-        System.out.println("Please enter the email address:");
+        Boolean validEmail = false;
+        String eMail = "";
 
-        String eMail = reader.nextLine();
+        while (!validEmail)
+        {
+            System.out.println("Please enter the email address:");
+            eMail = reader.nextLine();
+            eMail = eMail.toLowerCase();
+
+            String EMAIL_REGEX
+                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+
+            validEmail = eMail.matches(EMAIL_REGEX);
+
+            if (validEmail == false)
+            {
+                System.out.println("Email: " + eMail
+                        + " is not valid a valid email");
+            }
+
+        }
 
         System.out.println("Please enter the certificate number:");
 
@@ -227,11 +245,11 @@ public class Application
 
         }
 
-        //System.out.println("Please enter the employee ID:");
-        //String employeeID = reader.nextLine();
+        //Creates new emloyeeID
         String employeeID = ticketSystem.getEmployeeInformation()
                 .getNewEmployeeNumber(firstName, lastName);
 
+        //Creates the pilot 
         Person newPilot = new Pilot(firstName, lastName, eMail,
                 certificateNumber, employeeID);
 
@@ -244,6 +262,9 @@ public class Application
                 + newPilot.getCertificateNumber());
     }
 
+    /**
+     * Registers a new crewmember
+     */
     void doRegisterCrew()
     {
         System.out.println("\n---- Register a Crew ----");
@@ -254,12 +275,44 @@ public class Application
         System.out.println("Please enter the surname:");
         String lastName = reader.nextLine();
 
-        System.out.println("Please enter the email address:");
-        String eMail = reader.nextLine();
+        Boolean validEmail = false;
+        String eMail = "";
+        while (!validEmail)
+        {
+            System.out.println("Please enter the email address:");
+            eMail = reader.nextLine();
+            eMail = eMail.toLowerCase();
 
-        System.out.println("Please enter the employee ID:");
-        String employeeID = reader.nextLine();
+            String EMAIL_REGEX
+                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
 
+            validEmail = eMail.matches(EMAIL_REGEX);
+
+            if (validEmail == false)
+            {
+                System.out.println("Email: " + eMail
+                        + " is not valid a valid email");
+            }
+        }
+
+        //Creates new emloyeeID
+        String employeeID = ticketSystem.getEmployeeInformation()
+                .getNewEmployeeNumber(firstName, lastName);
+
+        //TODO: Implement when quit function is created
+        /*
+                if (employeeID == "ERROR")
+        {
+            System.out.println("ERROR, CONTACT SYSTEM ADMIN" + "\n"
+                    + "ERRORCODE: OUT OF EMPLOYEE NUMBERS" + "\n" + "\n"
+                    + "PRESS ANY KEY TO QUIT TO MAIN MENU");
+
+            reader.nextLine();
+
+        }
+         */
+        
+        //Creates the cabin crew
         Person newCrew = new CabinCrew(firstName, lastName, eMail, employeeID);
 
         ticketSystem.addPerson(newCrew);
@@ -283,8 +336,25 @@ public class Application
         System.out.println("Please enter the surname:");
         String lastName = reader.nextLine();
 
-        System.out.println("Please enter the email address:");
-        String eMail = reader.nextLine();
+        Boolean validEmail = false;
+        String eMail = "";
+        while (!validEmail)
+        {
+            System.out.println("Please enter the email address:");
+            eMail = reader.nextLine();
+            eMail = eMail.toLowerCase();
+
+            String EMAIL_REGEX
+                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+
+            validEmail = eMail.matches(EMAIL_REGEX);
+
+            if (validEmail == false)
+            {
+                System.out.println("Email: " + eMail
+                        + " is not valid a valid email");
+            }
+        }
 
         Person newPassenger = new Passenger(firstName, lastName, eMail);
 
@@ -295,7 +365,7 @@ public class Application
                 + newPassenger.getEmail());
     }
 
-  private Passenger getPassenger()
+    private Passenger getPassenger()
     {
         Scanner reader = new Scanner(System.in);
         Passenger passenger = null;
