@@ -77,7 +77,7 @@ public class Application
                 + "\nEnter 'list' to list all pilots");
         String firstPilot = "";
         Person pilot = null;
-        Person copilot= null;
+        Person copilot = null;
         int pilotsAdded = 0;
         while (pilotsAdded < 2)
         {
@@ -120,7 +120,7 @@ public class Application
         }
 
         //Add crew
-        List<CabinCrew> cabinCrew = new ArrayList<>(); 
+        List<CabinCrew> cabinCrew = new ArrayList<>();
         int maxCrewSize = 0;
         done = false;
         while (!done)
@@ -224,7 +224,7 @@ public class Application
         int numberOfLetters = reader.nextInt();
 
         Flight newFlight = new Flight(flightID, pilot, copilot, cabinCrew,
-                destinationAirport,departureAirport, departureHour,
+                destinationAirport, departureAirport, departureHour,
                 departureMinute, arrivalHour, arrivalMinute,
                 departureDay, departureMonth, departureYear,
                 arrivalDay, arrivalMonth, arrivalYear,
@@ -249,12 +249,11 @@ public class Application
                 + newFlight.getArrivalYear());
         System.out.println("Pilot: " + newFlight.getPilot().getFirstName()
                 + " " + newFlight.getPilot().getLastName()
-        + "\nCopilot: " + newFlight.getCopilot().getFirstName() + " "
+                + "\nCopilot: " + newFlight.getCopilot().getFirstName() + " "
                 + newFlight.getCopilot().getLastName()
-        + "\nCabin crew:\n" + newFlight.getAllCabinCrew());
+                + "\nCabin crew:\n" + newFlight.getAllCabinCrew());
     }
 
-    
     /**
      * Registers a new pilot to the system. Prompts user for fields.
      */
@@ -267,21 +266,34 @@ public class Application
 
         System.out.println("\nPlease enter the surname:");
         String lastName = reader.nextLine();
-        
-        Boolean validEmail = false;
+
+        boolean done = false;
         String eMail = "";
-        while (!validEmail)
+        while (!done)
         {
-            System.out.println("Please enter the email address:");
-            eMail = reader.nextLine();
-            eMail = eMail.toLowerCase();
-            String EMAIL_REGEX
-                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-            validEmail = eMail.matches(EMAIL_REGEX);
-            if (validEmail == false)
+            System.out.println("\nPlease enter an email address:");
+            Boolean validEmail = false;
+            while (!validEmail)
             {
-                System.out.println("Email: " + eMail
-                        + " is not valid a valid email");
+                eMail = reader.nextLine();
+                eMail = eMail.toLowerCase();
+                String EMAIL_REGEX
+                        = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+                validEmail = eMail.matches(EMAIL_REGEX);
+                if (validEmail == false)
+                {
+                    System.out.println("\nEmail: " + eMail
+                            + " is not valid a valid email address."
+                            + "\nPlease enter a valid email address:");
+                }
+            }
+            if (ticketSystem.getPersonByEmail(eMail) != null)
+            {
+                System.out.println("This email address is already registered!");
+            }
+            else
+            {
+                done = true;
             }
         }
 
@@ -341,23 +353,33 @@ public class Application
         System.out.println("Please enter the surname:");
         String lastName = reader.nextLine();
 
-        Boolean validEmail = false;
+        boolean done = false;
         String eMail = "";
-        while (!validEmail)
+        while (!done)
         {
-            System.out.println("Please enter the email address:");
-            eMail = reader.nextLine();
-            eMail = eMail.toLowerCase();
-
-            String EMAIL_REGEX
-                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-
-            validEmail = eMail.matches(EMAIL_REGEX);
-
-            if (validEmail == false)
+            System.out.println("\nPlease enter an email address:");
+            Boolean validEmail = false;
+            while (!validEmail)
             {
-                System.out.println("Email: " + eMail
-                        + " is not valid a valid email");
+                eMail = reader.nextLine();
+                eMail = eMail.toLowerCase();
+                String EMAIL_REGEX
+                        = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+                validEmail = eMail.matches(EMAIL_REGEX);
+                if (validEmail == false)
+                {
+                    System.out.println("\nEmail: " + eMail
+                            + " is not valid a valid email address."
+                            + "\nPlease enter a valid email address:");
+                }
+            }
+            if (ticketSystem.getPersonByEmail(eMail) != null)
+            {
+                System.out.println("This email address is already registered!");
+            }
+            else
+            {
+                done = true;
             }
         }
 
@@ -374,7 +396,6 @@ public class Application
                     + "PRESS ANY KEY TO QUIT TO MAIN MENU");
             reader.nextLine();
         } */
-        
         //Creates the cabin crew
         Person newCrew = new CabinCrew(firstName, lastName, eMail, employeeID);
 
@@ -399,21 +420,33 @@ public class Application
         System.out.println("\nPlease enter the surname:");
         String lastName = reader.nextLine();
 
-        Boolean validEmail = false;
+        boolean done = false;
         String eMail = "";
-        while (!validEmail)
+        while (!done)
         {
-            System.out.println("Please enter the email address:");
-            eMail = reader.nextLine();
-            eMail = eMail.toLowerCase();
-            String EMAIL_REGEX
-                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-            validEmail = eMail.matches(EMAIL_REGEX);
-
-            if (validEmail == false)
+            System.out.println("\nPlease enter an email address:");
+            Boolean validEmail = false;
+            while (!validEmail)
             {
-                System.out.println("Email: " + eMail
-                        + " is not valid a valid email");
+                eMail = reader.nextLine();
+                eMail = eMail.toLowerCase();
+                String EMAIL_REGEX
+                        = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+                validEmail = eMail.matches(EMAIL_REGEX);
+                if (validEmail == false)
+                {
+                    System.out.println("\nEmail: " + eMail
+                            + " is not valid a valid email address."
+                            + "\nPlease enter a valid email address:");
+                }
+            }
+            if (ticketSystem.getPersonByEmail(eMail) != null)
+            {
+                System.out.println("This email address is already registered!");
+            }
+            else
+            {
+                done = true;
             }
         }
         Person newPassenger = new Passenger(firstName, lastName, eMail);
@@ -426,6 +459,7 @@ public class Application
 
     /**
      * Gets a passenger, prompts user for input
+     *
      * @return a passenger
      */
     private Passenger getPassenger()
@@ -677,7 +711,8 @@ public class Application
 
     /**
      * Gets a flight. Prompts user for flight id using reader.
-     * @return 
+     *
+     * @return
      */
     private Flight chooseAFlight()
     {
@@ -710,7 +745,7 @@ public class Application
     }
 
     /**
-     * Prompts user for a int input between two values, will not return value 
+     * Prompts user for a int input between two values, will not return value
      * before requirements are met.
      *
      * @param minValue The minimum input value.
@@ -736,7 +771,6 @@ public class Application
         return returnInt;
     }
 
-    
     public TicketReservationSystem getTicketSystem()
     {
         return this.ticketSystem;
