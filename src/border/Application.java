@@ -187,29 +187,25 @@ public class Application
         System.out.println("Please enter the forename:");
         Scanner reader = new Scanner(System.in);
         String firstName = reader.nextLine();
+       // ticketSystem.getPersonByFirstName();
 
-        System.out.println("Please enter the surname:");
+        System.out.println("\nPlease enter the surname:");
         String lastName = reader.nextLine();
 
-        System.out.println("Please enter the email address:");
-
+        System.out.println("\nPlease enter the email address:");
         String eMail = reader.nextLine();
-
-        System.out.println("Please enter the certificate number (7 digits):");
-
+        
+        System.out.println("\nPlease enter the certificate number (7 digits):");
         Boolean uniqueCertificateNumber = true;
         String certificateNumber = "";
-
         while (uniqueCertificateNumber)
         {
             certificateNumber = reader.nextLine();
-
             if (certificateNumber.length() != 7
                     || !certificateNumber.matches("[0-9]+"))
             {
-                System.out.println("Please enter an 7-digit number");
+                System.out.println("\nPlease enter an 7-digit number");
             }
-
             if (certificateNumber.length() == 7
                     && certificateNumber.matches("[0-9]+"))
             {
@@ -218,13 +214,11 @@ public class Application
 
                 if (uniqueCertificateNumber)
                 {
-                    System.out.println("This sertificate number "
+                    System.out.println("\nThis sertificate number "
                             + "is already registered.");
                     System.out.println("Please enter the certificate number (7 digits):");
                 }
-
             }
-
         }
 
         //System.out.println("Please enter the employee ID:");
@@ -238,10 +232,10 @@ public class Application
         ticketSystem.addPerson(newPilot);
         System.out.println("\n\nThe following pilot has been registered:");
         System.out.println(newPilot.getFirstName() + " "
-                + newPilot.getLastName() + ", "
+                + newPilot.getLastName() + "\n"
                 + newPilot.getEmail()
-                + ", Employee ID: " + newPilot.getEmployeeID()
-                + ", Certificate Nr: " + newPilot.getCertificateNumber());
+                + "\nEmployee ID: " + newPilot.getEmployeeID()
+                + "\nCertificate Nr: " + newPilot.getCertificateNumber());
     }
 
     void doRegisterCrew()
