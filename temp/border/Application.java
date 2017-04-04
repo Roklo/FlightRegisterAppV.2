@@ -9,7 +9,6 @@ import entity.Person;
 import entity.Pilot;
 import entity.Seat;
 import entity.Ticket;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import java.util.HashSet;
@@ -295,27 +294,20 @@ public class Application
         Scanner reader = new Scanner(System.in);
         Passenger passenger = null;
         boolean searching = true;
-        String firstName = null;
-        String lastName = null;
-
+        String lastName;
         while (searching)
         {
-            if (lastName == null)
-            {
-                System.out.println("Please enter the last name of the passenger:");
-                lastName = reader.nextLine();
-                System.out.println(); //spacing
-            }
+            System.out.println("Please enter the last name of the passenger:");
+            lastName = reader.nextLine();
+            System.out.println(); //spacing
             int passengerCount
-                    = ticketSystem.getNumberOfPassengersWithName(firstName, lastName);
+                    = ticketSystem.getNumberOfPassengersByLastName(lastName);
             int functionInt = Integer.min(6, passengerCount);
 
             switch (functionInt)
             {
                 case 0:
                     System.out.println("No passengers with that name was found");
-                    lastName = null;
-                    firstName = null;
                     break;
 
                 case 1:
@@ -327,37 +319,22 @@ public class Application
                 case 3:
                 case 4:
                 case 5:
-                    ArrayList<Passenger> listOfMatches = ticketSystem
-                            .getArrayListOfPassengersWithName(firstName, lastName);
-                    System.out.println(passengerCount + " matches "
-                            + "\nPlease select a Passenger by index");
-                    int size = listOfMatches.size();
-                    for (int index = 0; index < size; index++)
-                    {
-                        System.out.println(index + ":  "
-                                + listOfMatches.get(index).toString());
-                    }
-                    int selectedIndex = getLimitedInt(0, size,
-                            "Please select a Passenger by index");
-                    passenger = listOfMatches.get(selectedIndex);
-                    searching = false;
-                    break;
+                    String listOfMatches = ticketSystem
+                            .getStringListOfPassengersByLastName(lastName);
+                    System.out.println("Matches: \n" + listOfMatches);
 
                 case 6:
+                    System.out.println(passengerCount + " passenger with that "
+                            + "lastname was found, please enter firstname");
 
-                    if (firstName == null)
+                    System.out.println("Please enter the firstname of the "
+                            + "passenger");
+                    String firstName = reader.nextLine();
+                    passenger = ticketSystem.getPassengerByFullName(firstName,
+                            lastName);
+                    if (passenger != null)
                     {
-                                            System.out.println(passengerCount + " passenger with that "
-                            + "lastname was found.");
-                        System.out.println("Please enter the firstname of the "
-                                + "passenger");
-                        firstName = reader.nextLine();
-                    }
-                    else
-                    {
-                        System.out.println("Theres too many people with that first and lastname :(");
-                        firstName = null;
-                        lastName = null;
+                        searching = false;
                     }
             }
         }
