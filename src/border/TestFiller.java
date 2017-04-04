@@ -13,6 +13,8 @@ import entity.Passenger;
 import entity.Person;
 import entity.Person;
 import entity.Pilot;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -49,11 +51,11 @@ public class TestFiller
         Person person3 = new Passenger("Bjornar", "Tennfjord",
                 "bjorn_puzzyDestroyer69@gmail.com");
         Person person4 = new Passenger("Erlend", "Knudsen",
-                "erlender@gmail.com");
+                "erlend@gmail.com");
         Person person5 = new Passenger("Espen", "Vad",
-                "xX_sexy_vaden_killer_Xx@gmail.com");
+                "espen_vad@hotmail.com");
         Person person6 = new Passenger("Espen1", "Vad",
-                "moodrix@gmail.com");
+                "vaden59@gmail.com");
         Person person7 = new Passenger("Espen", "Vad",
                 "espenErBest@gmail.com");
         Person person8 = new Passenger("Espen1", "Vad",
@@ -130,15 +132,37 @@ public class TestFiller
 
     private void addSomeFlights()
     {
-        Flight flight1 = new Flight("SK1234", "OSL", "AES",
-                10, 15, 11, 35, 4, 6, 2017, 4, 6, 2017, 14, 6);
-        Flight flight2 = new Flight("SK5548", "OSL", "AES",
-                11, 35, 12, 20, 4, 6, 2017, 4, 6, 2017, 14, 6);
-        Flight flight3 = new Flight("WR3321", "BGO", "AES",
-                12, 15, 13, 20, 4, 6, 2017, 4, 6, 2017, 8, 4);
-        Flight flight4 = new Flight("NO4141", "BGO", "AES",
-                11, 20, 12, 05, 4, 6, 2017, 4, 6, 2017, 14, 6);
-        
+        String name = "";
+        name = "Peter Jackson";
+        Person pilot
+                = appUI.getApp().getTicketSystem().getPersonByWholeName(name);
+        name = "Jack Sparrow";
+        Person copilot
+                = appUI.getApp().getTicketSystem().getPersonByWholeName(name);
+
+        name = "Chuck Finley";
+        Person crew1
+                = appUI.getApp().getTicketSystem().getPersonByWholeName(name);
+        name = "Blue Jay";
+        Person crew2
+                = appUI.getApp().getTicketSystem().getPersonByWholeName(name);
+        name = "The Machine";
+        Person crew3
+                = appUI.getApp().getTicketSystem().getPersonByWholeName(name);
+        List<CabinCrew> cabinCrew = new ArrayList<>();
+        cabinCrew.add((CabinCrew) crew1);
+        cabinCrew.add((CabinCrew) crew2);
+        cabinCrew.add((CabinCrew) crew3);
+
+        Flight flight1 = new Flight("SK1234", pilot, copilot, cabinCrew,
+                "OSL", "AES", 10, 15, 11, 35, 4, 6, 2017, 4, 6, 2017, 14, 6);
+        Flight flight2 = new Flight("SK5548", pilot, copilot, cabinCrew,
+                "OSL", "AES", 11, 35, 12, 20, 4, 6, 2017, 4, 6, 2017, 14, 6);
+        Flight flight3 = new Flight("WR3321", pilot, copilot, cabinCrew,
+                "BGO", "AES", 12, 15, 13, 20, 4, 6, 2017, 4, 6, 2017, 8, 4);
+        Flight flight4 = new Flight("NO4141", pilot, copilot, cabinCrew,
+                "BGO", "AES", 11, 20, 12, 05, 4, 6, 2017, 4, 6, 2017, 14, 6);
+
         appUI.getApp().getTicketSystem().addFlight(flight1);
         appUI.getApp().getTicketSystem().addFlight(flight2);
         appUI.getApp().getTicketSystem().addFlight(flight3);

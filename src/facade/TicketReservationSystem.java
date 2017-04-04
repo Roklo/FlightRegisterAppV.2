@@ -230,6 +230,75 @@ public class TicketReservationSystem
     }
 
     /**
+     * Returns a person with the given forename
+     *
+     * @param firstName the forename to look for
+     * @return a person with the given forename;
+     */
+    public Person getPersonByFirstName(String firstName)
+    {
+        Person person;
+        Person personToReturn = null;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            if (person.getFirstName().equals(firstName))
+            {
+                personToReturn = person;
+            }
+        }
+        return personToReturn;
+    }
+
+    /**
+     * Returns a person with the given forename and surname
+     *
+     * @param firstName the forename to look for
+     * @param lastName the surname to look for
+     * @return a person with the given forename and surname;
+     */
+    public Person getPersonByWholeName(String name)
+    {
+        Person person;
+        Person personToReturn = null;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            String tempName = person.getFirstName() + " "
+                    + person.getLastName();
+            if (tempName.equals(name))
+            {
+                personToReturn = person;
+            }
+        }
+        return personToReturn;
+    }
+    
+        /**
+     * Returns a person with the given email address
+     *
+     * @param email the email to look for
+     * @return a person with the given email address;
+     */
+    public Person getPersonByEmail(String email)
+    {
+        Person person;
+        Person personToReturn = null;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            if (person.getEmail().equals(email))
+            {
+                personToReturn = person;
+            }
+        }
+        return personToReturn;
+    }
+
+    /**
      * Returns a flight by the given flight ID.
      *
      * @param flightID The flight ID of the flight to be searched for.
@@ -311,8 +380,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof Pilot)
             {
-                pilotsToReturn += person.getLastName() + " "
-                        + person.getFirstName() + "\n";
+                pilotsToReturn += person.getFirstName()+ " "
+                        + person.getLastName()+ "\n";
             }
         }
         return pilotsToReturn;
@@ -328,8 +397,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof CabinCrew)
             {
-                crewToReturn += person.getLastName() + " "
-                        + person.getFirstName() + "\n";
+                crewToReturn += person.getFirstName()+ " "
+                        + person.getLastName()+ "\n";
             }
         }
         return crewToReturn;
