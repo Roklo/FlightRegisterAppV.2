@@ -108,52 +108,46 @@ public class Application
             }
         }
 
-        //Add destination airport
-        System.out.println("\nPlease enter the destination"
-                + "airport (e.g. OSL):");
-        String destinationAirport = reader.nextLine();
-        //Add departure airport
-        System.out.println("\nPlease enter the departure airport"
-                + "(e.g. AES):");
-        String departureAirport = reader.nextLine();
+        String destinationAirport = promptForInput("Please enter the destination "
+                + "airport (e.g. OSL)");
 
-        System.out.println("\nPlease enter the departure hour (0-23):");
-        int departureHour = reader.nextInt();
+        String departureAirport = promptForInput(
+                "please enter the departure airport (e.g. AES):");
 
-        System.out.println("\nPlease enter the departure minute (0-59):");
-        int departureMinute = reader.nextInt();
+        int departureHour
+                = promptForInt(0, 23, "Please enter the departure hour");
 
-        System.out.println("\nPlease enter the arrival hour (0-23):");
-        int arrivalHour = reader.nextInt();
+        int departureMinute
+                = promptForInt(0, 59, "Please enter the departure minute");
 
-        System.out.println("\nPlease enter the arrival minute (0-59):");
-        int arrivalMinute = reader.nextInt();
+        int arrivalHour
+                = promptForInt(0, 23, "Please enter the arrival hour");
 
-        System.out.println("\nPlease enter the departure day (1-31):");
-        int departureDay = reader.nextInt();
+        int arrivalMinute
+                = promptForInt(0, 59, "Please enter the arrival minute");
 
-        System.out.println("\nPlease enter the departure month (1-12):");
-        int departureMonth = reader.nextInt();
+        int departureDay
+                = promptForInt(1, 31, "Please enter the departure day");
 
-        System.out.println("\nPlease enter the departure year:");
-        int departureYear = reader.nextInt();
+        int departureMonth
+                = promptForInt(1, 12, "Please enter the departure month");
 
-        System.out.println("\nPlease enter the arrival day (1-31):");
-        int arrivalDay = reader.nextInt();
+        int departureYear
+                = promptForInt(0, 3000, "Please enter the departure year");
 
-        System.out.println("\nPlease enter the arrival month (1-12):");
-        int arrivalMonth = reader.nextInt();
+        int arrivalDay = promptForInt(1, 31, "Please enter the arrival day");
 
-        System.out.println("\nPlease enter the arrival year:");
-        int arrivalYear = reader.nextInt();
+        int arrivalMonth
+                = promptForInt(1, 12, "Please enter the arrival month");
 
-        System.out.println("\nPlease enter the amount of rows of"
-                + " seats in the plane:");
-        int numberOfRows = reader.nextInt();
+        int arrivalYear
+                = promptForInt(0, 3000, "Please enter the arrival year");
 
-        System.out.println("\nPlease enter the amount of seats"
-                + " within a row:");
-        int numberOfLetters = reader.nextInt();
+        int numberOfRows = promptForInt(1, 999, "Please enter the amount of rows of"
+                + " seats in the plane");
+
+        int numberOfLetters = promptForInt(1, 27, "Please enter the amount of "
+                + "seats within a row");
 
         Flight newFlight = new Flight(flightID, destinationAirport,
                 departureAirport, departureHour, departureMinute,
@@ -182,7 +176,6 @@ public class Application
         //System.out.println(ticketSystem.getAllFlights());
     }
 
-    
     /**
      * Registers a new pilot to the system. Prompts user for fields.
      */
@@ -328,32 +321,15 @@ public class Application
     void doRegisterPassenger()
     {
         System.out.println("\n---- Register a Passenger ----");
-        System.out.println("Please enter the forename:");
-        Scanner reader = new Scanner(System.in);
-        String firstName = reader.nextLine();
+
+        String firstName
+                = promptForInput("Please enter the foreName of the passenger");
 
         System.out.println("Please enter the surname:");
-        String lastName = reader.nextLine();
+        String lastName
+                = promptForInput("Please enter the surname of the passenger");
 
-        Boolean validEmail = false;
-        String eMail = "";
-        while (!validEmail)
-        {
-            System.out.println("Please enter the email address:");
-            eMail = reader.nextLine();
-            eMail = eMail.toLowerCase();
-
-            String EMAIL_REGEX
-                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
-
-            validEmail = eMail.matches(EMAIL_REGEX);
-
-            if (validEmail == false)
-            {
-                System.out.println("Email: " + eMail
-                        + " is not valid a valid email");
-            }
-        }
+        String eMail = promptForEmail();
 
         Person newPassenger = new Passenger(firstName, lastName, eMail);
 
@@ -366,6 +342,7 @@ public class Application
 
     /**
      * Gets a passenger, prompts user for input
+     *
      * @return a passenger
      */
     private Passenger getPassenger()
@@ -415,7 +392,7 @@ public class Application
                         System.out.println(index + ":  "
                                 + listOfMatches.get(index).toString());
                     }
-                    int selectedIndex = getLimitedInt(0, size,
+                    int selectedIndex = promptForInt(0, size,
                             "Please select a Passenger by index");
                     passenger = listOfMatches.get(selectedIndex);
                     searching = false;
@@ -617,7 +594,8 @@ public class Application
 
     /**
      * Gets a flight. Prompts user for flight id using reader.
-     * @return 
+     *
+     * @return
      */
     private Flight chooseAFlight()
     {
@@ -650,7 +628,7 @@ public class Application
     }
 
     /**
-     * Prompts user for a int input between two values, will not return value 
+     * Prompts user for a int input between two values, will not return value
      * before requirements are met.
      *
      * @param minValue The minimum input value.
@@ -658,27 +636,73 @@ public class Application
      * @param displayInfo The message to display to user.
      * @return The integer from reader.
      */
-    private int getLimitedInt(int minValue, int maxValue, String displayInfo)
+    private int promptForInt(int minValue, int maxValue, String displayText)
     {
         Scanner reader = new Scanner(System.in);
         int returnInt = maxValue + 1;
-        System.out.println("\n" + displayInfo + " ("
+        System.out.println("\n" + displayText + " ("
                 + minValue + "-" + maxValue + ")");
         while ((returnInt > maxValue) || (returnInt < minValue))
         {
             returnInt = reader.nextInt();
             if ((returnInt > maxValue) || (returnInt < minValue))
             {
-                System.out.println("Error: number must be betweeen "
+                System.out.println("Error: please enter a number between "
                         + minValue + " and " + maxValue);
             }
         }
         return returnInt;
     }
 
-    
+    private String promptForInput(String displayText)
+    {
+        Scanner reader = new Scanner(System.in);
+        System.out.println(displayText);
+        boolean validInput = false;
+        String returnString = null;
+        while (!validInput)
+        {
+            returnString = reader.next().trim();
+            if (returnString.equals(""))
+            {
+                System.out.println("Field is blank!");
+                System.out.println(displayText);
+            }
+            else
+            {
+                validInput = true;
+            }
+        }
+        return returnString;
+    }
+
     public TicketReservationSystem getTicketSystem()
     {
         return this.ticketSystem;
+    }
+
+    private String promptForEmail()
+    {
+        Scanner reader = new Scanner(System.in);
+        String eMail = "";
+        Boolean validEmail = false;
+        while (!validEmail)
+        {
+            System.out.println("Please enter the email address:");
+            eMail = reader.nextLine();
+            eMail = eMail.toLowerCase();
+
+            String EMAIL_REGEX
+                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+
+            validEmail = eMail.matches(EMAIL_REGEX);
+
+            if (validEmail == false)
+            {
+                System.out.println("Email: " + eMail
+                        + " is not valid a valid email");
+            }
+        }
+        return eMail;
     }
 }
