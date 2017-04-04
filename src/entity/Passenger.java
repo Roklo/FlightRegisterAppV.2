@@ -25,16 +25,4 @@ public class Passenger extends Person
         return getFirstName() + " " + getLastName() + " - " + getEmail();
     }
 
-    @Override
-    public String getEmployeeID()
-    {
-        return "The passengers does not have an employee ID.";
-    }
-
-    @Override
-    public String getCertificateNumber()
-    {
-        return "The cabin crew does not have a certificate number.";
-    }
-
 }

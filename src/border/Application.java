@@ -192,10 +192,23 @@ public class Application
         System.out.println("\nPlease enter the surname:");
         String lastName = reader.nextLine();
 
+<<<<<<< HEAD
         System.out.println("\nPlease enter the email address:");
         String eMail = reader.nextLine();
         
         System.out.println("\nPlease enter the certificate number (7 digits):");
+=======
+        System.out.println("Please enter the email address:");
+        String eMail = reader.nextLine();
+
+        System.out.println("Please enter the certificate number:");
+        String certificateNumber = reader.nextLine();
+
+        System.out.println("Please enter the employee ID:");
+        String employeeID = reader.nextLine();
+        System.out.println("Please enter the certificate number (7 digits):");
+
+>>>>>>> dd9bde26d4649f720bee4595d778b4e9b5a7d8c5
         Boolean uniqueCertificateNumber = true;
         String certificateNumber = "";
         while (uniqueCertificateNumber)
@@ -230,7 +243,7 @@ public class Application
                 certificateNumber, employeeID);
 
         ticketSystem.addPerson(newPilot);
-        System.out.println("\n\nThe following pilot has been registered:");
+        System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newPilot.getFirstName() + " "
                 + newPilot.getLastName() + "\n"
                 + newPilot.getEmail()
@@ -294,7 +307,7 @@ public class Application
         Scanner reader = new Scanner(System.in);
         Passenger passenger = null;
         boolean searching = true;
-        String lastName;
+        String lastName = "";
         while (searching)
         {
             System.out.println("Please enter the last name of the passenger:");
@@ -302,6 +315,36 @@ public class Application
             System.out.println(); //spacing
             int passengerCount
                     = ticketSystem.getNumberOfPassengersByLastName(lastName);
+            if (passengerCount == 0)
+            {
+                System.out.println("No passengers with that name was found");
+            }
+            else if (passengerCount == 1)
+            {
+                passenger = ticketSystem.getPassengerByLastName(lastName);
+                searching = false;
+            }
+            else if (passengerCount > 1)
+            {
+                System.out.println(passengerCount + " passenger with that "
+                        + "lastname was found, please enter firstname");
+                if (passengerCount <= 5)
+                {
+                    System.out.println("List of Matches: " + ticketSystem
+                            .getListOfPassengersByLastName(lastName) + "\n");
+                }
+                System.out.println("Please enter the firstname of the "
+                        + "passenger");
+                String firstName = reader.nextLine();
+                passenger = ticketSystem.getPassengerByFullName(firstName,
+                        lastName);
+                if (passenger != null)
+                {
+                    searching = false;
+                }
+            }
+        }
+        System.out.println("Match found\n" + passenger.toString());
             int functionInt = Integer.min(6, passengerCount);
 
             switch (functionInt)
@@ -356,70 +399,32 @@ public class Application
         Passenger passenger = getPassenger();
 
         //TODO: Insert 'Please choose the airport you are travelling from:'
-        boolean searching = true;
-        String destination = "";
-        while (searching)
-        {
-            System.out.println(
-                    "Please choose a destination (e.g. OSL):");
-            destination = reader.nextLine();
-            if (ticketSystem.getAllFlightsByDestination(destination).equals(""))
-            {
-                System.out.println("\nNo flights found by that destination.");
-            }
-            else
-            {
-                searching = false;
-            }
-        }
-
-        Flight flight = null;
-        String flightID = null;
-        searching = true;
-        while (searching)
-        {
-            System.out.println(
-                    "\nPlease choose a flight:");
-            System.out.println(
-                    ticketSystem.getAllFlightsByDestination(destination));
-            flightID = reader.nextLine();
-            flight = ticketSystem.getFlightByID(flightID);
-            if (flight != null)
-            {
-                searching = false;
-            }
-            else
-            {
-                System.out.println("Invalid flight ID!");
-            }
-        }
-        String seat = "";
-        Seat selectedSeat = null;
-        searching = true;
-        while (searching)
-        {
-            System.out.println(
-                    "\nPlease choose a seat:");
-            System.out.println(ticketSystem.getAvailableSeatsInFlight(flight));
-            seat = reader.nextLine();
-            selectedSeat = ticketSystem.getSeatByID(flight, seat);
-            if (selectedSeat != null)
-            {
-                searching = false;
-                ticketSystem.setSeatToUnavailable(selectedSeat);
-            }
-            else
-            {
-                System.out.println("Invalid seat ID!");
-            }
-        }
+        System.out.println(
+                "Please choose a destination (e.g. OSL):");
+        String destination = reader.nextLine();
 
         System.out.println(
-                "\nPlease enter a valid ticket ID (e.g. 1001):");
+                "Please choose a flight:");
+        System.out.println(
+                ticketSystem.getAllFlightsByDestination(destination));
+        String flightID = reader.nextLine();
+        Flight flight = ticketSystem.getFlightByID(flightID);
+
+        System.out.println(
+                "Please choose a seat:");
+        //flights.getSeats(flight).listAvailableSeats();
+        System.out.println(ticketSystem.getAvailableSeatsInFlight(flight));
+        String seat = reader.nextLine();
+        Seat selectedSeat = ticketSystem.getSeatByID(flight, seat);
+
+        ticketSystem.setSeatToUnavailable(selectedSeat);
+
+        System.out.println(
+                "Please enter a valid ticket ID (e.g. 1001):");
         int ticketID = reader.nextInt();
 
         System.out.println(
-                "\nPlease enter the ticket price in NOK:");
+                "Please enter the ticket price in NOK:");
         int price = reader.nextInt();
 
         Ticket newTicket = new Ticket(passenger, flight,
@@ -462,17 +467,11 @@ public class Application
     void doListSeatsInFlight()
     {
         System.out.println("\n--- List Seats in a Flight ---");
-        String seatsInFlight
-                = ticketSystem.getSeats(chooseAFlight());
-        if (seatsInFlight.isEmpty())
-        {
-            System.out.println("\nThere are no registered"
-                    + " seats in this flight!");
-        }
-        else
-        {
-            System.out.println("\n" + seatsInFlight);
-        }
+        System.out.println("Please choose a flight ID:");
+        System.out.println(ticketSystem.getAllFlights());
+        Scanner reader = new Scanner(System.in);
+        Flight flight = ticketSystem.getFlightByID(reader.nextLine());
+        System.out.println("\n" + ticketSystem.getSeats(flight));
     }
 
     /**
@@ -481,18 +480,13 @@ public class Application
      */
     void doListAvailableSeatsInFlight()
     {
-        System.out.println("\n--- List Available Seats in a Flight ---");
-        String seatsInFlight
-                = ticketSystem.getAvailableSeatsInFlight(chooseAFlight());
-        if (seatsInFlight.isEmpty())
-        {
-            System.out.println("\nThere are no registered"
-                    + " seats in this flight!");
-        }
-        else
-        {
-            System.out.println("\n" + seatsInFlight);
-        }
+        System.out.println("\n--- List Seats in a Flight ---");
+        System.out.println("Please choose a flight ID:");
+        System.out.println(ticketSystem.getAllFlights());
+        Scanner reader = new Scanner(System.in);
+        Flight flight = ticketSystem.getFlightByID(reader.nextLine());
+        System.out.println("\n"
+                + ticketSystem.getAvailableSeatsInFlight(flight));
     }
 
     /**
@@ -501,47 +495,11 @@ public class Application
     void doListPassengersInFlight()
     {
         System.out.println("\n--- List Passengers in a Flight ---");
-        String passengersInFlight
-                = ticketSystem.getPassengersInFlight(chooseAFlight());
-        if (passengersInFlight.isEmpty())
-        {
-            System.out.println("\nThere are no registered"
-                    + " passengers in this flight!");
-        }
-        else
-        {
-            System.out.println("\n" + passengersInFlight);
-        }
-    }
-
-    private Flight chooseAFlight()
-    {
-        Flight flightToReturn = null;
-        if (0 == ticketSystem.getNumberOfFlights())
-        {
-            System.out.println("There are no flights registered!");
-        }
-        else
-        {
-            boolean done = false;
-            while (!done)
-            {
-                System.out.println("\nPlease choose a flight ID:");
-                System.out.println(ticketSystem.getAllFlights());
-                Scanner reader = new Scanner(System.in);
-                Flight flight = ticketSystem.getFlightByID(reader.nextLine());
-                if (flight == null)
-                {
-                    System.out.println("There are no flights by that ID.");
-                }
-                else
-                {
-                    done = true;
-                    flightToReturn = flight;
-                }
-            }
-        }
-        return flightToReturn;
+        System.out.println("Please choose a flight ID:");
+        System.out.println(ticketSystem.getAllFlights());
+        Scanner reader = new Scanner(System.in);
+        Flight flight = ticketSystem.getFlightByID(reader.nextLine());
+        System.out.println("\n" + ticketSystem.getPassengersInFlight(flight));
     }
 
     /**

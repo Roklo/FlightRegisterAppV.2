@@ -42,11 +42,6 @@ public class FlightRegister
     {
         this.flights.remove(flight);
     }
-    
-    public int getNumberOfFlights()
-    {
-        return this.flights.size();
-    }
 
     /**
      * Returns the iterator of the Flight Register class.
