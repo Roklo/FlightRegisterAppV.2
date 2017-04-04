@@ -6,12 +6,15 @@ import entity.EmployeeInfomation;
 import entity.Flight;
 import entity.Passenger;
 import entity.Person;
+import entity.PersonRegister;
 import entity.Pilot;
 import entity.Seat;
 import entity.Ticket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * This is just a DUMMY-class representing an Application. To be replaced with a
@@ -51,64 +54,130 @@ public class Application
     void doCreateFlight()
     {
         System.out.println("---- Create a Flight ----");
-        System.out.println("Please enter the flight ID (e.g. SK4145):");
         Scanner reader = new Scanner(System.in);
-        String flightID = reader.nextLine();
-
-        //Add pilot
-        System.out.println("\nPlease enter the name of the Pilot" + "\n"
-                + "Enter *list* to list all pilots" + "\n"
-                + "Enter *done* when finish adding pilot");
-
-        boolean doneAddPilot = false;
-        while (!doneAddPilot)
+        String flightID = "";
+        boolean done = false;
+        while (!done)
         {
-            System.out.print("Add: ");
-            String pilot = reader.nextLine();
-            if (pilot.equals("list"))
+            System.out.println("Please enter a valid Flight ID (e.g. SK4145):");
+            flightID = reader.nextLine();
+            if (ticketSystem.getFlightByID(flightID) != null)
             {
-                System.out.println("List of all availible pilots:\n"
-                        + ticketSystem.getAllAvailablePilots());
-            }
-
-            if (pilot.equals("done"))
-            {
-                doneAddPilot = true;
+                System.out.println(
+                        "The entered Flight ID is already in use!\n");
             }
             else
             {
-                //TODO: Add pilot to flight
+                done = true;
+            }
+        }
+
+        //Add pilot
+        System.out.println("\nPlease enter the name of the 1st Pilot:"
+                + "\nEnter 'list' to list all pilots");
+        String firstPilot = "";
+        Person pilot = null;
+        Person copilot= null;
+        int pilotsAdded = 0;
+        while (pilotsAdded < 2)
+        {
+            System.out.print("Add: ");
+            String pilotToAdd = reader.nextLine();
+            if (pilotToAdd.equals("list"))
+            {
+                System.out.println("\nList of all availible pilots:\n"
+                        + ticketSystem.getAllAvailablePilots());
+            }
+            else if (!ticketSystem.getAllAvailablePilots().contains(pilotToAdd))
+            {
+                System.out.println("\nThe entered name is not a"
+                        + " registered pilot!"
+                        + "\nPlease choose a pilot from the list:\n"
+                        + ticketSystem.getAllAvailablePilots());
+            }
+            else if (0 == pilotsAdded)
+            {
+                firstPilot = pilotToAdd;
+                pilot = ticketSystem.getPersonByWholeName(pilotToAdd);
+                System.out.println("1st Pilot added.\n"
+                        + "\nPlease enter the name of the Copilot:" + "\n"
+                        + "Enter 'list' to list all pilots");
+                pilotsAdded += 1;
+            }
+            else if (firstPilot.equals(pilotToAdd))
+            {
+                System.out.println("\nThe Copilot cannot be the same as the"
+                        + " 1st Pilot!" + "\nPlease choose a different"
+                        + " Copilot from the list:\n"
+                        + ticketSystem.getAllAvailablePilots());
+            }
+            else
+            {
+                copilot = ticketSystem.getPersonByWholeName(pilotToAdd);
+                System.out.println("Copilot added.");
+                pilotsAdded += 1;
             }
         }
 
         //Add crew
-        System.out.println("\nPlease enter the name of the crew" + "\n"
-                + "Enter *list* to list all crew" + "\n"
-                + "Enter *done* when finish adding crew");
+        List<CabinCrew> cabinCrew = new ArrayList<>(); 
+        int maxCrewSize = 0;
+        done = false;
+        while (!done)
+        {
+            System.out.println("\nPlease enter the amount of cabin"
+                    + " crew needed (2-4):");
+            maxCrewSize = Integer.parseInt(reader.nextLine());
+            if (maxCrewSize <= 4 && maxCrewSize >= 2)
+            {
+                done = true;
+            }
+            else
+            {
+                System.out.println("The entered number is not allowed!");
+            }
+        }
+        System.out.println("\nPlease enter the name of a cabin crew employee:"
+                + "\nEnter 'list' to list every available cabin crew.");
 
-        boolean doneAddCrew = false;
-        while (!doneAddCrew)
+        String crewListString = "";
+        int crewAdded = 0;
+        while (crewAdded < maxCrewSize)
         {
             System.out.print("Add: ");
             String crew = reader.nextLine();
             if (crew.equals("list"))
             {
-                System.out.println("List of all availible crew:\n"
+                System.out.println("\nList of all availible cabin crew:\n"
                         + ticketSystem.getAllAvailableCrew());
             }
-
-            if (crew.equals("done"))
+            else if (crewListString.contains(crew))
             {
-                doneAddCrew = true;
+                System.out.println("\nThe selected employee is already added!"
+                        + "\nPlease choose a different employee"
+                        + " from the list:\n"
+                        + ticketSystem.getAllAvailableCrew());
+            }
+            else if (!ticketSystem.getAllAvailableCrew().contains(crew))
+            {
+                System.out.println("\nThe entered name is not a"
+                        + " registered employee!"
+                        + "\nPlease choose a different employee"
+                        + " from the list:\n"
+                        + ticketSystem.getAllAvailableCrew());
             }
             else
             {
-                //TODO: Add crew to flight
+                cabinCrew.add((CabinCrew) ticketSystem.getPersonByWholeName(crew));
+                crewAdded += 1;
+                crewListString += crew;
+                System.out.println(crewAdded + "/" + maxCrewSize
+                        + " Cabin crew added.\n");
             }
         }
 
         //Add destination airport
-        System.out.println("\nPlease enter the destination"
+        System.out.println("Please enter the destination"
                 + "airport (e.g. OSL):");
         String destinationAirport = reader.nextLine();
         //Add departure airport
@@ -154,11 +223,12 @@ public class Application
                 + " within a row:");
         int numberOfLetters = reader.nextInt();
 
-        Flight newFlight = new Flight(flightID, destinationAirport,
-                departureAirport, departureHour, departureMinute,
-                arrivalHour, arrivalMinute, departureDay,
-                departureMonth, departureYear, arrivalDay,
-                arrivalMonth, arrivalYear, numberOfRows, numberOfLetters);
+        Flight newFlight = new Flight(flightID, pilot, copilot, cabinCrew,
+                destinationAirport,departureAirport, departureHour,
+                departureMinute, arrivalHour, arrivalMinute,
+                departureDay, departureMonth, departureYear,
+                arrivalDay, arrivalMonth, arrivalYear,
+                numberOfRows, numberOfLetters);
         ticketSystem.addFlight(newFlight);
 
         System.out.println("\n\nThe following flight has been created:");
@@ -177,8 +247,11 @@ public class Application
                 + newFlight.getArrivalDay() + "."
                 + newFlight.getArrivalMonth() + "."
                 + newFlight.getArrivalYear());
-
-        //System.out.println(ticketSystem.getAllFlights());
+        System.out.println("Pilot: " + newFlight.getPilot().getFirstName()
+                + " " + newFlight.getPilot().getLastName()
+        + "\nCopilot: " + newFlight.getCopilot().getFirstName() + " "
+                + newFlight.getCopilot().getLastName()
+        + "\nCabin crew:\n" + newFlight.getAllCabinCrew());
     }
 
     void doRegisterPilot()
@@ -187,14 +260,26 @@ public class Application
         System.out.println("Please enter the forename:");
         Scanner reader = new Scanner(System.in);
         String firstName = reader.nextLine();
-       // ticketSystem.getPersonByFirstName();
 
         System.out.println("\nPlease enter the surname:");
         String lastName = reader.nextLine();
 
-        System.out.println("\nPlease enter the email address:");
-        String eMail = reader.nextLine();
-        
+        String eMail = "";
+        boolean done = false;
+        while (!done)
+        {
+            System.out.println("\nPlease enter an email address:");
+            eMail = reader.nextLine();
+            if (ticketSystem.getPersonByEmail(eMail) != null)
+            {
+                System.out.println("This email address is already registered!");
+            }
+            else
+            {
+                done = true;
+            }
+        }
+
         System.out.println("\nPlease enter the certificate number (7 digits):");
         Boolean uniqueCertificateNumber = true;
         String certificateNumber = "";
@@ -248,8 +333,21 @@ public class Application
         System.out.println("Please enter the surname:");
         String lastName = reader.nextLine();
 
-        System.out.println("Please enter the email address:");
-        String eMail = reader.nextLine();
+        String eMail = "";
+        boolean done = false;
+        while (!done)
+        {
+            System.out.println("\nPlease enter an email address:");
+            eMail = reader.nextLine();
+            if (ticketSystem.getPersonByEmail(eMail) != null)
+            {
+                System.out.println("This email address is already registered!");
+            }
+            else
+            {
+                done = true;
+            }
+        }
 
         System.out.println("Please enter the employee ID:");
         String employeeID = reader.nextLine();
@@ -274,19 +372,32 @@ public class Application
         Scanner reader = new Scanner(System.in);
         String firstName = reader.nextLine();
 
-        System.out.println("Please enter the surname:");
+        System.out.println("\nPlease enter the surname:");
         String lastName = reader.nextLine();
 
-        System.out.println("Please enter the email address:");
-        String eMail = reader.nextLine();
+        String eMail = "";
+        boolean done = false;
+        while (!done)
+        {
+            System.out.println("\nPlease enter an email address:");
+            eMail = reader.nextLine();
+            if (ticketSystem.getPersonByEmail(eMail) != null)
+            {
+                System.out.println("This email address is already registered!");
+            }
+            else
+            {
+                done = true;
+            }
+        }
 
         Person newPassenger = new Passenger(firstName, lastName, eMail);
 
         ticketSystem.addPerson(newPassenger);
         System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newPassenger.getFirstName() + " "
-                + newPassenger.getLastName() + ", "
-                + newPassenger.getEmail());
+                + newPassenger.getLastName()
+                + "\n" + newPassenger.getEmail());
     }
 
     private Passenger getPassenger()

@@ -12,13 +12,13 @@ public class Pilot extends Person
     private String employeeID;
 
     /**
-     * Creates a new pilot given by his or her forename, lastname, and an email
+     * Creates a new pilot given by his or hers forename, lastname, and an email
      * address.
      *
-     * @param foreName is the Pilots first name.
-     * @param lastName is the Pilots surname.
-     * @param emailAddress is the Pilots email adress.
-     * @param certificateNumber is the Pilots certificate number.
+     * @param foreName
+     * @param lastName
+     * @param emailAddress
+     * @param certificateNumber
      * @param employeeID
      */
     public Pilot(String foreName, String lastName, String emailAddress,
@@ -29,30 +29,18 @@ public class Pilot extends Person
         this.employeeID = employeeID;
     }
 
-    /**
-     * Gets the Pilot's employee ID.
-     * @return the employeeID field.
-     */
     @Override
     public String getEmployeeID()
     {
         return this.employeeID;
     }
 
-    /**
-     * Gets the Pilot's certificate number
-     * @return the certificate number field.
-     */
     @Override
     public String getCertificateNumber()
     {
         return this.certificateNumber;
     }
 
-    /**
-     * 
-     * @return 
-     */
     @Override
     public String toString()
     {

@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 class ApplicationUI
 {
-    
+
     private Application application = null;
 
     String[] menuItems =
@@ -223,7 +223,6 @@ class ApplicationUI
     {
         return this.application;
     }
-
 
     private int showRegMenu() throws InputMismatchException
     {

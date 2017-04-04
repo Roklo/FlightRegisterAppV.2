@@ -14,10 +14,10 @@ public class CabinCrew extends Person
      * Creates a new cabin crew given by his or hers forename, lastname, and an
      * email address.
      *
-     * @param foreName is the first name of the cabin crew
-     * @param lastName is the surname of the cabin crew
-     * @param emailAddress is the email adress of the cabin crew
-     * @param employeeID is the employee ID of the cabin crew
+     * @param foreName
+     * @param lastName
+     * @param emailAddress
+     * @param employeeID
      */
     public CabinCrew(String foreName, String lastName, String emailAddress,
             String employeeID)
