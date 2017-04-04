@@ -31,7 +31,7 @@ public class Application
     private HashSet<Person> crewList;
 
     /**
-     * Initializes the application.
+     * Initializes the application. (does nothing)
      */
     public void init()
     {
@@ -254,6 +254,10 @@ public class Application
         + "\nCabin crew:\n" + newFlight.getAllCabinCrew());
     }
 
+    
+    /**
+     * Registers a new pilot to the system. Prompts user for fields.
+     */
     void doRegisterPilot()
     {
         System.out.println("\n---- Register a Pilot ----");
@@ -263,20 +267,21 @@ public class Application
 
         System.out.println("\nPlease enter the surname:");
         String lastName = reader.nextLine();
-
+        
+        Boolean validEmail = false;
         String eMail = "";
-        boolean done = false;
-        while (!done)
+        while (!validEmail)
         {
-            System.out.println("\nPlease enter an email address:");
+            System.out.println("Please enter the email address:");
             eMail = reader.nextLine();
-            if (ticketSystem.getPersonByEmail(eMail) != null)
+            eMail = eMail.toLowerCase();
+            String EMAIL_REGEX
+                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+            validEmail = eMail.matches(EMAIL_REGEX);
+            if (validEmail == false)
             {
-                System.out.println("This email address is already registered!");
-            }
-            else
-            {
-                done = true;
+                System.out.println("Email: " + eMail
+                        + " is not valid a valid email");
             }
         }
 
@@ -306,11 +311,11 @@ public class Application
             }
         }
 
-        //System.out.println("Please enter the employee ID:");
-        //String employeeID = reader.nextLine();
+        //Creates new emloyeeID
         String employeeID = ticketSystem.getEmployeeInformation()
                 .getNewEmployeeNumber(firstName, lastName);
 
+        //Creates the pilot 
         Person newPilot = new Pilot(firstName, lastName, eMail,
                 certificateNumber, employeeID);
 
@@ -323,6 +328,9 @@ public class Application
                 + "\nCertificate Nr: " + newPilot.getCertificateNumber());
     }
 
+    /**
+     * Registers a new crewmember
+     */
     void doRegisterCrew()
     {
         System.out.println("\n---- Register a Crew ----");
@@ -333,25 +341,41 @@ public class Application
         System.out.println("Please enter the surname:");
         String lastName = reader.nextLine();
 
+        Boolean validEmail = false;
         String eMail = "";
-        boolean done = false;
-        while (!done)
+        while (!validEmail)
         {
-            System.out.println("\nPlease enter an email address:");
+            System.out.println("Please enter the email address:");
             eMail = reader.nextLine();
-            if (ticketSystem.getPersonByEmail(eMail) != null)
+            eMail = eMail.toLowerCase();
+
+            String EMAIL_REGEX
+                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+
+            validEmail = eMail.matches(EMAIL_REGEX);
+
+            if (validEmail == false)
             {
-                System.out.println("This email address is already registered!");
-            }
-            else
-            {
-                done = true;
+                System.out.println("Email: " + eMail
+                        + " is not valid a valid email");
             }
         }
 
-        System.out.println("Please enter the employee ID:");
-        String employeeID = reader.nextLine();
+        //Creates new emloyeeID
+        String employeeID = ticketSystem.getEmployeeInformation()
+                .getNewEmployeeNumber(firstName, lastName);
 
+        //TODO: Implement when quit function is created
+        /*
+                if (employeeID == "ERROR")
+        {
+            System.out.println("ERROR, CONTACT SYSTEM ADMIN" + "\n"
+                    + "ERRORCODE: OUT OF EMPLOYEE NUMBERS" + "\n" + "\n"
+                    + "PRESS ANY KEY TO QUIT TO MAIN MENU");
+            reader.nextLine();
+        } */
+        
+        //Creates the cabin crew
         Person newCrew = new CabinCrew(firstName, lastName, eMail, employeeID);
 
         ticketSystem.addPerson(newCrew);
@@ -375,24 +399,24 @@ public class Application
         System.out.println("\nPlease enter the surname:");
         String lastName = reader.nextLine();
 
+        Boolean validEmail = false;
         String eMail = "";
-        boolean done = false;
-        while (!done)
+        while (!validEmail)
         {
-            System.out.println("\nPlease enter an email address:");
+            System.out.println("Please enter the email address:");
             eMail = reader.nextLine();
-            if (ticketSystem.getPersonByEmail(eMail) != null)
+            eMail = eMail.toLowerCase();
+            String EMAIL_REGEX
+                    = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+            validEmail = eMail.matches(EMAIL_REGEX);
+
+            if (validEmail == false)
             {
-                System.out.println("This email address is already registered!");
-            }
-            else
-            {
-                done = true;
+                System.out.println("Email: " + eMail
+                        + " is not valid a valid email");
             }
         }
-
         Person newPassenger = new Passenger(firstName, lastName, eMail);
-
         ticketSystem.addPerson(newPassenger);
         System.out.println("\n\nThe following passenger has been registered:");
         System.out.println(newPassenger.getFirstName() + " "
@@ -400,25 +424,36 @@ public class Application
                 + "\n" + newPassenger.getEmail());
     }
 
+    /**
+     * Gets a passenger, prompts user for input
+     * @return a passenger
+     */
     private Passenger getPassenger()
     {
         Scanner reader = new Scanner(System.in);
         Passenger passenger = null;
         boolean searching = true;
-        String lastName;
+        String firstName = null;
+        String lastName = null;
+
         while (searching)
         {
-            System.out.println("Please enter the last name of the passenger:");
-            lastName = reader.nextLine();
-            System.out.println(); //spacing
+            if (lastName == null)
+            {
+                System.out.println("Please enter the last name of the passenger:");
+                lastName = reader.nextLine();
+                System.out.println(); //spacing
+            }
             int passengerCount
-                    = ticketSystem.getNumberOfPassengersByLastName(lastName);
+                    = ticketSystem.getNumberOfPassengersWithName(firstName, lastName);
             int functionInt = Integer.min(6, passengerCount);
 
             switch (functionInt)
             {
                 case 0:
                     System.out.println("No passengers with that name was found");
+                    lastName = null;
+                    firstName = null;
                     break;
 
                 case 1:
@@ -430,22 +465,37 @@ public class Application
                 case 3:
                 case 4:
                 case 5:
-                    String listOfMatches = ticketSystem
-                            .getStringListOfPassengersByLastName(lastName);
-                    System.out.println("Matches: \n" + listOfMatches);
+                    ArrayList<Passenger> listOfMatches = ticketSystem
+                            .getArrayListOfPassengersWithName(firstName, lastName);
+                    System.out.println(passengerCount + " matches "
+                            + "\nPlease select a Passenger by index");
+                    int size = listOfMatches.size();
+                    for (int index = 0; index < size; index++)
+                    {
+                        System.out.println(index + ":  "
+                                + listOfMatches.get(index).toString());
+                    }
+                    int selectedIndex = getLimitedInt(0, size,
+                            "Please select a Passenger by index");
+                    passenger = listOfMatches.get(selectedIndex);
+                    searching = false;
+                    break;
 
                 case 6:
-                    System.out.println(passengerCount + " passenger with that "
-                            + "lastname was found, please enter firstname");
 
-                    System.out.println("Please enter the firstname of the "
-                            + "passenger");
-                    String firstName = reader.nextLine();
-                    passenger = ticketSystem.getPassengerByFullName(firstName,
-                            lastName);
-                    if (passenger != null)
+                    if (firstName == null)
                     {
-                        searching = false;
+                        System.out.println(passengerCount + " passenger with that "
+                                + "lastname was found.");
+                        System.out.println("Please enter the firstname of the "
+                                + "passenger");
+                        firstName = reader.nextLine();
+                    }
+                    else
+                    {
+                        System.out.println("Theres too many people with that first and lastname :(");
+                        firstName = null;
+                        lastName = null;
                     }
             }
         }
@@ -625,6 +675,10 @@ public class Application
         }
     }
 
+    /**
+     * Gets a flight. Prompts user for flight id using reader.
+     * @return 
+     */
     private Flight chooseAFlight()
     {
         Flight flightToReturn = null;
@@ -656,8 +710,8 @@ public class Application
     }
 
     /**
-     * Prompts for a int input between two values, will not return value before
-     * requirements are met.
+     * Prompts user for a int input between two values, will not return value 
+     * before requirements are met.
      *
      * @param minValue The minimum input value.
      * @param maxValue The maxiumum input value.
@@ -682,6 +736,7 @@ public class Application
         return returnInt;
     }
 
+    
     public TicketReservationSystem getTicketSystem()
     {
         return this.ticketSystem;
