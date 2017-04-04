@@ -13,28 +13,44 @@ public class Passenger extends Person
     /**
      * Creates a new passanger given by his or hers forename, lastname, and an
      * email address.
+     *
+     * @param foreName is the first name of the passenger
+     * @param lastName is the surname of the passenger
+     * @param emailAddress is the email adress of the passenger
      */
     public Passenger(String foreName, String lastName, String emailAddress)
     {
         super(foreName, lastName, emailAddress);
     }
 
+    /**
+     * Creates a string from the passengers fields.
+     * @return a string of the passengers fields.
+     */
     @Override
     public String toString()
     {
         return getFirstName() + " " + getLastName() + " - " + getEmail();
     }
 
+    /**
+     * returns an error message since the passenger is not an employee.
+     * @return a String errror message.
+     */
     @Override
     public String getEmployeeID()
     {
-        return "The passengers does not have an employee ID.";
+        return "Passengers do not have an employee ID.";
     }
 
+    /**
+     * Return an error message since the passenger doesnt have a certificate.
+     * @return 
+     */
     @Override
     public String getCertificateNumber()
     {
-        return "The cabin crew does not have a certificate number.";
+        return "Passengers do not have a certificate number.";
     }
 
 }

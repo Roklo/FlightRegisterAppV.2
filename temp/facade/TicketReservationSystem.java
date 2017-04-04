@@ -165,7 +165,7 @@ public class TicketReservationSystem
     {
         ArrayList<Passenger> passengerList
                 = getArrayListOfPassengersByLastName(lastName);
-        
+
         Iterator<Passenger> it = passengerList.iterator();
         Person iteratorPerson;
         String returnString = "";
@@ -179,8 +179,9 @@ public class TicketReservationSystem
 
     //test
     /**
-     * Gets a person with the given surname
-     * @param lastName is the surname to look for
+     * Returns a person with the given surname
+     *
+     * @param lastName the surname to look for
      * @return a person with the given surname;
      */
     public Person getPersonByLastName(String lastName)
@@ -192,6 +193,75 @@ public class TicketReservationSystem
         {
             person = it.next();
             if (person.getLastName().equals(lastName))
+            {
+                personToReturn = person;
+            }
+        }
+        return personToReturn;
+    }
+
+    /**
+     * Returns a person with the given forename
+     *
+     * @param firstName the forename to look for
+     * @return a person with the given forename;
+     */
+    public Person getPersonByFirstName(String firstName)
+    {
+        Person person;
+        Person personToReturn = null;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            if (person.getFirstName().equals(firstName))
+            {
+                personToReturn = person;
+            }
+        }
+        return personToReturn;
+    }
+
+    /**
+     * Returns a person with the given forename and surname
+     *
+     * @param firstName the forename to look for
+     * @param lastName the surname to look for
+     * @return a person with the given forename and surname;
+     */
+    public Person getPersonByWholeName(String name)
+    {
+        Person person;
+        Person personToReturn = null;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            String tempName = person.getFirstName() + " "
+                    + person.getLastName();
+            if (tempName.equals(name))
+            {
+                personToReturn = person;
+            }
+        }
+        return personToReturn;
+    }
+    
+        /**
+     * Returns a person with the given email address
+     *
+     * @param email the email to look for
+     * @return a person with the given email address;
+     */
+    public Person getPersonByEmail(String email)
+    {
+        Person person;
+        Person personToReturn = null;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext())
+        {
+            person = it.next();
+            if (person.getEmail().equals(email))
             {
                 personToReturn = person;
             }
@@ -243,7 +313,7 @@ public class TicketReservationSystem
         }
         return flightsToReturn;
     }
-    
+
     public int getNumberOfFlights()
     {
         return this.flights.getNumberOfFlights();
@@ -281,8 +351,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof Pilot)
             {
-                pilotsToReturn += person.getLastName() + " "
-                        + person.getFirstName() + "\n";
+                pilotsToReturn += person.getFirstName()+ " "
+                        + person.getLastName()+ "\n";
             }
         }
         return pilotsToReturn;
@@ -298,8 +368,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof CabinCrew)
             {
-                crewToReturn += person.getLastName() + " "
-                        + person.getFirstName() + "\n";
+                crewToReturn += person.getFirstName()+ " "
+                        + person.getLastName()+ "\n";
             }
         }
         return crewToReturn;
@@ -435,7 +505,7 @@ public class TicketReservationSystem
         }
         return passengersToReturn;
     }
-    
+
     public String getSeatByPassenger(Passenger pas)
     {
         String seatToReturn = "";
@@ -445,8 +515,8 @@ public class TicketReservationSystem
         while (it.hasNext() && searching)
         {
             ticket = it.next();
-            if(ticket != null &&
-                    ticket.getPassenger().toString().equals(pas.toString()))
+            if (ticket != null
+                    && ticket.getPassenger().toString().equals(pas.toString()))
             {
                 seatToReturn = ticket.getSeat().getSeatId();
                 searching = false;
@@ -463,7 +533,5 @@ public class TicketReservationSystem
     {
         return this.employeeInformation;
     }
-    
-   
 
 }
