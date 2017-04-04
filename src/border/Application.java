@@ -195,7 +195,7 @@ public class Application
 
         String eMail = reader.nextLine();
 
-        System.out.println("Please enter the certificate number:");
+        System.out.println("Please enter the certificate number (7 digits):");
 
         Boolean uniqueCertificateNumber = true;
         String certificateNumber = "";
@@ -219,8 +219,8 @@ public class Application
                 if (uniqueCertificateNumber)
                 {
                     System.out.println("This sertificate number "
-                            + "is already registered");
-                    System.out.println("Please enter the certificate number");
+                            + "is already registered.");
+                    System.out.println("Please enter the certificate number (7 digits):");
                 }
 
             }
@@ -239,9 +239,9 @@ public class Application
         System.out.println("\n\nThe following pilot has been registered:");
         System.out.println(newPilot.getFirstName() + " "
                 + newPilot.getLastName() + ", "
-                + newPilot.getEmail() + ", "
-                + newPilot.getEmployeeID() + ", "
-                + newPilot.getCertificateNumber());
+                + newPilot.getEmail()
+                + ", Employee ID: " + newPilot.getEmployeeID()
+                + ", Certificate Nr: " + newPilot.getCertificateNumber());
     }
 
     void doRegisterCrew()
@@ -295,7 +295,7 @@ public class Application
                 + newPassenger.getEmail());
     }
 
-  private Passenger getPassenger()
+    private Passenger getPassenger()
     {
         Scanner reader = new Scanner(System.in);
         Passenger passenger = null;
@@ -305,39 +305,46 @@ public class Application
         {
             System.out.println("Please enter the last name of the passenger:");
             lastName = reader.nextLine();
+            System.out.println(); //spacing
             int passengerCount
                     = ticketSystem.getNumberOfPassengersByLastName(lastName);
-            if (passengerCount == 0)
+            int functionInt = Integer.min(6, passengerCount);
+
+            switch (functionInt)
             {
-                System.out.println("\nNo passengers with that name was found");
-            }
-            else if (passengerCount == 1)
-            {
-                passenger = ticketSystem.getPassengerByLastName(lastName);
-                searching = false;
-            }
-            else if (passengerCount > 1)
-            {
-                System.out.println("\n" + passengerCount + " passenger with that "
-                        + "lastname was found, please enter firstname");
-                if (passengerCount <= 5)
-                {
-                    System.out.println("\nList of Matches: " + ticketSystem
-                            .getStringListOfPassengersByLastName(lastName)
-                            + "\n");
-                }
-                System.out.println("\nPlease enter the firstname of the "
-                        + "passenger");
-                String firstName = reader.nextLine();
-                passenger = ticketSystem.getPassengerByFullName(firstName,
-                        lastName);
-                if (passenger != null)
-                {
+                case 0:
+                    System.out.println("No passengers with that name was found");
+                    break;
+
+                case 1:
+                    passenger = ticketSystem.getPassengerByLastName(lastName);
                     searching = false;
-                }
+                    break;
+
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    String listOfMatches = ticketSystem
+                            .getStringListOfPassengersByLastName(lastName);
+                    System.out.println("Matches: \n" + listOfMatches);
+
+                case 6:
+                    System.out.println(passengerCount + " passenger with that "
+                            + "lastname was found, please enter firstname");
+
+                    System.out.println("Please enter the firstname of the "
+                            + "passenger");
+                    String firstName = reader.nextLine();
+                    passenger = ticketSystem.getPassengerByFullName(firstName,
+                            lastName);
+                    if (passenger != null)
+                    {
+                        searching = false;
+                    }
             }
         }
-        System.out.println("\nSelected person: \n3" + passenger.toString());
+        System.out.println("Selected person: \n" + passenger.toString());
         return passenger;
     }
 
