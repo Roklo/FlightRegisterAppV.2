@@ -19,7 +19,7 @@ public class Pilot extends Person
      * @param lastName is the Pilots surname.
      * @param emailAddress is the Pilots email adress.
      * @param certificateNumber is the Pilots certificate number.
-     * @param employeeID
+     * @param employeeID The employee ID
      */
     public Pilot(String foreName, String lastName, String emailAddress,
             String certificateNumber, String employeeID)
@@ -31,6 +31,7 @@ public class Pilot extends Person
 
     /**
      * Gets the Pilot's employee ID.
+     *
      * @return the employeeID field.
      */
     @Override
@@ -41,6 +42,7 @@ public class Pilot extends Person
 
     /**
      * Gets the Pilot's certificate number
+     *
      * @return the certificate number field.
      */
     @Override
@@ -50,8 +52,8 @@ public class Pilot extends Person
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return The details of the pilot
      */
     @Override
     public String toString()

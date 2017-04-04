@@ -43,7 +43,10 @@ public class Flight
      * The constructor of the Flight class
      *
      * @param flightID The flight ID
+     * @param pilot The pilot
+     * @param copilot The copilot
      * @param destinationAirport The destination airport
+     * @param cabinCrew The cabin crew list
      * @param departureAirport The departure airport
      * @param departureHour The departure hour
      * @param departureMinute The departure minute
@@ -91,7 +94,6 @@ public class Flight
         this.seats = new SeatRegister();
         addSeats(numberOfRows, numberOfLetters);
         this.passengers = new PassengerRegister();
-        
 
     }
 
@@ -104,12 +106,12 @@ public class Flight
     {
         return flightID;
     }
-    
+
     public Person getPilot()
     {
         return this.pilot;
     }
-    
+
     public Person getCopilot()
     {
         return this.copilot;
@@ -454,22 +456,22 @@ public class Flight
         passengers.addPassenger(pas);
     }
 
-    private void addCabinCrew(List<CabinCrew> cabinCrew)
+    private void addCabinCrew(List<CabinCrew> cabinCrewList)
     {
-       for (CabinCrew crew : cabinCrew)
-       {
-           this.cabinCrew.addPerson(crew);
-       }
+        for (CabinCrew crew : cabinCrewList)
+        {
+            this.cabinCrew.addPerson(crew);
+        }
     }
-    
+
     public String getAllCabinCrew()
     {
         String stringToReturn = "";
         Iterator<Person> it = this.cabinCrew.getPersonRegIterator();
-        while(it.hasNext())
+        while (it.hasNext())
         {
             Person currentCrew = it.next();
-            stringToReturn += currentCrew.getFirstName() 
+            stringToReturn += currentCrew.getFirstName()
                     + " " + currentCrew.getLastName() + "\n";
         }
         return stringToReturn;
@@ -484,7 +486,5 @@ public class Flight
     {
         return passengers.getPassengerRegIterator();
     }
-
-
 
 }

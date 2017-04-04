@@ -1,4 +1,4 @@
- package junittests;
+package junittests;
 
 import entity.Passenger;
 import org.junit.Test;

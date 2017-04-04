@@ -7,7 +7,8 @@ package entity;
 
 /**
  *
- * @author Håkon
+ * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
+ * @version 1.0 (14.02.2017)
  */
 public abstract class Person
 {

@@ -11,7 +11,8 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Bjørnar
+ * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
+ * @version 1.0 (14.02.2017)
  */
 public class EmployeeInfomationTest
 {
@@ -32,25 +33,21 @@ public class EmployeeInfomationTest
     @Test
     public void testGetNewEmployeeNumber()
     {
-         String newEmployeeID = this.ticketSystem.getEmployeeInformation()
-            .getNewEmployeeNumber("Robin", "Thorholm");
-    
-  //  Person instance = new CabinCrew("Robin", "Thorholm",
-           // "robin.flyvertinne@aeroflot.rus", employeeID);
+        String newEmployeeID = this.ticketSystem.getEmployeeInformation()
+                .getNewEmployeeNumber("Robin", "Thorholm");
 
-        
-        
+        //  Person instance = new CabinCrew("Robin", "Thorholm",
+        // "robin.flyvertinne@aeroflot.rus", employeeID);
         System.out.println("getNewEmployeeNumber");
-       // String firstName = "Robin";
-       // String lastName = "Thorholm";
-       // newEmployeeID = ticketSystem.getEmployeeInformation()
-         //       .getNewEmployeeNumber(firstName, lastName);
-        
+        // String firstName = "Robin";
+        // String lastName = "Thorholm";
+        // newEmployeeID = ticketSystem.getEmployeeInformation()
+        //       .getNewEmployeeNumber(firstName, lastName);
+
         String expResult = "00001";
         String result = newEmployeeID;
         assertEquals(expResult, result);
-       
-       
+
     }
 
     /**
@@ -62,17 +59,16 @@ public class EmployeeInfomationTest
         System.out.println("testAddSertificate");
         boolean sertificateAdded = this.ticketSystem.getEmployeeInformation()
                 .addSertificate("Robin", "Storholm", "0001337");
-        
+
         boolean expResult = false;
         boolean result = sertificateAdded;
         assertEquals(expResult, result);
-      
-        
+
     }
-  
+
     /**
-     * Test of addSertificate method, of class EmployeeInfomation.
-     * Test if Sertificate number is duplicated.
+     * Test of addSertificate method, of class EmployeeInfomation. Test if
+     * Sertificate number is duplicated.
      */
     @Test
     public void testForDuplicateCertificate()
@@ -85,7 +81,6 @@ public class EmployeeInfomationTest
         boolean expResult = true;
         boolean result = sertificate2;
         assertEquals(expResult, result);
-       
-        
+
     }
 }

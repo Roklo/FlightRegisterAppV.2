@@ -25,6 +25,7 @@ public class Passenger extends Person
 
     /**
      * Creates a string from the passengers fields.
+     *
      * @return a string of the passengers fields.
      */
     @Override
@@ -35,6 +36,7 @@ public class Passenger extends Person
 
     /**
      * returns an error message since the passenger is not an employee.
+     *
      * @return a String errror message.
      */
     @Override
@@ -45,7 +47,8 @@ public class Passenger extends Person
 
     /**
      * Return an error message since the passenger doesnt have a certificate.
-     * @return 
+     *
+     * @return The certificate number
      */
     @Override
     public String getCertificateNumber()

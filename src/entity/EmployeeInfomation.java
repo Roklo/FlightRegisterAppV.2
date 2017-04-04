@@ -16,7 +16,7 @@ public class EmployeeInfomation
     HashMap<Integer, String> listOfSertificateNumbers = new HashMap<>();
 
     int lastEmployeeNumber = 0;
-    
+
     String lastEmployeeNumberString = "000000";
     String currentEmployeeNumberString = "";
 
@@ -32,15 +32,14 @@ public class EmployeeInfomation
     {
         lastEmployeeNumber++;
         String fullName = foreName + " " + lastName;
-        
+
         //TODO: Implement when quit function is created
         /*
         if (lastEmployeeNumber > 100000)
         {
             currentEmployeeNumberString = "ERROR";
         }
-        */
-
+         */
         if (lastEmployeeNumber < 100000)
         {
             currentEmployeeNumberString = ""
@@ -111,8 +110,6 @@ public class EmployeeInfomation
     }
 
     //TODO: (ROBIN) Add getter to get lists.
-    
-    
     //Spør:
     //1. Exit metode i hvorhen man er
     //2. sertifikat nummer, starte på 1 eller inntastet vedi?

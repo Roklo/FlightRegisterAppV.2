@@ -176,7 +176,6 @@ public class Application
             }
         }
 
-
         String destinationAirport = promptForInput("Please enter the destination "
                 + "airport (e.g. OSL)");
 
@@ -319,7 +318,6 @@ public class Application
 
         System.out.println("Please enter the surname:");
         String lastName = reader.nextLine();
-
 
         String eMail = promptForEmail();
 
@@ -663,7 +661,7 @@ public class Application
      *
      * @param minValue The minimum input value.
      * @param maxValue The maxiumum input value.
-     * @param displayInfo The message to display to user.
+     * @param displayText The message to display to user.
      * @return The integer from reader.
      */
     private int promptForInt(int minValue, int maxValue, String displayText)

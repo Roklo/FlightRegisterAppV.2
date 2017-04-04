@@ -185,7 +185,7 @@ public class TicketReservationSystem
     /**
      * Gets a String list of people with a given surname
      *
-     * @param lastName
+     * @param lastName The given surname
      * @return a list of passengers lastname, firstname and email multiple
      * people are seperated by line
      *
@@ -254,8 +254,7 @@ public class TicketReservationSystem
     /**
      * Returns a person with the given forename and surname
      *
-     * @param firstName the forename to look for
-     * @param lastName the surname to look for
+     * @param name the name to look for
      * @return a person with the given forename and surname;
      */
     public Person getPersonByWholeName(String name)
@@ -275,8 +274,8 @@ public class TicketReservationSystem
         }
         return personToReturn;
     }
-    
-        /**
+
+    /**
      * Returns a person with the given email address
      *
      * @param email the email to look for
@@ -380,8 +379,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof Pilot)
             {
-                pilotsToReturn += person.getFirstName()+ " "
-                        + person.getLastName()+ "\n";
+                pilotsToReturn += person.getFirstName() + " "
+                        + person.getLastName() + "\n";
             }
         }
         return pilotsToReturn;
@@ -397,8 +396,8 @@ public class TicketReservationSystem
             person = it.next();
             if (person instanceof CabinCrew)
             {
-                crewToReturn += person.getFirstName()+ " "
-                        + person.getLastName()+ "\n";
+                crewToReturn += person.getFirstName() + " "
+                        + person.getLastName() + "\n";
             }
         }
         return crewToReturn;

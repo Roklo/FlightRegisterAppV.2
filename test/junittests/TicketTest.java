@@ -1,6 +1,5 @@
 package junittests;
 
-
 import entity.CabinCrew;
 import entity.Seat;
 import entity.Flight;
@@ -29,7 +28,8 @@ public class TicketTest
 
     Flight instanceFlight = new Flight("#F242", getPilot(), getCopilot(),
             getCabinCrewList(), "AES", "OSL",
-            13, 30, 14, 35, 1, 2, 2016, 3, 4, 2017, 5, 6);;
+            13, 30, 14, 35, 1, 2, 2016, 3, 4, 2017, 5, 6);
+    ;
 
     Seat instanceSeat = new Seat(5, "A");
 
@@ -158,7 +158,7 @@ public class TicketTest
                 "chuck@cia.gov.com", "09002");
         Person crew3 = new CabinCrew("Blue", "Jay",
                 "Barnes@Pearson.uk", "09003");
-        
+
         List<CabinCrew> cabinCrew = new ArrayList<>();
         cabinCrew.add((CabinCrew) crew1);
         cabinCrew.add((CabinCrew) crew2);

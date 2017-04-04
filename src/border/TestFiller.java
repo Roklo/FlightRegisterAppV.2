@@ -17,8 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author rocio
+ * 
+ * @author Håkon Haram, Robin Thorholm, Bjørnar Tennfjord, Erlend Knudsen
+ * @version 1.0 (14.02.2017)
  */
 public class TestFiller
 {
