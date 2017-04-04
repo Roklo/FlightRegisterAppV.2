@@ -113,8 +113,5 @@ public class EmployeeInfomation
     //TODO: (ROBIN) Add getter to get lists.
     
     
-    //Spør:
-    //1. Exit metode i hvorhen man er
-    //2. sertifikat nummer, starte på 1 eller inntastet vedi?
-    //3. Tips på EMAIL:REGEX
+    
 }
