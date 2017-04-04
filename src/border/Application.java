@@ -327,7 +327,7 @@ public class Application
                 case 5:
                     String listOfMatches = ticketSystem
                             .getStringListOfPassengersByLastName(lastName);
-                    System.out.println("Matches: " + listOfMatches);
+                    System.out.println("Matches: \n" + listOfMatches);
 
                 case 6:
                     System.out.println(passengerCount + " passenger with that "
