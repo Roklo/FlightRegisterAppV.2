@@ -16,7 +16,7 @@ public class EmployeeInfomation
     HashMap<Integer, String> listOfSertificateNumbers = new HashMap<>();
 
     int lastEmployeeNumber = 0;
-    int sertificateIdInt = 0;
+    
     String lastEmployeeNumberString = "000000";
     String currentEmployeeNumberString = "";
 
@@ -111,4 +111,10 @@ public class EmployeeInfomation
     }
 
     //TODO: (ROBIN) Add getter to get lists.
+    
+    
+    //Spør:
+    //1. Exit metode i hvorhen man er
+    //2. sertifikat nummer, starte på 1 eller inntastet vedi?
+    //3. Tips på EMAIL:REGEX
 }
