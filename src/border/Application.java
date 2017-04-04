@@ -29,7 +29,7 @@ public class Application
     private HashSet<Person> crewList;
 
     /**
-     * Initializes the application.
+     * Initializes the application. (does nothing)
      */
     public void init()
     {
@@ -182,6 +182,10 @@ public class Application
         //System.out.println(ticketSystem.getAllFlights());
     }
 
+    
+    /**
+     * Registers a new pilot to the system. Prompts user for fields.
+     */
     void doRegisterPilot()
     {
         System.out.println("\n---- Register a Pilot ----");
@@ -360,6 +364,10 @@ public class Application
                 + newPassenger.getEmail());
     }
 
+    /**
+     * Gets a passenger, prompts user for input
+     * @return a passenger
+     */
     private Passenger getPassenger()
     {
         Scanner reader = new Scanner(System.in);
@@ -607,6 +615,10 @@ public class Application
         }
     }
 
+    /**
+     * Gets a flight. Prompts user for flight id using reader.
+     * @return 
+     */
     private Flight chooseAFlight()
     {
         Flight flightToReturn = null;
@@ -638,8 +650,8 @@ public class Application
     }
 
     /**
-     * Prompts for a int input between two values, will not return value before
-     * requirements are met.
+     * Prompts user for a int input between two values, will not return value 
+     * before requirements are met.
      *
      * @param minValue The minimum input value.
      * @param maxValue The maxiumum input value.
@@ -664,6 +676,7 @@ public class Application
         return returnInt;
     }
 
+    
     public TicketReservationSystem getTicketSystem()
     {
         return this.ticketSystem;

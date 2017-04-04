@@ -49,11 +49,11 @@ public class TestFiller
         Person person3 = new Passenger("Bjornar", "Tennfjord",
                 "bjorn_puzzyDestroyer69@gmail.com");
         Person person4 = new Passenger("Erlend", "Knudsen",
-                "erlender@gmail.com");
+                "erlend@gmail.com");
         Person person5 = new Passenger("Espen", "Vad",
-                "xX_sexy_vaden_killer_Xx@gmail.com");
+                "espen_vad@hotmail.com");
         Person person6 = new Passenger("Espen1", "Vad",
-                "moodrix@gmail.com");
+                "vaden59@gmail.com");
         Person person7 = new Passenger("Espen", "Vad",
                 "espenErBest@gmail.com");
         Person person8 = new Passenger("Espen1", "Vad",
