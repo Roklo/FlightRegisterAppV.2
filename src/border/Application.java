@@ -342,6 +342,12 @@ public class Application
                     {
                         searching = false;
                     }
+<<<<<<< HEAD
+=======
+=======
+                }
+>>>>>>> a8c5b17fe92f8d1176a9e0c4f44762fad88d3710
+>>>>>>> de9b2010c5ea9d23aa2b05aeb5ab15f05571d9d1
             }
         }
         System.out.println("Selected person: \n" + passenger.toString());
