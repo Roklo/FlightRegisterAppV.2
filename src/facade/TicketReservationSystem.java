@@ -114,6 +114,55 @@ public class TicketReservationSystem
 
     /**
      * Returns a passenger by the given fore, and surname.
+     * Gets an array list of passengers by given Firstname and Surname. If
+     * firstname String is null, the method will check for matches with lastname
+     * only.
+     *
+     * @param firstName is the forename of the passenger to be searched for.
+     * @param lastName The surname of the passenger to be searched for.
+     * @return The found passenger.
+     * @param firstName is the firstname of the person to search for
+     * @param lastName is the lastname of the person to search for
+     * @return an array list of passengers with the given name
+     */
+    public Passenger getPassengerByFullName(String firstName, String lastName)
+    public ArrayList<Passenger> getArrayListOfPassengersWithName(String firstName,
+            String lastName)
+    {
+        boolean searching = true;
+        Person passenger = null;
+        Person testPerson;
+        Iterator<Person> it = persons.getPersonRegIterator();
+        while (it.hasNext() && searching)
+        ArrayList<Passenger> searchArray = getArrayListOfPassengersByLastName(lastName);
+        ArrayList<Passenger> returnArray = new ArrayList<>();
+        if (firstName != null)
+        {
+            testPerson = it.next();
+            if (testPerson instanceof Passenger
+                    && testPerson.getLastName().equals(lastName)
+                    && testPerson.getFirstName().equals(firstName))
+            for (Passenger pas : searchArray)
+            {
+                passenger = testPerson;
+                searching = false;
+                if (pas.getFirstName().equals(firstName))
+                {
+                    returnArray.add(pas);
+                }
+            }
+        }
+        return (Passenger) passenger;
+        else
+        {
+            returnArray = searchArray;
+        }
+        return returnArray;
+    }
+
+    /**
+     * Gets the number of passengers with a given surname
+     * Returns a passenger by the given fore, and surname.
      *
      * @param firstName is the forename of the passenger to be searched for.
      * @param lastName The surname of the passenger to be searched for.
@@ -121,34 +170,34 @@ public class TicketReservationSystem
      */
     public Passenger getPassengerByFullName(String firstName, String lastName)
     {
-        boolean searching = true;
-        Person passenger = null;
-        Person testPerson;
-        Iterator<Person> it = persons.getPersonRegIterator();
-        while (it.hasNext() && searching)
-        {
-            testPerson = it.next();
-            if (testPerson instanceof Passenger
-                    && testPerson.getLastName().equals(lastName)
-                    && testPerson.getFirstName().equals(firstName))
-            {
-                passenger = testPerson;
-                searching = false;
-            }
-        }
-        return (Passenger) passenger;
+
+        ArrayList<Passenger> passengerList
+                = getArrayListOfPassengersWithName(firstName, lastName);
+        return passengerList.get(0);
     }
 
     /**
-     * Gets the number of passengers with a given surname
+     * Gets the number of passengers with a given surname If firstname String is
+     * null, the method will check for matches with lastname only.
      *
+     * @param firstName is the firstname to search for
      * @param lastName is the surname to search for
      * @return the number of passengers with the given name
      */
     public int getNumberOfPassengersByLastName(String lastName)
+    public int getNumberOfPassengersWithName(String firstName, String lastName)
     {
         ArrayList<Passenger> passengerList
                 = getArrayListOfPassengersByLastName(lastName);
+        ArrayList<Passenger> passengerList;
+        if (firstName == null)
+        {
+            passengerList = getArrayListOfPassengersByLastName(lastName);
+        }
+        else
+        {
+            passengerList = getArrayListOfPassengersWithName(firstName, lastName);
+        }
         int personCount = passengerList.size();
         return personCount;
     }
