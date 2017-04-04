@@ -54,20 +54,16 @@ public class TestFiller
                 "xX_sexy_vaden_killer_Xx@gmail.com");
         Person person6 = new Passenger("Espen1", "Vad",
                 "moodrix@gmail.com");
-        Person person7 = new Passenger("Espen", "Vad",
+        Person person7 = new Passenger("Espen2", "Vad",
                 "espenErBest@gmail.com");
-        Person person8 = new Passenger("Espen1", "Vad",
+        Person person8 = new Passenger("Espen3", "Vad",
                 "ebbes@gmail.com");
-        Person person9 = new Passenger("Espen2", "Vad",
+        Person person9 = new Passenger("Espen4", "Vad",
                 "espen@gmail.com");
-        Person person10 = new Passenger("Espen3", "Vad",
+        Person person10 = new Passenger("Espen5", "Vad",
                 "vadPower@gmail.com");
-        Person person11 = new Passenger("Espen", "Vad",
+        Person person11 = new Passenger("Espen6", "Vad",
                 "tinderEspen@gmail.com");
-        Person person15 = new Passenger("Espen", "Vad",
-                "tinderEspen2@gmail.com");
-        Person person16 = new Passenger("Espen", "Vad",
-                "tinderEspenxXX@gmail.com");
         Person person12 = new Passenger("Bjornar1", "Tennfjord",
                 "bmtennfjord@gmail.com");
         Person person13 = new Passenger("Bjornar2", "Tennfjord",
@@ -83,14 +79,12 @@ public class TestFiller
         appUI.getApp().getTicketSystem().addPerson(person6);
         appUI.getApp().getTicketSystem().addPerson(person7);
         appUI.getApp().getTicketSystem().addPerson(person8);
-        appUI.getApp().getTicketSystem().addPerson(person9);
+        appUI.getApp().getTicketSystem().addPerson(person8);
         appUI.getApp().getTicketSystem().addPerson(person10);
         appUI.getApp().getTicketSystem().addPerson(person11);
         appUI.getApp().getTicketSystem().addPerson(person12);
         appUI.getApp().getTicketSystem().addPerson(person13);
         appUI.getApp().getTicketSystem().addPerson(person14);
-        appUI.getApp().getTicketSystem().addPerson(person15);
-        appUI.getApp().getTicketSystem().addPerson(person16);
 
     }
 
