@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * The flight class represents a flight in a flight reservation system. It holds
@@ -34,8 +35,9 @@ public class Flight
 
     private SeatRegister seats;
     private PassengerRegister passengers;
-    private PersonRegister pilots;
     private PersonRegister cabinCrew;
+    private Person pilot;
+    private Person copilot;
 
     /**
      * The constructor of the Flight class
@@ -58,7 +60,8 @@ public class Flight
      *
      *
      */
-    public Flight(String flightID, String destinationAirport,
+    public Flight(String flightID, Person pilot, Person copilot,
+            List<CabinCrew> cabinCrew, String destinationAirport,
             String departureAirport, int departureHour, int departureMinute,
             int arrivalHour, int arrivalMinute, int departureDay,
             int departureMonth, int departureYear, int arrivalDay,
@@ -67,6 +70,10 @@ public class Flight
 
     {
         this.flightID = flightID;
+        this.pilot = pilot;
+        this.copilot = copilot;
+        this.cabinCrew = new PersonRegister();
+        addCabinCrew(cabinCrew);
         this.destinationAirport = destinationAirport;
         this.departureAirport = departureAirport;
         this.departureHour = departureHour;
@@ -81,11 +88,10 @@ public class Flight
         this.arrivalYear = arrivalYear;
         this.numberOfRows = numberOfRows;
         this.numberOfLetters = numberOfLetters;
-        seats = new SeatRegister();
+        this.seats = new SeatRegister();
         addSeats(numberOfRows, numberOfLetters);
-        passengers = new PassengerRegister();
-        pilots = new PersonRegister();
-        cabinCrew = new PersonRegister();
+        this.passengers = new PassengerRegister();
+        
 
     }
 
@@ -97,6 +103,16 @@ public class Flight
     public String getFlightID()
     {
         return flightID;
+    }
+    
+    public Person getPilot()
+    {
+        return this.pilot;
+    }
+    
+    public Person getCopilot()
+    {
+        return this.copilot;
     }
 
     /**
@@ -438,14 +454,25 @@ public class Flight
         passengers.addPassenger(pas);
     }
 
-    public void addPilot(Pilot pilot)
+    private void addCabinCrew(List<CabinCrew> cabinCrew)
     {
-        this.pilots.addPerson(pilot);
+       for (CabinCrew crew : cabinCrew)
+       {
+           this.cabinCrew.addPerson(crew);
+       }
     }
-
-    public void addCrew(CabinCrew crew)
+    
+    public String getAllCabinCrew()
     {
-        this.cabinCrew.addPerson(crew);
+        String stringToReturn = "";
+        Iterator<Person> it = this.cabinCrew.getPersonRegIterator();
+        while(it.hasNext())
+        {
+            Person currentCrew = it.next();
+            stringToReturn += currentCrew.getFirstName() 
+                    + " " + currentCrew.getLastName() + "\n";
+        }
+        return stringToReturn;
     }
 
     /**
@@ -457,5 +484,7 @@ public class Flight
     {
         return passengers.getPassengerRegIterator();
     }
+
+
 
 }
