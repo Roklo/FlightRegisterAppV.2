@@ -164,10 +164,7 @@ public class TicketReservationSystem
         }
         return returnString;
     }
-
-<<<<<<< HEAD
     
-=======
     //test
     public Person getPersonByLastName(String lastName)
     {
@@ -186,7 +183,6 @@ public class TicketReservationSystem
         }
         return personToReturn;
     }
->>>>>>> a19113cf5133163c77672f736ead4febb59dcdbf
 
     /**
      * Returns a flight by the given flight ID.

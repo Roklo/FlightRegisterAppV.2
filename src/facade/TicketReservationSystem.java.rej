@@ -1,0 +1,11 @@
+diff a/src/facade/TicketReservationSystem.java b/src/facade/TicketReservationSystem.java	(rejected hunks)
+@@ -165,6 +165,9 @@
+         return returnString;
+     }
+ 
++<<<<<<< HEAD
++    
++=======
+     //test
+     public Person getPersonByLastName(String lastName)
+     {
