@@ -188,7 +188,7 @@ public class Application
         System.out.println("Please enter the forename:");
         Scanner reader = new Scanner(System.in);
         String firstName = reader.nextLine();
-       // ticketSystem.getPersonByFirstName();
+        // ticketSystem.getPersonByFirstName();
 
         System.out.println("\nPlease enter the surname:");
         String lastName = reader.nextLine();
@@ -215,11 +215,6 @@ public class Application
 
         }
 
-        System.out.println("Please enter the certificate number:");
-
-        System.out.println("\nPlease enter the email address:");
-        String eMail = reader.nextLine();
-        
         System.out.println("\nPlease enter the certificate number (7 digits):");
         Boolean uniqueCertificateNumber = true;
         String certificateNumber = "";
@@ -312,7 +307,6 @@ public class Application
 
         }
          */
-        
         //Creates the cabin crew
         Person newCrew = new CabinCrew(firstName, lastName, eMail, employeeID);
 
@@ -423,8 +417,8 @@ public class Application
 
                     if (firstName == null)
                     {
-                                            System.out.println(passengerCount + " passenger with that "
-                            + "lastname was found.");
+                        System.out.println(passengerCount + " passenger with that "
+                                + "lastname was found.");
                         System.out.println("Please enter the firstname of the "
                                 + "passenger");
                         firstName = reader.nextLine();
